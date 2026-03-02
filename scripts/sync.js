@@ -1209,6 +1209,7 @@ if (lib.is_locked([database]) == false) {
     dbString = dbString + '@' + settings.dbsettings.address;
     dbString = dbString + ':' + settings.dbsettings.port;
     dbString = dbString + '/' + settings.dbsettings.database;
+    dbString = dbString + '?authSource=admin';
 
     mongoose.set('strictQuery', true);
 

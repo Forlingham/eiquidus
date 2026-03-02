@@ -26,7 +26,7 @@ function verify_collection_exists(cb) {
   // check if the backup will be for a single collection
   if (singleCollection != null && singleCollection != '') {
     const mongoose = require('mongoose');
-    const dbString = `mongodb://${encodeURIComponent(settings.dbsettings.user)}:${encodeURIComponent(settings.dbsettings.password)}@${settings.dbsettings.address}:${settings.dbsettings.port}/${settings.dbsettings.database}`;
+    const dbString = `mongodb://${encodeURIComponent(settings.dbsettings.user)}:${encodeURIComponent(settings.dbsettings.password)}@${settings.dbsettings.address}:${settings.dbsettings.port}/${settings.dbsettings.database}?authSource=admin`;
 
     console.log('Connecting to database..');
 

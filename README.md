@@ -6,82 +6,82 @@
 <img src="public/img/screenshots/platform-windows macos linux-lightgrey.svg" />
 ![GitHub](https://img.shields.io/github/license/team-exor/eiquidus?color=ffbd11)
 
-Written in node.js and mongodb, eIquidus is the most stable, secure, customizable and feature-rich open-source block explorer with support for virtually any altcoin that implements some form of the [Bitcoin RPC API protocol](https://developer.bitcoin.org/reference/rpc/index.html) (EVM blockchains such as ETH, BNB, etc. are not supported). Originally built for the [Exor blockchain](https://github.com/team-exor/exor), eIquidus has since grown into a fully-featured explorer with a focus on stability and security at its core. All features from the [original iquidus explorer](https://github.com/iquidus/explorer) are included here along with many new ideas from other iquidus forks, and an absolute ton of new custom changes and bug fixes that were developed specifically for eIquidus.
+eIquidus 使用 Node.js 和 MongoDB 编写，是最稳定、安全、可定制且功能丰富的开源区块浏览器，支持几乎所有实现某种形式 [Bitcoin RPC API 协议](https://developer.bitcoin.org/reference/rpc/index.html) 的山寨币（不支持 EVM 区块链，如 ETH、BNB 等）。eIquidus 最初是为 [Exor 区块链](https://github.com/team-exor/exor) 构建的，现已发展成为一个功能齐全的浏览器，其核心重点是稳定性和安全性。这里包含了 [原始 iquidus 浏览器](https://github.com/iquidus/explorer) 的所有功能，以及来自其他 iquidus 分支的许多新想法，还有专门为 eIquidus 开发的大量自定义更改和错误修复。
 
-![Homepage](public/img/screenshots/homepage-1-103-0.png)
+![主页](public/img/screenshots/homepage-1-103-0.png)
 
-### Crowdfunding Program
+### 众筹计划
 
-Exor accepts targeted donations in an effort to crowdfund various feature and improvement requests for the block explorer and other Exor-related projects. [Browse the list of unfunded tasks](https://exor.io/tasklist/hide-completed/hide-funded/show-unfunded/) and send Exor coins to the correct funding address to help meet the funding goal for tasks that you would like to see developed. Once the funding goal is met, Exor developers will begin work on the task asap and will remain a top priority until completed. If you are a software developer and would like to work on funded tasks in exchange for payment in EXOR, please get in touch with us using one of the [Developer Contact](#developer-contact) links below.
+Exor 接受定向捐赠，以众筹区块浏览器和其他 Exor 相关项目的各种功能和改进请求。[浏览未资助任务列表](https://exor.io/tasklist/hide-completed/hide-funded/show-unfunded/) 并将 Exor 币发送到正确的资助地址，以帮助实现您希望看到的任务的资助目标。一旦达到资助目标，Exor 开发人员将尽快开始任务工作，并将其作为首要任务直到完成。如果您是软件开发人员，并希望通过完成资助任务来换取 EXOR 报酬，请使用下面的 [开发者联系方式](#developer-contact) 链接与我们联系。
 
-**NEW:** Preliminary plugin support has been added. Help support the first plugin proposal for automatic snapshot creation. More info: [https://exor.io/task/181/b371d98f6217f2f533b3a0c9fedce7b200571c4f/](https://exor.io/task/181/b371d98f6217f2f533b3a0c9fedce7b200571c4f/)
+**新功能：** 已添加初步插件支持。帮助支持第一个自动快照创建插件提案。更多信息：[https://exor.io/task/181/b371d98f6217f2f533b3a0c9fedce7b200571c4f/](https://exor.io/task/181/b371d98f6217f2f533b3a0c9fedce7b200571c4f/)
 
-### Premium Support
+### 高级支持
 
-All code in this project is open source and available free-of-charge under the BSD-3-Clause license. If you require assistance setting up an explorer for your coin, or are interested in hiring a developer to incorporate custom changes for your explorer, you may contact the developer using the [Developer Contact](#developer-contact) links below.
+本项目中的所有代码均开源，并在 BSD-3-Clause 许可下免费提供。如果您在为您的代币设置浏览器时需要帮助，或者有兴趣聘请开发人员为您的浏览器进行自定义更改，您可以使用下面的 [开发者联系方式](#developer-contact) 链接联系开发人员。
 
-### Developer Contact
+### 开发者联系方式
 
-Feel free to contact the developer using one of the options below:
+欢迎使用以下选项之一联系开发人员：
 
 <div align="center">
 <a href="https://discord.gg/dSuGm3y"><img src="https://img.shields.io/badge/Discord-Joe%20%5BTeam%20Exor%5D-blue?style=for-the-badge&logo=Discord" /></a>&nbsp;
 <a href="https://t.me/joeuhren"><img src="https://img.shields.io/badge/Telegram-joeuhren-blue?style=for-the-badge&logo=Telegram" /></a>
 </div>
 
-Table of Contents
+目录
 ------------------
 
-- [Features](#features)
-- [See it in Action](#see-it-in-action)
-- [Installation](#installation)
-  - [Pre-Install](#pre-install)
+- [功能特性](#features)
+- [实时演示](#see-it-in-action)
+- [安装](#installation)
+  - [预安装](#pre-install)
     - [Node.js](#nodejs)
     - [MongoDB](#mongodb)
-  - [Database Setup](#database-setup)
-  - [Download Source Code](#download-source-code)
-  - [Install Node Modules](#install-node-modules)
-  - [Configure Explorer Settings](#configure-explorer-settings)
-- [Start/Stop the Explorer](#startstop-the-explorer)
-  - [Start Explorer (Use for Testing)](#start-explorer-use-for-testing)
-  - [Stop Explorer (Use for Testing)](#stop-explorer-use-for-testing)
-  - [Start Explorer Using PM2 (Recommended for Production)](#start-explorer-using-pm2-recommended-for-production)
-  - [Start Explorer Using PM2 and Log Viewer](#start-explorer-using-pm2-and-log-viewer)
-  - [Stop Explorer Using PM2 (Recommended for Production)](#stop-explorer-using-pm2-recommended-for-production)
-  - [Reload Explorer Using PM2 (Recommended for Production)](#reload-explorer-using-pm2-recommended-for-production)
-  - [Start Explorer Using Forever (Alternate Production Option)](#start-explorer-using-forever-alternate-production-option)
-  - [Stop Explorer Using Forever (Alternate Production Option)](#stop-explorer-using-forever-alternate-production-option)
-  - [Reload Explorer Using Forever (Alternate Production Option)](#reload-explorer-using-forever-alternate-production-option)
-- [Syncing Databases with the Blockchain](#syncing-databases-with-the-blockchain)
-  - [Commands for Manually Syncing Databases](#commands-for-manually-syncing-databases)
-  - [Sample Crontab](#sample-crontab)
-- [Wallet Settings](#wallet-settings)
-- [Run Express Webserver on Port 80](#run-express-webserver-on-port-80)
-  - [Use Setcap to Safely Grant User Permissions](#use-setcap-to-safely-grant-user-permissions)
-  - [Use Another Webserver as a Reverse Proxy](#use-another-webserver-as-a-reverse-proxy)
-- [TLS/SSL Support](#tlsssl-support)
-  - [Prerequisites](#prerequisites)
-  - [Manually Link TLS/SSL Certificates to the Explorer](#manually-link-tlsssl-certificates-to-the-explorer)
-  - [Use Nginx as a Reverse Proxy](#use-nginx-as-a-reverse-proxy)
-- [CORS Support](#cors-support)
-  - [What is CORS?](#what-is-cors)
-  - [How to Benefit From Using CORS?](#how-to-benefit-from-using-cors)
-- [Useful Scripts](#useful-scripts)
-  - [Update Explorer Script](#update-explorer-script)
-  - [Backup Database Script](#backup-database-script)
-  - [Restore Database Script](#restore-database-script)
-  - [Delete Database Script](#delete-database-script)
-  - [Benchmark Script](#benchmark-script)
-- [Known Issues](#known-issues)
-- [Donations / Support Us](#donations--support-us)
-- [Special Thanks](#special-thanks)
-- [License](#license)
+  - [数据库设置](#database-setup)
+  - [下载源代码](#download-source-code)
+  - [安装 Node 模块](#install-node-modules)
+  - [配置浏览器设置](#configure-explorer-settings)
+- [启动/停止浏览器](#startstop-the-explorer)
+  - [启动浏览器（用于测试）](#start-explorer-use-for-testing)
+  - [停止浏览器（用于测试）](#stop-explorer-use-for-testing)
+  - [使用 PM2 启动浏览器（推荐用于生产环境）](#start-explorer-using-pm2-recommended-for-production)
+  - [使用 PM2 启动浏览器并查看日志](#start-explorer-using-pm2-and-log-viewer)
+  - [使用 PM2 停止浏览器（推荐用于生产环境）](#stop-explorer-using-pm2-recommended-for-production)
+  - [使用 PM2 重载浏览器（推荐用于生产环境）](#reload-explorer-using-pm2-recommended-for-production)
+  - [使用 Forever 启动浏览器（备选生产环境选项）](#start-explorer-using-forever-alternate-production-option)
+  - [使用 Forever 停止浏览器（备选生产环境选项）](#stop-explorer-using-forever-alternate-production-option)
+  - [使用 Forever 重载浏览器（备选生产环境选项）](#reload-explorer-using-forever-alternate-production-option)
+- [同步数据库与区块链](#syncing-databases-with-the-blockchain)
+  - [手动同步数据库命令](#commands-for-manually-syncing-databases)
+  - [Crontab 示例](#sample-crontab)
+- [钱包设置](#wallet-settings)
+- [在 80 端口运行 Express Web 服务器](#run-express-webserver-on-port-80)
+  - [使用 Setcap 安全地授予用户权限](#use-setcap-to-safely-grant-user-permissions)
+  - [使用另一个 Web 服务器作为反向代理](#use-another-webserver-as-a-reverse-proxy)
+- [TLS/SSL 支持](#tlsssl-support)
+  - [先决条件](#prerequisites)
+  - [手动将 TLS/SSL 证书链接到浏览器](#manually-link-tlsssl-certificates-to-the-explorer)
+  - [使用 Nginx 作为反向代理](#use-nginx-as-a-reverse-proxy)
+- [CORS 支持](#cors-support)
+  - [什么是 CORS？](#what-is-cors)
+  - [如何从使用 CORS 中获益？](#how-to-benefit-from-using-cors)
+- [实用脚本](#useful-scripts)
+  - [更新浏览器脚本](#update-explorer-script)
+  - [备份数据库脚本](#backup-database-script)
+  - [恢复数据库脚本](#restore-database-script)
+  - [删除数据库脚本](#delete-database-script)
+  - [基准测试脚本](#benchmark-script)
+- [已知问题](#known-issues)
+- [捐赠 / 支持我们](#donations--support-us)
+- [特别感谢](#special-thanks)
+- [许可证](#license)
 
-### Features
+### 功能特性
 
-- Built using the following scripts and technologies:
-  - Node.js (v20.9.0 or newer recommended)
-  - MongoDB (v7.0.2 or newer recommended)
+- 使用以下脚本和技术构建：
+  - Node.js（推荐 v20.9.0 或更新版本）
+  - MongoDB（推荐 v7.0.2 或更新版本）
   - jQuery v3.7.1
   - Bootstrap v5.1.3
   - DataTables v1.13.6
@@ -89,170 +89,170 @@ Table of Contents
   - Luxon v3.4.3
   - Chart.js v4.4.7
     - chartjs-plugin-crosshair v2.0.5
-      - Forked version with working sync feature: ([https://github.com/joeuhren/chartjs-plugin-crosshair](https://github.com/joeuhren/chartjs-plugin-crosshair))
-      - Original version: ([https://github.com/abelheinsbroek/chartjs-plugin-crosshair](https://github.com/abelheinsbroek/chartjs-plugin-crosshair))
+      - 具有工作同步功能的分支版本：([https://github.com/joeuhren/chartjs-plugin-crosshair](https://github.com/joeuhren/chartjs-plugin-crosshair))
+      - 原始版本：([https://github.com/abelheinsbroek/chartjs-plugin-crosshair](https://github.com/abelheinsbroek/chartjs-plugin-crosshair))
     - chartjs-chart-financial v0.1.1 ([https://github.com/chartjs/chartjs-chart-financial](https://github.com/chartjs/chartjs-chart-financial))
     - chartjs-adapter-luxon v1.3.1 ([https://github.com/chartjs/chartjs-adapter-luxon](https://github.com/chartjs/chartjs-adapter-luxon))
     - chartjs-plugin-annotation v3.1.0 ([https://github.com/chartjs/chartjs-plugin-annotation](https://github.com/chartjs/chartjs-plugin-annotation))
   - OverlayScrollbars v2.3.2
   - flag-icons v6.11.1 ([https://github.com/lipis/flag-icons](https://github.com/lipis/flag-icons))
-  - Intl.js (uses the v4.8.0 polyfill service to only download if using a browser that doesn't already support the ECMAScript Internationalization API)
-- Platform independent (tested to run on Windows, MacOS and Linux) **NOTE:** Most of the instructions in this guide were written for use with Linux and may need to be modified when using another OS
-- Mobile-friendly
-- Multi-threaded block sync
-- Sass support
-- Pages/features:
-  - **Home/Explorer:** Displays latest blockchain transactions
-  - **Masternodes:** Displays the current listing of all masternodes known to be active on the network. *\*only applicable to masternode coins*
-  - **Movement:** Displays latest blockchain transactions that are greater than a certain configurable amount
-  - **Network:** Displays a list of peers that have connected to the coind wallet in the past 24 hours, along with useful addnode data that can be used to connect your own wallets to the network easier
-  - **Top 100:** Displays the top 100 richest wallet addresses, the top 100 wallet addresses that have the highest total number of coins received based on adding up all received transactions, as well as a table and pie chart breakdown of wealth distribution. Additional support for omitting burned coins from top 100 lists
-  - **Markets:** Displays a number of exchange-related metrics including market summary, 24 hour chart, most recent buy/sell orders and latest trade history. Has the ability to integrate directly with exchange apis and/or the coingecko api from [https://www.coingecko.com/en/api](https://www.coingecko.com/en/api) to retrieve current market prices and convert to USD. The following 8 cryptocurrency exchanges are supported:
+  - Intl.js（使用 v4.8.0 polyfill 服务，仅在浏览器尚不支持 ECMAScript 国际化 API 时下载）
+- 平台独立（经测试可在 Windows、MacOS 和 Linux 上运行） **注意：** 本指南中的大多数说明都是针对 Linux 编写的，使用其他操作系统时可能需要进行修改
+- 移动端友好
+- 多线程区块同步
+- Sass 支持
+- 页面/功能：
+  - **主页/浏览器：** 显示最新的区块链交易
+  - **主节点：** 显示网络上已知处于活动状态的所有主节点的当前列表。*\*仅适用于主节点币*
+  - **大额变动：** 显示大于特定可配置金额的最新区块链交易
+  - **网络：** 显示过去 24 小时内连接到 coind 钱包的对等节点列表，以及可用于更轻松地将您自己的钱包连接到网络的有用 addnode 数据
+  - **前 100 名：** 显示前 100 个最富有的钱包地址，基于所有接收交易总和接收硬币总数最高的前 100 个钱包地址，以及财富分布的表格和饼图细分。此外还支持从前 100 名列表中省略销毁的硬币
+  - **市场：** 显示许多与交易所相关的指标，包括市场摘要、24 小时图表、最近的买/卖单和最新的交易历史。能够直接与交易所 API 和/或来自 [https://www.coingecko.com/en/api](https://www.coingecko.com/en/api) 的 coingecko API 集成，以获取当前市场价格并转换为美元。支持以下 8 个加密货币交易所：
     - [AltMarkets](https://altmarkets.io)
     - [Dex-Trade](https://dex-trade.com)
     - [Dexomy](https://dexomy.com)
-    - [FreiExchange](https://freiexchange.com)/[FreiXLite](https://freixlite.com) *\*no chart support due to a lack of OHLCV api data*
+    - [FreiExchange](https://freiexchange.com)/[FreiXLite](https://freixlite.com) *\*由于缺乏 OHLCV API 数据，不支持图表*
     - [NonKyc](https://nonkyc.io)
     - [Poloniex](https://poloniex.com)
     - [Xeggex](https://xeggex.com)
-    - [Yobit](https://yobit.net) *\*no chart support due to a lack of OHLCV api data*
-  - **API:** A listing of available public API's that can be used to retrieve information from the network without the need for a local wallet. The following public API's are supported:
-    - **RPC API calls** (Return data from coind)
-      - **getdifficulty:** Returns the current difficulty
-      - **getconnectioncount:** Returns the number of connections the block explorer has to other nodes
-      - **getblockcount:** Returns the current block index
-      - **getblockhash:** Returns the hash of the block at a specific index
-      - **getblock:** Returns information about the block with the given hash
-      - **getrawtransaction:** Returns raw transaction representation for given transaction id
-      - **getnetworkhashps:** Returns the current network hashrate
-      - **getvotelist:** Returns the current vote list
-      - **getmasternodecount:** Returns the total number of masternodes on the network *\*only applicable to masternode coins*
-    - **Extended API calls** (Return data from local indexes)
-      - **getmoneysupply:** Returns current money supply
-      - **getdistribution:** Returns wealth distribution stats
-      - **getaddress:** Returns information for given address
-      - **getaddresstxs:** Returns transactions for a wallet address starting from a particular offset
-      - **gettx:** Returns information for given tx hash
-      - **getbalance:** Returns current balance of given address
-      - **getlasttxs:** Returns transactions greater than a specific number of coins, starting from a particular offset
-      - **getcurrentprice:** Returns last known exchange price
-      - **getbasicstats:** Returns basic statistics about the coin including: block count, circulating supply, USD price, default market price and # of masternodes *\*# of masternodes is only applicable to masternode coins*
-      - **getsummary:** Returns a summary of coin data including: difficulty, hybrid difficulty, circulating supply, hash rate, default market price, USD price, network connection count, block count, count of online masternodes and count of offline masternodes *\*masternode counts are only applicable to masternode coins*
-      - **getnetworkpeers:** Returns the list of network peers that have connected to the explorer node in the last 24 hours
-      - **getmasternodelist:** Returns the complete list of masternodes on the network *\*only applicable to masternode coins*
-      - **getmasternoderewards:** Returns a list of masternode reward transactions for a specific address that arrived after a specific block height *\*only applicable to masternode coins*
-      - **getmasternoderewardstotal:** Returns the total number of coins earned in masternode rewards for a specific address that arrived after a specific block height *\*only applicable to masternode coins*
-  - **Claim Address:** Allows anyone to set custom display names for wallet addresses that they own using the **Sign Message** feature from their local wallet. Includes *bad word* filter support.
-  - **Orphaned Blocks:** Displays a list of orphaned blocks with links to the next and previous "good" blocks
-  - **Block Info:** Displays block summary and list of transactions for a specific block height along with optional hash algorithm for multi-algo coins and optional list of wallet addresses that extracted/mined the block
-  - **Transaction Info:** Displays transaction summary, optional OP_RETURN value, optional list of wallet addresses that extracted/mined the coinbase transaction, list of input addresses and output addresses for a specific transaction
-  - **Address Info:** Displays wallet address summary (balance, total sent, total received, QR code) and a list of latest transactions for a specific wallet address
-- Choose from 26 built-in themes with tweakable settings such as light and dark options to customize the look and feel of the explorer:
-  - **Exor** *\*default theme made especially for eIquidus*
-  - **Cerulean** ([Preview](https://bootswatch.com/cerulean/))
-  - **Cosmo** ([Preview](https://bootswatch.com/cosmo/))
-  - **Cyborg** ([Preview](https://bootswatch.com/cyborg/))
-  - **Darkly** ([Preview](https://bootswatch.com/darkly/))
-  - **Flatly** ([Preview](https://bootswatch.com/flatly/))
-  - **Journal** ([Preview](https://bootswatch.com/journal/))
-  - **Litera** ([Preview](https://bootswatch.com/litera/))
-  - **Lumen** ([Preview](https://bootswatch.com/lumen/))
-  - **Lux** ([Preview](https://bootswatch.com/lux/))
-  - **Materia** ([Preview](https://bootswatch.com/materia/))
-  - **Minty** ([Preview](https://bootswatch.com/minty/))
-  - **Morph** ([Preview](https://bootswatch.com/morph/))
-  - **Pulse** ([Preview](https://bootswatch.com/pulse/))
-  - **Quartz** ([Preview](https://bootswatch.com/quartz/))
-  - **Sandstone** ([Preview](https://bootswatch.com/sandstone/))
-  - **Simplex** ([Preview](https://bootswatch.com/simplex/))
-  - **Sketchy** ([Preview](https://bootswatch.com/sketchy/))
-  - **Slate** ([Preview](https://bootswatch.com/slate/))
-  - **Solar** ([Preview](https://bootswatch.com/solar/))
-  - **Spacelab** ([Preview](https://bootswatch.com/spacelab/))
-  - **Superhero** ([Preview](https://bootswatch.com/superhero/))
-  - **United** ([Preview](https://bootswatch.com/united/))
-  - **Vapor** ([Preview](https://bootswatch.com/vapor/))
-  - **Yeti** ([Preview](https://bootswatch.com/yeti/))
-  - **Zephyr** ([Preview](https://bootswatch.com/zephyr/))
-- Customizable panels at the top of every page to display the following information:
-  - **Network:** Displays the current network hash rate *\*only applicable to POW coins*
-  - **Difficulty:** Displays the current proof-of-work and/or proof-of-stake difficulty
-  - **Masternodes:** Displays a count of online and unreachable masternodes *\*only applicable to masternode coins*
-  - **Coin Supply:** Displays the current circulating coin supply value
-  - **Price:** Displays the current market price (value measured using default market pair)
-  - **USD Price:** Displays the current market price (value measured in USD)
-  - **Market Cap:** Displays the current market cap value (value measured using default market pair)
-  - **USD Market Cap:** Displays the current market cap value (value measured in USD)
-  - **Logo:** Display an image of your coin logo
-- Configurable network charts that can be independently displayed in the header of any page
-  - **Hashrate chart:** Line graph listing of the estimated network hashes per second over the last number of blocks or hours *\*Requires a full sync before network data will start being collected*
-  - **Difficulty chart:** Line graph listing of the block difficulty over the last number of blocks or hours *\*Requires a full sync before network data will start being collected*
-- Add as many custom social links to the explorer footer as desired. Useful for linking to github, twitter, coinmarketcap or any other social media or external links as necessary. 
-- Custom rpc/api command support which increases blockchain compatibility. Supported cmds:
-  - **getnetworkhashps:** Returns the estimated network hashes per second
-  - **getmininginfo:** Returns a json object containing mining-related information
-  - **getdifficulty:** Returns the proof-of-work difficulty as a multiple of the minimum difficulty
-  - **getconnectioncount:** Returns the number of connections to other nodes
-  - **getblockcount:** Returns the number of blocks in the longest blockchain
-  - **getblockhash:** Returns hash of block in best-block-chain at height provided
-  - **getblock:** Returns an object with information about the block
-  - **getrawtransaction:** Returns raw transaction data
-  - **getinfo:** Returns an object containing various state info
-  - **getblockchaininfo:** Returns an object containing various state info regarding blockchain processing
-  - **getpeerinfo:** Returns data about each connected network node as a json array of objects
-  - **gettxoutsetinfo:** Returns an object with statistics about the unspent transaction output set
-  - **getvotelist:** Returns an object with details regarding the current vote list
-  - **getmasternodecount:** Returns a json object containing the total number of masternodes on the network
-  - **getmasternodelist:** Returns a json array containing status information for all masternodes on the network
-  - **verifymessage:** Verify a signed message. Must accept the following arguments:
-    - **address:** The wallet address to use for the signature
-    - **signature:** The signature provided by the signer in base 64 encoding
-    - **message:** The message that was signed
-- Additional support for the following custom blockchain features:
-  - Bitcoin P2PK transactions
-    - Bitcoin rpc/api cmds:
-      - **getdescriptorinfo:** Accepts a descriptor as input and returns an object with more detailed information, including its computed checksum
-      - **deriveaddresses:** Accepts an output descriptor as input and returns an array containing one or more P2PKH addresses
-  - Heavycoin democratic voting and reward support
-    - **Reward Page:** Displays reward/voting information
-    - Heavycoin rpc/api cmds:
-      - **getmaxmoney:** Returns the number of coins that will be produced in total
-      - **getmaxvote:** Returns the maximum allowed vote for the current phase of voting
-      - **getvote:** Returns the current block reward vote setting
-      - **getphase:** Returns the current voting phase name
-      - **getreward:** Returns the current block reward
-      - **getsupply:** Returns the current money supply
-      - **getnextrewardestimate:** Returns an estimate for the next block reward based on the current state of decentralized voting
-      - **getnextrewardwhenstr:** Returns a string describing how long until the votes are tallied and the next block reward is computed
-    - Heavycoin public API's:
-      - **getmaxmoney:** Returns the maximum possible money supply
-      - **getmaxvote:** Returns the maximum allowed vote for the current phase of voting
-      - **getvote:** Returns the current block reward vote setting
-      - **getphase:** Returns the current voting phase
-      - **getreward:** Returns the current block reward, which has been decided democratically in the previous round of block reward voting
-      - **getsupply:** Returns the current money supply
-      - **getnextrewardestimate:** Returns an estimate for the next block reward based on the current state of decentralized voting
-      - **getnextrewardwhenstr:** Returns a string describing how long until the votes are tallied and the next block reward is computed
-  - Zcash/zk-SNARKs private tx support
+    - [Yobit](https://yobit.net) *\*由于缺乏 OHLCV API 数据，不支持图表*
+  - **API：** 可用的公共 API 列表，可用于从网络检索信息，而无需本地钱包。支持以下公共 API：
+    - **RPC API 调用**（从 coind 返回数据）
+      - **getdifficulty：** 返回当前难度
+      - **getconnectioncount：** 返回区块浏览器与其他节点的连接数
+      - **getblockcount：** 返回当前区块索引
+      - **getblockhash：** 返回特定索引处的区块哈希
+      - **getblock：** 返回有关具有给定哈希的区块的信息
+      - **getrawtransaction：** 返回给定交易 ID 的原始交易表示
+      - **getnetworkhashps：** 返回当前网络哈希率
+      - **getvotelist：** 返回当前投票列表
+      - **getmasternodecount：** 返回网络上主节点的总数 *\*仅适用于主节点币*
+    - **扩展 API 调用**（从本地索引返回数据）
+      - **getmoneysupply：** 返回当前货币供应量
+      - **getdistribution：** 返回财富分布统计数据
+      - **getaddress：** 返回给定地址的信息
+      - **getaddresstxs：** 返回钱包地址从特定偏移量开始的交易
+      - **gettx：** 返回给定交易哈希的信息
+      - **getbalance：** 返回给定地址的当前余额
+      - **getlasttxs：** 返回大于特定硬币数量的交易，从特定偏移量开始
+      - **getcurrentprice：** 返回最后已知的交易所价格
+      - **getbasicstats：** 返回有关硬币的基本统计信息，包括：区块计数、流通供应量、美元价格、默认市场价格和主节点数量 *\*主节点数量仅适用于主节点币*
+      - **getsummary：** 返回硬币数据的摘要，包括：难度、混合难度、流通供应量、哈希率、默认市场价格、美元价格、网络连接计数、区块计数、在线主节点计数和离线主节点计数 *\*主节点计数仅适用于主节点币*
+      - **getnetworkpeers：** 返回过去 24 小时内连接到浏览器节点的网络对等节点列表
+      - **getmasternodelist：** 返回网络上主节点的完整列表 *\*仅适用于主节点币*
+      - **getmasternoderewards：** 返回特定地址在特定区块高度之后到达的主节点奖励交易列表 *\*仅适用于主节点币*
+      - **getmasternoderewardstotal：** 返回特定地址在特定区块高度之后到达的主节点奖励中赚取的硬币总数 *\*仅适用于主节点币*
+  - **认领地址：** 允许任何人使用其本地钱包中的 **签名消息** 功能为其拥有的钱包地址设置自定义显示名称。包括 *敏感词* 过滤支持。
+  - **孤块：** 显示孤块列表，并带有指向下一个和上一个“好”区块的链接
+  - **区块信息：** 显示区块摘要和特定区块高度的交易列表，以及可选的多算法硬币哈希算法和提取/挖掘区块的钱包地址可选列表
+  - **交易信息：** 显示交易摘要、可选的 OP_RETURN 值、提取/挖掘 coinbase 交易的钱包地址可选列表、特定交易的输入地址和输出地址列表
+  - **地址信息：** 显示钱包地址摘要（余额、总发送、总接收、二维码）和特定钱包地址的最新交易列表
+- 从 26 个内置主题中进行选择，并具有可调整的设置（如浅色和深色选项）以自定义浏览器的外观和感觉：
+  - **Exor** *\*专为 eIquidus 制作的默认主题*
+  - **Cerulean** ([预览](https://bootswatch.com/cerulean/))
+  - **Cosmo** ([预览](https://bootswatch.com/cosmo/))
+  - **Cyborg** ([预览](https://bootswatch.com/cyborg/))
+  - **Darkly** ([预览](https://bootswatch.com/darkly/))
+  - **Flatly** ([预览](https://bootswatch.com/flatly/))
+  - **Journal** ([预览](https://bootswatch.com/journal/))
+  - **Litera** ([预览](https://bootswatch.com/litera/))
+  - **Lumen** ([预览](https://bootswatch.com/lumen/))
+  - **Lux** ([预览](https://bootswatch.com/lux/))
+  - **Materia** ([预览](https://bootswatch.com/materia/))
+  - **Minty** ([预览](https://bootswatch.com/minty/))
+  - **Morph** ([预览](https://bootswatch.com/morph/))
+  - **Pulse** ([预览](https://bootswatch.com/pulse/))
+  - **Quartz** ([预览](https://bootswatch.com/quartz/))
+  - **Sandstone** ([预览](https://bootswatch.com/sandstone/))
+  - **Simplex** ([预览](https://bootswatch.com/simplex/))
+  - **Sketchy** ([预览](https://bootswatch.com/sketchy/))
+  - **Slate** ([预览](https://bootswatch.com/slate/))
+  - **Solar** ([预览](https://bootswatch.com/solar/))
+  - **Spacelab** ([预览](https://bootswatch.com/spacelab/))
+  - **Superhero** ([预览](https://bootswatch.com/superhero/))
+  - **United** ([预览](https://bootswatch.com/united/))
+  - **Vapor** ([预览](https://bootswatch.com/vapor/))
+  - **Yeti** ([预览](https://bootswatch.com/yeti/))
+  - **Zephyr** ([预览](https://bootswatch.com/zephyr/))
+- 每个页面顶部的可自定义面板，显示以下信息：
+  - **网络：** 显示当前网络哈希率 *\*仅适用于 POW 币*
+  - **难度：** 显示当前工作量证明和/或权益证明难度
+  - **主节点：** 显示在线和无法访问的主节点数量 *\*仅适用于主节点币*
+  - **硬币供应量：** 显示当前流通硬币供应量值
+  - **价格：** 显示当前市场价格（使用默认市场对测量的值）
+  - **美元价格：** 显示当前市场价格（以美元测量的值）
+  - **市值：** 显示当前市值（使用默认市场对测量的值）
+  - **美元市值：** 显示当前市值（以美元测量的值）
+  - **Logo：** 显示您的硬币 Logo 图像
+- 可配置的网络图表，可独立显示在任何页面的标题中
+  - **哈希率图表：** 列出过去若干区块或小时内估计的网络每秒哈希数的折线图 *\*需要完全同步后才会开始收集网络数据*
+  - **难度图表：** 列出过去若干区块或小时内区块难度的折线图 *\*需要完全同步后才会开始收集网络数据*
+- 根据需要在浏览器页脚添加任意数量的自定义社交链接。用于链接到 github、twitter、coinmarketcap 或任何其他社交媒体或外部链接。
+- 自定义 rpc/api 命令支持，增加了区块链兼容性。支持的命令：
+  - **getnetworkhashps：** 返回估计的网络每秒哈希数
+  - **getmininginfo：** 返回包含挖矿相关信息的 json 对象
+  - **getdifficulty：** 返回工作量证明难度作为最小难度的倍数
+  - **getconnectioncount：** 返回与其他节点的连接数
+  - **getblockcount：** 返回最长区块链中的区块数
+  - **getblockhash：** 返回提供的最佳区块链高度处的区块哈希
+  - **getblock：** 返回包含有关区块信息的对象
+  - **getrawtransaction：** 返回原始交易数据
+  - **getinfo：** 返回包含各种状态信息的对象
+  - **getblockchaininfo：** 返回包含有关区块链处理的各种状态信息的对象
+  - **getpeerinfo：** 返回有关每个连接的网络节点的数据，作为对象的 json 数组
+  - **gettxoutsetinfo：** 返回有关未花费交易输出集的统计信息的对象
+  - **getvotelist：** 返回有关当前投票列表详细信息的对象
+  - **getmasternodecount：** 返回包含网络上主节点总数的 json 对象
+  - **getmasternodelist：** 返回包含网络上所有主节点状态信息的 json 数组
+  - **verifymessage：** 验证签名消息。必须接受以下参数：
+    - **address：** 用于签名的钱包地址
+    - **signature：** 签名者提供的 base 64 编码签名
+    - **message：** 被签名的消息
+- 对以下自定义区块链功能的额外支持：
+  - 比特币 P2PK 交易
+    - 比特币 rpc/api 命令：
+      - **getdescriptorinfo：** 接受描述符作为输入并返回包含更详细信息的对象，包括其计算的校验和
+      - **deriveaddresses：** 接受输出描述符作为输入并返回包含一个或多个 P2PKH 地址的数组
+  - Heavycoin 民主投票和奖励支持
+    - **奖励页面：** 显示奖励/投票信息
+    - Heavycoin rpc/api 命令：
+      - **getmaxmoney：** 返回总共将产生的硬币数量
+      - **getmaxvote：** 返回当前投票阶段允许的最大投票数
+      - **getvote：** 返回当前区块奖励投票设置
+      - **getphase：** 返回当前投票阶段名称
+      - **getreward：** 返回当前区块奖励
+      - **getsupply：** 返回当前货币供应量
+      - **getnextrewardestimate：** 根据去中心化投票的当前状态返回下一个区块奖励的估计值
+      - **getnextrewardwhenstr：** 返回描述直到票数统计和计算下一个区块奖励还有多长时间的字符串
+    - Heavycoin 公共 API：
+      - **getmaxmoney：** 返回最大可能的货币供应量
+      - **getmaxvote：** 返回当前投票阶段允许的最大投票数
+      - **getvote：** 返回当前区块奖励投票设置
+      - **getphase：** 返回当前投票阶段
+      - **getreward：** 返回当前区块奖励，该奖励已在前一轮区块奖励投票中民主决定
+      - **getsupply：** 返回当前货币供应量
+      - **getnextrewardestimate：** 根据去中心化投票的当前状态返回下一个区块奖励的估计值
+      - **getnextrewardwhenstr：** 返回描述直到票数统计和计算下一个区块奖励还有多长时间的字符串
+  - Zcash/zk-SNARKs 私有交易支持
 
-### See it in Action
+### 实时演示
 
 -  https://explorer.exor.io/
 
-### Installation
+### 安装
 
-#### Pre-Install
+#### 预安装
 
-The following prerequisites must be installed before using the explorer:
+在使用浏览器之前，必须安装以下先决条件：
 
-- [Node.js](https://nodejs.org/en/) (v20.9.0 or newer recommended)
-- [MongoDB](https://www.mongodb.com/) (v7.0.2 or newer recommended)
-- [Git](https://git-scm.com/downloads) (v2.36.0 or newer recommended)
-- A fully synchronized *coind* wallet daemon that supports the [Bitcoin RPC API protocol](https://developer.bitcoin.org/reference/rpc/index.html). **NOTE:** In most cases, the blockchain must be synced with the `txindex` feature enabled to have access to all transactions. See the [Wallet Settings](#wallet-settings) section for more details.
+- [Node.js](https://nodejs.org/en/)（推荐 v20.9.0 或更新版本）
+- [MongoDB](https://www.mongodb.com/)（推荐 v7.0.2 或更新版本）
+- [Git](https://git-scm.com/downloads)（推荐 v2.36.0 或更新版本）
+- 一个完全同步的 *coind* 钱包守护进程，支持 [Bitcoin RPC API 协议](https://developer.bitcoin.org/reference/rpc/index.html)。**注意：** 在大多数情况下，区块链必须在启用 `txindex` 功能的情况下同步，以便访问所有交易。有关更多详细信息，请参阅 [钱包设置](#wallet-settings) 部分。
 
 ##### Node.js
 
-The recommended way to install Node.js is by using the Node Version Manager (NVM):
+安装 Node.js 的推荐方法是使用 Node 版本管理器 (NVM)：
 
 ```
 sudo apt update
@@ -262,13 +262,13 @@ source ~/.profile
 nvm install --lts
 ```
 
-Using the `--lts` option in the last cmd above will install the most recent LTS version of Node.js. If you want to install a specific version you can do it with the following cmd:
+在上面的最后一个命令中使用 `--lts` 选项将安装最新 LTS 版本的 Node.js。如果您想安装特定版本，可以使用以下命令：
 
 ```
 nvm install 20.9.0
 ```
 
-If desired, multiple versions of Node.js can be installed at the same time with NVM. Use the following syntax to easily change the current Node.js version to another installed version:
+如果需要，可以使用 NVM 同时安装多个版本的 Node.js。使用以下语法轻松将当前 Node.js 版本更改为另一个已安装版本：
 
 ```
 nvm use 18.14.2
@@ -276,9 +276,9 @@ nvm use 18.14.2
 
 ##### MongoDB
 
-It is recommended to follow the install instructions at the official mongo website since they will be updated more often and have specific instructions for many different operating systems: [https://www.mongodb.com/docs/manual/administration/install-community/](https://www.mongodb.com/docs/manual/administration/install-community/).
+建议遵循官方 mongo 网站上的安装说明，因为它们会更频繁地更新，并针对许多不同的操作系统提供具体说明：[https://www.mongodb.com/docs/manual/administration/install-community/](https://www.mongodb.com/docs/manual/administration/install-community/)。
 
-Below are instructions to install the latest v7.x version of MongoDB on Ubunutu 22.04 (run one line at a time):
+以下是在 Ubunutu 22.04 上安装最新 v7.x 版本 MongoDB 的说明（一次运行一行）：
 
 ```
 sudo apt-get install gnupg curl
@@ -288,277 +288,277 @@ sudo apt-get update
 sudo apt-get install -y mongodb-org
 ```
 
-Once MongoDB is installed it is recommended to run the following cmds to start the database server and add it as a service to ensure it starts up automatically after a reboot:
+安装 MongoDB 后，建议运行以下命令启动数据库服务器并将其添加为服务，以确保重启后自动启动：
 
 ```
 sudo systemctl start mongod
 sudo systemctl enable mongod.service
 ```
 
-#### Database Setup
+#### 数据库设置
 
-Open the MongoDB cli (The legacy mongo shell `mongo` was deprecated in MongoDB v5.0 and removed in MongoDB v6.0. Newer installs must now use `mongosh`):
+打开 MongoDB cli（旧版 mongo shell `mongo` 在 MongoDB v5.0 中已弃用，在 MongoDB v6.0 中已删除。新安装现在必须使用 `mongosh`）：
 
 ```
 mongosh
 ```
 
-Select database:
+选择数据库：
 
-**NOTE:** `explorerdb` is the name of the database where you will be storing local explorer data. You can change this to any name you want, but you must make sure that you set the same name in the `settings.json` file for the `dbsettings.database` setting.
+**注意：** `explorerdb` 是您将存储本地浏览器数据的数据库名称。您可以将其更改为任何您想要的名称，但必须确保在 `settings.json` 文件中为 `dbsettings.database` 设置相同的名称。
 
 ```
 use explorerdb
 ```
 
-Create a new user with read/write access:
+创建一个具有读/写访问权限的新用户：
 
 ```
 db.createUser( { user: "eiquidus", pwd: "Nd^p2d77ceBX!L", roles: [ "readWrite" ] } )
 ```
 
-Exit the mongo shell:
+退出 mongo shell：
 
 ```
 exit
 ```
 
-#### Download Source Code
+#### 下载源代码
 
 ```
 git clone https://github.com/team-exor/eiquidus explorer
 ```
 
-#### Install Node Modules
+#### 安装 Node 模块
 
 ```
 cd explorer && npm install --only=prod
 ```
 
-#### Configure Explorer Settings
+#### 配置浏览器设置
 
 ```
 cp ./settings.json.template ./settings.json
 ```
 
-*Make required changes in settings.json*
+*在 settings.json 中进行必要的更改*
 
-**NOTE:** You can further customize the site by adding your own javascript code to the `public/js/custom.js` file and css rules to the `public/css/custom.scss` file. Adding changes to `custom.js` and `custom.scss` is the preferred method of customizing your site, without affecting the ability to receive explorer code updates in the future.
+**注意：** 您可以通过将自己的 javascript 代码添加到 `public/js/custom.js` 文件并将 css 规则添加到 `public/css/custom.scss` 文件来进一步自定义站点。向 `custom.js` 和 `custom.scss` 添加更改是自定义站点的首选方法，而不会影响将来接收浏览器代码更新的能力。
 
-### Start/Stop the Explorer
+### 启动/停止浏览器
 
-#### Start Explorer (Use for Testing)
+#### 启动浏览器（用于测试）
 
-You can launch the explorer in a terminal window that will output all warnings and error msgs with one of the following cmds (be sure to run from within the explorer directory):
+您可以在终端窗口中启动浏览器，该窗口将输出所有警告和错误消息，使用以下命令之一（请确保在 explorer 目录中运行）：
 
 ```
 npm start
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/npm run prestart && /path/to/node --stack-size=10000 ./bin/cluster
 ```
 
-**NOTE:** mongod must be running to start the explorer.
+**注意：** mongod 必须正在运行才能启动浏览器。
 
-The explorer defaults to cluster mode by forking an instance of its process to each cpu core, which results in increased performance and stability. Load balancing gets automatically taken care of and any instances that for some reason die, will be restarted automatically. If desired, a single instance can be launched with:
+浏览器默认为集群模式，即为每个 cpu 核心分叉一个进程实例，从而提高性能和稳定性。负载均衡会自动处理，任何因某种原因死亡的实例都将自动重启。如果需要，可以使用以下命令启动单个实例：
 
 ```
 npm run start-instance
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/npm run prestart && /path/to/node --stack-size=10000 ./bin/cluster 1
 ```
 
-#### Stop Explorer (Use for Testing)
+#### 停止浏览器（用于测试）
 
-To stop the explorer running with `npm start` you can end the process with the key combination `CTRL+C` in the terminal that is running the explorer, or from another terminal you can use one of the following cmds (be sure to run from within the explorer directory):
+要停止使用 `npm start` 运行的浏览器，您可以在运行浏览器的终端中使用组合键 `CTRL+C` 结束进程，或者从另一个终端使用以下命令之一（请确保在 explorer 目录中运行）：
 
 ```
 npm stop
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/node ./scripts/stop_explorer.js
 ```
 
-#### Start Explorer Using PM2 (Recommended for Production)
+#### 使用 PM2 启动浏览器（推荐用于生产环境）
 
-[PM2](https://www.npmjs.com/package/pm2) is a process manager for Node.js applications with a built-in load balancer that allows you to always keep the explorer alive and running even if it crashes. Once you have configured the explorer to work properly in a production environment, it is recommended to use PM2 to start and stop the explorer instead of `npm start` and `npm stop` to keep the explorer constantly running without the need to always keep a terminal window open.
+[PM2](https://www.npmjs.com/package/pm2) 是 Node.js 应用程序的进程管理器，具有内置的负载均衡器，允许您始终保持浏览器处于活动状态并运行，即使它崩溃也是如此。一旦您配置好浏览器以在生产环境中正常工作，建议使用 PM2 来启动和停止浏览器，而不是 `npm start` 和 `npm stop`，以保持浏览器持续运行，而无需始终保持终端窗口打开。
 
-You can start the explorer using PM2 with one of the following terminal cmds (be sure to run from within the explorer directory):
+您可以使用以下终端命令之一使用 PM2 启动浏览器（请确保在 explorer 目录中运行）：
 
 ```
 npm run start-pm2
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/npm run prestart "pm2" && /path/to/pm2 start ./bin/instance -i 0 -n explorer -p "./tmp/pm2.pid" --node-args="--stack-size=10000"
 ```
 
-**NOTE:** Use the following cmd to find the install path for PM2 (Linux only):
+**注意：** 使用以下命令查找 PM2 的安装路径（仅限 Linux）：
 
 ```
 which pm2
 ```
 
-#### Start Explorer Using PM2 and Log Viewer
+#### 使用 PM2 启动浏览器并查看日志
 
-Alternatively, you can start the explorer using PM2 and automatically open the log viewer which will allow for viewing all warnings and error msgs as they come up by using one of the following terminal cmds (be sure to run from within the explorer directory):
+或者，您可以使用 PM2 启动浏览器并自动打开日志查看器，这将允许您查看所有出现的警告和错误消息，使用以下终端命令之一（请确保在 explorer 目录中运行）：
 
 ```
 npm run start-pm2-debug
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/npm run prestart "pm2" && /path/to/pm2 start ./bin/instance -i 0 -n explorer -p "./tmp/pm2.pid" --node-args="--stack-size=10000" && /path/to/pm2 logs
 ```
 
-#### Stop Explorer Using PM2 (Recommended for Production)
+#### 使用 PM2 停止浏览器（推荐用于生产环境）
 
-To stop the explorer when it is running via PM2 you can use one of the following terminal cmds (be sure to run from within the explorer directory):
+要在通过 PM2 运行时停止浏览器，您可以使用以下终端命令之一（请确保在 explorer 目录中运行）：
 
 ```
 npm run stop-pm2
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/pm2 stop explorer
 ```
 
-#### Reload Explorer Using PM2 (Recommended for Production)
+#### 使用 PM2 重载浏览器（推荐用于生产环境）
 
-The explorer can be stopped and restarted in a single cmd when it is running via PM2, which is often necessary after updating the explorer code for example. Use one of the following terminal cmds to reload the explorer (be sure to run from within the explorer directory):
+当通过 PM2 运行时，可以在单个命令中停止并重启浏览器，这在更新浏览器代码后通常是必要的。使用以下终端命令之一重载浏览器（请确保在 explorer 目录中运行）：
 
-**NOTE:** Assuming the explorer has access to 2 or more cpus, this reload will be done in such a way that there will be zero-downtime while the restart is being performed. If you only have a single cpu then the explorer will be inaccessible for a few seconds while the restart is being performed.
+**注意：** 假设浏览器可以访问 2 个或更多 cpu，则此重载将以零停机时间的方式完成，同时执行重启。如果您只有一个 cpu，则在执行重启时浏览器将无法访问几秒钟。
 
 ```
 npm run reload-pm2
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/pm2 reload explorer
 ```
 
-#### Start Explorer Using Forever (Alternate Production Option)
+#### 使用 Forever 启动浏览器（备选生产环境选项）
 
-[Forever](https://www.npmjs.com/package/forever) is an alternative to PM2 which is another useful Node.js module that is used to always keep the explorer alive and running even if the explorer crashes or stops. Once you have configured the explorer to work properly in a production environment, forever can be used as an alternative to PM2 to start and stop the explorer instead of `npm start` and `npm stop` to keep the explorer constantly running without the need to always keep a terminal window open.
+[Forever](https://www.npmjs.com/package/forever) 是 PM2 的替代方案，它是另一个有用的 Node.js 模块，用于始终保持浏览器处于活动状态并运行，即使浏览器崩溃或停止也是如此。一旦您配置好浏览器以在生产环境中正常工作，forever 可以作为 PM2 的替代方案来启动和停止浏览器，而不是 `npm start` 和 `npm stop`，以保持浏览器持续运行，而无需始终保持终端窗口打开。
 
-You can start the explorer using forever with one of the following terminal cmds (be sure to run from within the explorer directory):
+您可以使用以下终端命令之一使用 forever 启动浏览器（请确保在 explorer 目录中运行）：
 
 ```
 npm run start-forever
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/npm run prestart "forever"
 ```
 
-**NOTE:** Use the following cmd to find the install path for forever (Linux only):
+**注意：** 使用以下命令查找 forever 的安装路径（仅限 Linux）：
 
 ```
 which forever
 ```
 
-#### Stop Explorer Using Forever (Alternate Production Option)
+#### 使用 Forever 停止浏览器（备选生产环境选项）
 
-To stop the explorer when it is running via forever you can use one of the following terminal cmds (be sure to run from within the explorer directory):
+要在通过 forever 运行时停止浏览器，您可以使用以下终端命令之一（请确保在 explorer 目录中运行）：
 
 ```
 npm run stop-forever
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/forever stop "explorer"
 ```
 
-#### Reload Explorer Using Forever (Alternate Production Option)
+#### 使用 Forever 重载浏览器（备选生产环境选项）
 
-The explorer can be stopped and restarted in a single cmd when it is running via forever, which is often necessary after updating the explorer code for example. Use one of the following terminal cmds to reload the explorer (be sure to run from within the explorer directory):
+当通过 forever 运行时，可以在单个命令中停止并重启浏览器，这在更新浏览器代码后通常是必要的。使用以下终端命令之一重载浏览器（请确保在 explorer 目录中运行）：
 
-**NOTE:** The explorer will be inaccessible for a few seconds while the restart is being performed.
+**注意：** 在执行重启时，浏览器将无法访问几秒钟。
 
 ```
 npm run reload-forever
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/forever restart "explorer"
 ```
 
-### Syncing Databases with the Blockchain
+### 同步数据库与区块链
 
-sync.js (located in scripts/) is used for updating the local databases. This script must be called from the explorers root directory.
+sync.js（位于 scripts/ 中）用于更新本地数据库。必须从 explorer 根目录调用此脚本。
 
 ```
-Usage: /path/to/node scripts/sync.js [mode]
+用法: /path/to/node scripts/sync.js [mode]
 
-Mode: (required)
-update           Updates index from last sync to current block
-check            Checks index for (and adds) any missing transactions/addresses
-                 Optional parameter: block number to start checking from
-reindex          Clears index then resyncs from genesis to current block
-reindex-rich     Clears and recreates the richlist data
-reindex-txcount  Rescan and flatten the tx count value for faster access
-reindex-last     Rescan and flatten the last blockindex value for faster access
-market           Updates market summaries, orderbooks, trade history + charts
-peers            Updates peer info based on local wallet connections
-masternodes      Updates the list of active masternodes on the network
+模式: (必填)
+update           从上次同步更新索引到当前区块
+check            检查索引是否有（并添加）任何丢失的交易/地址
+                 可选参数：开始检查的区块号
+reindex          清除索引然后从创世区块重新同步到当前区块
+reindex-rich     清除并重新创建富豪榜数据
+reindex-txcount  重新扫描并扁平化 tx 计数以加快访问速度
+reindex-last     重新扫描并扁平化最后区块索引值以加快访问速度
+market           更新市场摘要、订单簿、交易历史 + 图表
+peers            根据本地钱包连接更新对等节点信息
+masternodes      更新网络上活动主节点的列表
 
-Notes:
-- 'current block' is the latest created block when script is executed.
-- The market + peers databases only support (& defaults to) reindex mode.
-- If check mode finds missing data (other than new data since last sync),
-  this likely means that sync.update_timeout in settings.json is set too low.
+注意:
+- 'current block' 是脚本执行时最新创建的区块。
+- market + peers 数据库仅支持（并默认为）reindex 模式。
+- 如果 check 模式发现丢失数据（除了自上次同步以来的新数据），
+  这可能意味着 settings.json 中的 sync.update_timeout 设置得太低。
 ```
 
-*It is recommended to do the initial syncing of your blockchain, markets, peers and masternodes using the manual commands below to ensure there are no sync issues. When you are sure that everything is syncing correctly, you should then install the necessary scripts to a crontab at 1+ minute intervals as indicated below*
+*建议使用下面的手动命令进行区块链、市场、对等节点和主节点的初始同步，以确保没有同步问题。当您确定一切都正确同步后，您应该按照下面的指示将必要的脚本安装到 crontab 中，间隔 1 分钟以上*
 
-#### Commands for Manually Syncing Databases
+#### 手动同步数据库命令
 
-A number of npm scripts are included with the explorer for easy syncing of the various explorer databases. The following scripts are the main commands used for syncing the explorer with your blockchain:
+浏览器包含许多 npm 脚本，便于同步各种浏览器数据库。以下脚本是用于将浏览器与区块链同步的主要命令：
 
-- `npm run sync-blocks`: Connect to the wallet daemon to pull blocks/transactions into the explorer, starting from genesis to current block. Repeat calls of this command will remember the last block downloaded, to allow continuous syncing of new blocks.
-- `npm run sync-markets`: Connect to the various exchange apis as defined in the `settings.json` file to provide market related data such as market summaries, orderbooks, trade history and charts.
-- `npm run sync-peers`: Connect to the wallet daemon and pull in data regarding connected nodes.
-- `npm run sync-masternodes`: Connect to the wallet daemon and pull in the list of active masternodes on the network. *\*only applicable to masternode coins*
+- `npm run sync-blocks`：连接到钱包守护进程以将区块/交易拉入浏览器，从创世区块开始到当前区块。重复调用此命令将记住上次下载的区块，以允许连续同步新区块。
+- `npm run sync-markets`：连接到 `settings.json` 文件中定义的各种交易所 api，以提供市场相关数据，如市场摘要、订单簿、交易历史和图表。
+- `npm run sync-peers`：连接到钱包守护进程并拉入有关已连接节点的数据。
+- `npm run sync-masternodes`：连接到钱包守护进程并拉入网络上活动主节点的列表。*\*仅适用于主节点币*
 
-A small handful of useful scripts are also included to assist in solving various issues you may experience with the explorer:
+还包含少量有用的脚本，以帮助解决您在使用浏览器时可能遇到的各种问题：
 
-- `npm run check-blocks`: Recheck all previously synced blocks by comparing against the wallet daemon to look for and add any missing transactions/addresses. Optional parameter: block number to start checking from. Example: `npm run check-blocks 1000` will begin the check starting at block 1000. :warning: **WARNING:** This can take a very long time depending on the length of the blockchain and is generally not recommended unless absolutely necessary. Furthermore, while you are checking for missing data, you will be unable to sync new blocks into the explorer until the check command has finished. If you do find missing transactions with this check (other than new data since last sync), this likely means that `sync.update_timeout` in `settings.json` is set too low.
-- `npm run reindex`: Delete all blocks, transactions and addresses, and resync from genesis to current block. :warning: **WARNING:** This will wipe out all blockchain-related data from the explorer. It is recommended to [backup the explorer database](#backup-database-script) before continuing with this command.
-- `npm run reindex-rich`: Clears and recreates the richlist data for the top 100 coin holders page. Rarely needed, but can be useful for debugging or if you are certain the richlist data is incorrect for some reason.
-- `npm run reindex-txcount`: Recalculate the count of transactions stored in `stats.txes` by recounting the txes stored in the mongo database. Rarely needed, but can be useful for debugging or if you notice the main list of transactions is showing the wrong number of entries. If this value is off for some reason, you will not be able to page back to the 1st blocks on the main list of transactions for example.
-- `npm run reindex-last`: Lookup the last transaction in the mongo database and reset the `stats.last` value to that most recent block index. Rarely needed, but can be useful for debugging. The `stats.last` value is used to remember which block the last sync left off on to resume syncing from the next block.
+- `npm run check-blocks`：通过与钱包守护进程进行比较来重新检查所有以前同步的区块，以查找并添加任何丢失的交易/地址。可选参数：开始检查的区块号。示例：`npm run check-blocks 1000` 将从区块 1000 开始检查。:warning: **警告：** 这可能需要很长时间，具体取决于区块链的长度，除非绝对必要，否则通常不建议这样做。此外，在检查丢失数据时，您将无法将新区块同步到浏览器中，直到检查命令完成。如果您通过此检查确实发现了丢失的交易（除了自上次同步以来的新数据），这可能意味着 `settings.json` 中的 `sync.update_timeout` 设置得太低。
+- `npm run reindex`：删除所有区块、交易和地址，并从创世区块重新同步到当前区块。:warning: **警告：** 这将清除浏览器中所有与区块链相关的数据。建议在继续此命令之前 [备份浏览器数据库](#backup-database-script)。
+- `npm run reindex-rich`：清除并重新创建前 100 名持币者页面的富豪榜数据。很少需要，但对于调试或如果您确定富豪榜数据因某种原因不正确时可能很有用。
+- `npm run reindex-txcount`：通过重新计算 mongo 数据库中存储的 tx 来重新计算存储在 `stats.txes` 中的交易计数。很少需要，但对于调试或如果您注意到主交易列表显示的条目数错误时可能很有用。如果此值因某种原因有偏差，您将无法在主交易列表中翻回到第 1 个区块。
+- `npm run reindex-last`：在 mongo 数据库中查找最后一个交易，并将 `stats.last` 值重置为最新的区块索引。很少需要，但对于调试可能很有用。`stats.last` 值用于记住上次同步停止的区块，以便从下一个区块恢复同步。
 
-Also see the [Useful Scripts](#useful-scripts) section for more helpful scripts.
+另请参阅 [实用脚本](#useful-scripts) 部分以获取更多有用的脚本。
 
-#### Sample Crontab
+#### Crontab 示例
 
-*Example crontab; update index every minute, market data every 2 minutes, peers and masternodes every 5 minutes*
+*Crontab 示例；每分钟更新索引，每 2 分钟更新市场数据，每 5 分钟更新对等节点和主节点*
 
-Easier crontab syntax using npm scripts, but may not work on some systems depending on permissions and how nodejs was installed:
+使用 npm 脚本的更简单的 crontab 语法，但根据权限和 nodejs 的安装方式，可能无法在某些系统上运行：
 
 ```
 */1 * * * * cd /path/to/explorer && npm run sync-blocks > /dev/null 2>&1
@@ -567,7 +567,7 @@ Easier crontab syntax using npm scripts, but may not work on some systems depend
 */5 * * * * cd /path/to/explorer && npm run sync-masternodes > /dev/null 2>&1
 ```
 
-Or, run the crontab by calling the sync script directly, which should work better in the event you have problems running the npm scripts from a crontab:
+或者，通过直接调用 sync 脚本来运行 crontab，如果无法从 crontab 运行 npm 脚本，这种方法应该更有效：
 
 ```
 */1 * * * * cd /path/to/explorer && /path/to/node scripts/sync.js update > /dev/null 2>&1
@@ -576,72 +576,72 @@ Or, run the crontab by calling the sync script directly, which should work bette
 */5 * * * * cd /path/to/explorer && /path/to/node scripts/sync.js masternodes > /dev/null 2>&1
 ```
 
-### Wallet Settings
+### 钱包设置
 
-The wallet connected to eIquidus must be running with the following flags:
+连接到 eIquidus 的钱包必须使用以下标志运行：
 
 ```
 -daemon -txindex
 ```
 
-You may either call your coins daemon using this syntax:
+您可以使用以下语法调用您的 coin 守护进程：
 
 ```
 coind -daemon -txindex
 ```
 
-or else you can add the settings to your coins config file (recommended):
+或者，您可以将设置添加到您的 coins 配置文件中（推荐）：
 
 ```
 daemon=1
 txindex=1
 ```
 
-### Run Express Webserver on Port 80
+### 在 80 端口运行 Express Web 服务器
 
-A typical webserver binds to port 80 to serve webpages over the http protocol, but the Express webserver cannot do this by default unless it is given root permissions, which isn't recommended for security reasons. Instead, there are two recommended workarounds to achieve the same end result:
+典型的 Web 服务器绑定到端口 80 以通过 http 协议提供网页，但默认情况下 Express Web 服务器无法执行此操作，除非授予它 root 权限，出于安全原因不建议这样做。相反，有两种推荐的解决方法来实现相同的最终结果：
 
-**NOTE:** Be sure to allow port 80 through any firewalls you may have configured or the explorer website may not be accessible remotely.
+**注意：** 请务必允许端口 80 通过您可能配置的任何防火墙，否则可能无法远程访问浏览器网站。
 
-#### Use Setcap to Safely Grant User Permissions
+#### 使用 Setcap 安全地授予用户权限
 
-**NOTE:** This option is only available to Linux users
+**注意：** 此选项仅适用于 Linux 用户
 
-1. You can use the `setcap` command to change the capabilities of the `node` binary file to specifically allow the Express webserver to bind to a port less than 1024 (this one-time cmd requires root privileges):
+1. 您可以使用 `setcap` 命令更改 `node` 二进制文件的功能，以专门允许 Express Web 服务器绑定到小于 1024 的端口（此一次性命令需要 root 权限）：
 
 ```
 sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
 ```
 
-2. Open the `settings.json` file and change the `webserver.port` setting to a value of 80. Save the change and restart the explorer.
+2. 打开 `settings.json` 文件并将 `webserver.port` 设置更改为 80。保存更改并重新启动浏览器。
 
-You should now be able to browse to the explorer by IP address or domain name without the need for specifying the 3001 port any longer.
+现在您应该能够通过 IP 地址或域名浏览浏览器，而无需再指定 3001 端口。
 
-#### Use Another Webserver as a Reverse Proxy
+#### 使用另一个 Web 服务器作为反向代理
 
-**NOTE:** The following instructions are for Linux users only, but installing and configuring another webserver should be possible on any OS
+**注意：** 以下说明仅适用于 Linux 用户，但在任何操作系统上安装和配置另一个 Web 服务器应该是可能的
 
-A few steps are involved in setting up another webserver that can bind to port 80 and forward all incoming traffic to the eIquidus node.js app. Any commercial webserver can be used to create the reverse proxy, but in this case, Nginx will be used as an example:
+设置另一个可以绑定到端口 80 并将所有传入流量转发到 eIquidus node.js 应用程序的 Web 服务器涉及几个步骤。可以使用任何商业 Web 服务器创建反向代理，但在这种情况下，将使用 Nginx 作为示例：
 
-1. Install Nginx with the following terminal cmd:
+1. 使用以下终端命令安装 Nginx：
 
 ```
 sudo apt-get install nginx
 ```
 
-2. Remove the default configuration file:
+2. 删除默认配置文件：
 
 ```
 sudo rm /etc/nginx/sites-enabled/default
 ```
 
-3. Create a new file in `/etc/nginx/sites-available/` called `node` and open it with the nano text editor:
+3. 在 `/etc/nginx/sites-available/` 中创建一个名为 `node` 的新文件，并使用 nano 文本编辑器打开它：
 
 ```
 sudo nano /etc/nginx/sites-available/node
 ```
 
-4. Paste the following code in the file and make sure to change `example.com` to your domain or IP address, and change port `3001` on the `proxy_pass` line to the port # you have configured for the `webserver.port` setting in the `settings.json` file. When done editing, press CTRL+X, then Y (for yes to save) and then ENTER to finish saving the changes to the config file:
+4. 将以下代码粘贴到文件中，并确保将 `example.com` 更改为您的域名或 IP 地址，并将 `proxy_pass` 行上的端口 `3001` 更改为您在 `settings.json` 文件中为 `webserver.port` 设置配置的端口号。编辑完成后，按 CTRL+X，然后按 Y（是保存），然后按 ENTER 完成保存对配置文件的更改：
 
 ```
 server {
@@ -656,90 +656,90 @@ server {
 }
 ```
 
-5. Create a new symbolic link for the Nginx configuration file that was just created and link it to the `/etc/nginx/sites-enabled` directory:
+5. 为刚刚创建的 Nginx 配置文件创建一个新的符号链接，并将其链接到 `/etc/nginx/sites-enabled` 目录：
 
 ```
 sudo ln -s /etc/nginx/sites-available/node /etc/nginx/sites-enabled/node
 ```
 
-6. Restart Nginx to apply the configuration changes:
+6. 重新启动 Nginx 以应用配置更改：
 
 ```
 sudo service nginx restart
 ```
 
-7. Nginx will now forward all incoming requests to eIquidus and after restarting the explorer it should be browsable via http://example.com without the need for the http://example.com:3001 port any longer.
+7. Nginx 现在将所有传入请求转发到 eIquidus，重新启动浏览器后，应该可以通过 http://example.com 浏览它，而无需再使用 http://example.com:3001 端口。
 
-### TLS/SSL Support
+### TLS/SSL 支持
 
-Similar to [the problem with binding to port 80](#run-express-webserver-on-port-80), a typical webserver binds to port 443 to serve webpages over the https protocol, but the Express webserver cannot do this by default unless it is given root permissions, which isn't recommended for security reasons. Instead, there are two recommended workarounds to achieve the same end result: [Manually Link TLS/SSL Certificates to the Explorer](#manually-link-tlsssl-certificates-to-the-explorer) or [Use Nginx as a Reverse Proxy](#use-nginx-as-a-reverse-proxy).
+类似于 [绑定到端口 80 的问题](#run-express-webserver-on-port-80)，典型的 Web 服务器绑定到端口 443 以通过 https 协议提供网页，但默认情况下 Express Web 服务器无法执行此操作，除非授予它 root 权限，出于安全原因不建议这样做。相反，有两种推荐的解决方法来实现相同的最终结果：[手动将 TLS/SSL 证书链接到浏览器](#manually-link-tlsssl-certificates-to-the-explorer) 或 [使用 Nginx 作为反向代理](#use-nginx-as-a-reverse-proxy)。
 
-**NOTE:** Be sure to allow port 443 through any firewalls you may have configured or the explorer website may not be accessible remotely.
+**注意：** 请务必允许端口 443 通过您可能配置的任何防火墙，否则可能无法远程访问浏览器网站。
 
-#### Prerequisites
+#### 先决条件
 
-**NOTE:** The following instructions are for Linux users only, but installing and configuring certbot should be possible on any OS
+**注意：** 以下说明仅适用于 Linux 用户，但在任何操作系统上安装和配置 certbot 应该是可能的
 
-There are a few common steps that must be completed before TLS/SSL certificates can be generated:
+在生成 TLS/SSL 证书之前，必须完成几个常见步骤：
 
-1. Install snapd:
+1. 安装 snapd：
 
 ```
 sudo apt install snapd
 ```
 
-2. Ensure that snapd is up to date:
+2. 确保 snapd 是最新的：
 
 ```
 sudo snap install core; sudo snap refresh core
 ```
 
-3. Install certbot (full install instructions for different operating systems and configurations can be found here: [https://certbot.eff.org/instructions](https://certbot.eff.org/instructions)):
+3. 安装 certbot（有关不同操作系统和配置的完整安装说明，请参见此处：[https://certbot.eff.org/instructions](https://certbot.eff.org/instructions)）：
 
 ```
 sudo snap install --classic certbot
 ```
 
-4. Prepare the certbot command:
+4. 准备 certbot 命令：
 
 ```
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 ```
 
-#### Manually Link TLS/SSL Certificates to the Explorer
+#### 手动将 TLS/SSL 证书链接到浏览器
 
-**NOTE:** The following instructions are for Linux users only, but installing and configuring certbot should be possible on any OS
+**注意：** 以下说明仅适用于 Linux 用户，但在任何操作系统上安装和配置 certbot 应该是可能的
 
-Follow the steps below to configure the Express webserver for use with TLS/SSL:
+按照以下步骤配置 Express Web 服务器以使用 TLS/SSL：
 
-1. If you haven't already done so, run the `setcap` cmd from the [Use Setcap to Safely Grant User Permissions Instructions](#use-setcap-to-safely-grant-user-permissions) which will allow node.js to bind to port 443 without needing root permissions.
+1. 如果您尚未这样做，请运行 [使用 Setcap 安全地授予用户权限说明](#use-setcap-to-safely-grant-user-permissions) 中的 `setcap` 命令，这将允许 node.js 绑定到端口 443 而无需 root 权限。
 
-2. There are different options for generating a valid TLS/SSL certificate via certbot. If you are running the explorer on port 80 you can run the cmd on step 2A), otherwise run the cmd on step 2B) if the explorer is running on any port # other than 80. This step is important because certbot will automatically renew your TLS/SSL certificate periodically and it will fail to renew if the wrong option is chosen:
+2. 通过 certbot 生成有效 TLS/SSL 证书有不同的选项。如果您在端口 80 上运行浏览器，则可以在步骤 2A) 上运行命令，否则如果浏览器在除 80 以外的任何端口号上运行，请在步骤 2B) 上运行命令。此步骤很重要，因为 certbot 将定期自动续订您的 TLS/SSL 证书，如果选择了错误的选项，它将无法续订：
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A. The Webroot method is used when port 80 is already in use by the explorer. Be sure to change the webroot-path to the absolute path of the explorer/public directory:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A. 当浏览器已使用端口 80 时，使用 Webroot 方法。请务必将 webroot-path 更改为 explorer/public 目录的绝对路径：
 
-**NOTE:** The explorer must be running for this cmd to work properly:
+**注意：** 浏览器必须正在运行才能使此命令正常工作：
 
 ```
 sudo certbot certonly --webroot --webroot-path /path/to/explorer/public
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B. The Standalone method is used when port 80 is not already in use by the explorer:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B. 当浏览器尚未占用端口 80 时，使用 Standalone 方法：
 
 ```
 sudo certbot certonly --standalone
 ```
 
-Certbot will ask a few simple questions and generate the necessary TLS/SSL certificate files for your domain. It will also install the necessary files to automatically renew the certificates when they are about to expire, so you shouldn't need to do anything special to keep them up to date.
+Certbot 将询问几个简单的问题，并为您的域生成必要的 TLS/SSL 证书文件。它还将安装必要的文件，以便在证书即将过期时自动续订，因此您无需执行任何特殊操作即可使其保持最新状态。
 
-3. Once the TLS/SSL certificates are generated, you will need to grant permission to non-root users with the following commands:
+3. 生成 TLS/SSL 证书后，您需要使用以下命令授予非 root 用户权限：
 
 ```
 sudo chmod -R 755 /etc/letsencrypt/live/
 sudo chmod -R 755 /etc/letsencrypt/archive/
 ```
 
-4. The last step is to enable TLS in the explorer's `settings.json` file and specify the paths to the 3 main certificate files that you just generated. Example:
+4. 最后一步是在浏览器的 `settings.json` 文件中启用 TLS，并指定刚刚生成的 3 个主要证书文件的路径。示例：
 
 ```
   "webserver": {
@@ -758,41 +758,41 @@ sudo chmod -R 755 /etc/letsencrypt/archive/
   },
 ```
 
-Ensure that `webserver.tls.enabled` = true and that you specify the exact path to the `webserver.tls.cert_file`, `webserver.tls.chain_file` and `webserver.tls.key_file` files by changing `example.com` to the domain name that you just generated TLS/SSL certificates for.
+确保 `webserver.tls.enabled` = true，并通过将 `example.com` 更改为您刚刚为其生成 TLS/SSL 证书的域名，指定 `webserver.tls.cert_file`、`webserver.tls.chain_file` 和 `webserver.tls.key_file` 文件的确切路径。
 
-5. If all went well, you should now be able to start up the explorer and browse to it using a secure https connection like [https://example.com](https://example.com).
+5. 如果一切顺利，您现在应该能够启动浏览器并使用安全的 https 连接（如 [https://example.com](https://example.com)）浏览它。
 
-#### Use Nginx as a Reverse Proxy
+#### 使用 Nginx 作为反向代理
 
-**NOTE:** The following instructions are for Linux users only, but installing and configuring certbot and nginx should be possible on any OS
+**注意：** 以下说明仅适用于 Linux 用户，但在任何操作系统上安装和配置 certbot 和 nginx 应该是可能的
 
-1. If you haven't already done so, first follow through the [Use Another Webserver as a Reverse Proxy Instructions](#use-another-webserver-as-a-reverse-proxy) and then continue with step #2 below.
+1. 如果您尚未这样做，请先完成 [使用另一个 Web 服务器作为反向代理说明](#use-another-webserver-as-a-reverse-proxy)，然后继续执行下面的步骤 #2。
 
-2. Generate a new TLS/SSL certificate via certbot which will automatically edit your Nginx configuration files and enable https at the same time:
+2. 通过 certbot 生成新的 TLS/SSL 证书，这将自动编辑您的 Nginx 配置文件并同时启用 https：
 
 ```
 sudo certbot --nginx
 ```
 
-Certbot will ask a few simple questions and generate the necessary TLS/SSL certificate files for your domain and link them to Nginx. It will also install the necessary files to automatically renew the certificates when they are about to expire, so you shouldn't need to do anything special to keep them up to date.
+Certbot 将询问几个简单的问题，并为您的域生成必要的 TLS/SSL 证书文件并将其链接到 Nginx。它还将安装必要的文件，以便在证书即将过期时自动续订，因此您无需执行任何特殊操作即可使其保持最新状态。
 
-3. If all went well, you should now be able to start up the explorer and browse to it using a secure https connection like [https://example.com](https://example.com).
+3. 如果一切顺利，您现在应该能够启动浏览器并使用安全的 https 连接（如 [https://example.com](https://example.com)）浏览它。
 
-### CORS Support
+### CORS 支持
 
-eIquidus has basic CORS support which is useful to prevent other sites from consuming public APIs while still allowing specific websites whitelisted access.
+eIquidus 具有基本的 CORS 支持，这对于防止其他站点使用公共 API 很有用，同时仍允许特定的白名单网站访问。
 
-#### What is CORS?
+#### 什么是 CORS？
 
-*CORS description taken from [MaxCDN One](https://www.maxcdn.com/one/visual-glossary/cors/)*
+*CORS 描述摘自 [MaxCDN One](https://www.maxcdn.com/one/visual-glossary/cors/)*
 
->To prevent websites from tampering with each other, web browsers implement a security measure known as the same-origin policy. The same-origin policy lets resources (such as JavaScript) interact with resources from the same domain, but not with resources from a different domain. This provides security for the user by preventing abuse, such as running a script that reads the password field on a secure website.
+>为了防止网站相互篡改，Web 浏览器实施了一种称为同源策略的安全措施。同源策略允许资源（如 JavaScript）与来自同一域的资源交互，但不允许与来自不同域的资源交互。这通过防止滥用（例如运行读取安全网站上密码字段的脚本）来为用户提供安全性。
 
->In cases where cross-domain scripting is desired, CORS allows web developers to work around the same-origin policy. CORS adds HTTP headers which instruct web browsers on how to use and manage cross-domain content. The browser then allows or denies access to the content based on its security configuration.
+>在需要跨域脚本的情况下，CORS 允许 Web 开发人员绕过同源策略。CORS 添加 HTTP 标头，指示 Web 浏览器如何使用和管理跨域内容。然后，浏览器根据其安全配置允许或拒绝访问内容。
 
-#### How to Benefit From Using CORS?
+#### 如何从使用 CORS 中获益？
 
-You must first set up CORS in eIquidus by editing the settings.json file and setting the value for `webserver.cors.enabled` to true.
+您必须首先通过编辑 settings.json 文件并将 `webserver.cors.enabled` 的值设置为 true 来在 eIquidus 中设置 CORS。
 
 ```
   "webserver": {
@@ -800,7 +800,7 @@ You must first set up CORS in eIquidus by editing the settings.json file and set
       "enabled": true,
 ```
 
-The `webserver.cors.corsorigin` setting defaults to "\*" which allows all requests from any origin. Keeping this setting at "\*" can lead to abuse and is not recommended. Therefore, you should change the `webserver.cors.corsorigin` setting to an external origin that you control, as seen in the following example:
+`webserver.cors.corsorigin` 设置默认为 "\*"，允许来自任何来源的所有请求。将此设置保持为 "\*" 可能会导致滥用，因此不建议这样做。因此，您应该将 `webserver.cors.corsorigin` 设置更改为您控制的外部来源，如下例所示：
 
 ```
   "webserver": {
@@ -809,9 +809,9 @@ The `webserver.cors.corsorigin` setting defaults to "\*" which allows all reques
       "corsorigin": "http://example.com"
 ```
 
-The above example would allow sharing of resources from eIquidus for all data requests coming from the example.com domain, while all requests coming from any other domain would be rejected as per normal.
+上面的示例将允许从 eIquidus 共享资源以用于来自 example.com 域的所有数据请求，而来自任何其他域的所有请求将按正常情况被拒绝。
 
-Below is an example of a simple javascript call using [jQuery](https://jquery.com) that could be used on your example.com website to return the current block count from eIquidus:
+以下是使用 [jQuery](https://jquery.com) 的简单 javascript 调用示例，可以在您的 example.com 网站上使用它来从 eIquidus 返回当前区块计数：
 
 ```
 jQuery(document).ready(function($) {
@@ -825,179 +825,179 @@ jQuery(document).ready(function($) {
 });
 ```
 
-### Useful Scripts
+### 实用脚本
 
-#### Update Explorer Script
+#### 更新浏览器脚本
 
-Automatically download and install the newest explorer source code, update out-of-date dependencies and reload the explorer with a single command. This update script can be safely run while the explorer is actively running to prevent needing to manually shut down to do updates, but please note that the website may be inaccessible for a few seconds or more while the explorer is being updated.
+自动下载并安装最新的浏览器源代码，更新过时的依赖项并使用单个命令重载浏览器。此更新脚本可以在浏览器处于活动运行状态时安全运行，以防止需要手动关闭来进行更新，但请注意，在更新浏览器时，网站可能无法访问几秒钟或更长时间。
 
-**NOTE:** Only explorer installations that were installed via cloning the source from git can be automatically updated. Be sure to follow the [Quick Install Instructions](#quick-install-instructions) to set up the explorer for optimum use with this update script.
+**注意：** 只有通过从 git 克隆源代码安装的浏览器安装才能自动更新。请务必遵循 [快速安装说明](#quick-install-instructions) 来设置浏览器以最佳地使用此更新脚本。
 
-Update the explorer with the following command:
+使用以下命令更新浏览器：
 
 ```
 npm run update-explorer
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/node ./scripts/update_explorer.js
 ```
 
-**NOTE:** The update script also supports a couple optional parameters.
+**注意：** 更新脚本还支持几个可选参数。
 
-Use the following command if you want to update the explorer code only, without checking for out-of-date dependencies:
+如果您只想更新浏览器代码，而不检查过时的依赖项，请使用以下命令：
 
 ```
 npm run update-explorer "explorer-only"
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/node ./scripts/update_explorer.js "explorer-only"
 ```
 
-Use the following command if you want to upgrade outdated dependencies only, without checking for explorer code updates:
+如果您只想升级过时的依赖项，而不检查浏览器代码更新，请使用以下命令：
 
 ```
 npm run update-explorer "dependencies-only"
 ```
 
-or (useful for crontab):
+或（适用于 crontab）：
 
 ```
 cd /path/to/explorer && /path/to/node ./scripts/update_explorer.js "dependencies-only"
 ```
 
-#### Backup Database Script
+#### 备份数据库脚本
 
-Make a complete backup of an eIquidus mongo database or single collection and save to compressed file. A built-in locking mechanism prevents data from being updated or changed while a backup is in process. Backups can be safely created while the explorer is actively running and/or while the explorer is turned off.
+对 eIquidus mongo 数据库或单个集合进行完整备份并保存到压缩文件。内置锁定机制可防止在备份过程中更新或更改数据。可以在浏览器处于活动运行状态和/或关闭时安全地创建备份。
 
-Parameters:
-1. Backup path or filename (optional)
-2. Collection name (optional) **NOTE:** This parameter is useful for backing up a single database collection such as the `claimaddresses` or plugin-related collections that can later be restored into an existing database without affecting any other database collections.
+参数：
+1. 备份路径或文件名（可选）
+2. 集合名称（可选） **注意：** 此参数对于备份单个数据库集合（如 `claimaddresses` 或插件相关集合）很有用，以后可以将其恢复到现有数据库中，而不会影响任何其他数据库集合。
 
-The following backup scenarios are supported:
+支持以下备份方案：
 
-**Backup Database (No filename specified)**
+**备份数据库（未指定文件名）**
 
-`npm run create-backup`: Backs up to the explorer/backups directory by default with the current date as the filename in the format yyyy-MMM-dd.bak
+`npm run create-backup`：默认备份到 explorer/backups 目录，文件名为当前日期，格式为 yyyy-MMM-dd.bak
 
-**Backup Database (Partial filename specified)**
+**备份数据库（指定部分文件名）**
 
-`npm run create-backup test`: Backs up the explorer/backups directory by default with the filename test.bak
+`npm run create-backup test`：默认备份 explorer/backups 目录，文件名为 test.bak
 
-**Backup Database (Full filename specified)**
+**备份数据库（指定完整文件名）**
 
-`npm run create-backup today.bak`: Backs up the explorer/backups directory by default with the filename today.bak
+`npm run create-backup today.bak`：默认备份 explorer/backups 目录，文件名为 today.bak
 
-**Backup Database (Full path with partial filename specified)**
+**备份数据库（指定带部分文件名的完整路径）**
 
-`npm run create-backup /usr/local/bin/abc`: Backs up the /usr/local/bin directory with the filename abc.bak
+`npm run create-backup /usr/local/bin/abc`：备份 /usr/local/bin 目录，文件名为 abc.bak
 
-**Backup Database (Full path and filename specified)**
+**备份数据库（指定完整路径和文件名）**
 
-`npm run create-backup ~/new.bak`: Backs up the users home directory with the filename new.bak
+`npm run create-backup ~/new.bak`：备份用户主目录，文件名为 new.bak
 
-**Backup Database (Filename and collection both specified)**
+**备份数据库（同时指定文件名和集合）**
 
-`npm run create-backup test claimaddresses`: Backs up only the `claimaddresses` collection to the explorer/backups directory by default with the filename test.bak
+`npm run create-backup test claimaddresses`：默认仅备份 `claimaddresses` 集合到 explorer/backups 目录，文件名为 test.bak
 
-**Backup Database (No filename specified, and backup a single collection only)**
+**备份数据库（未指定文件名，且仅备份单个集合）**
 
-`npm run create-backup "" masternodes`: Backs up only the `masternodes` collection to the explorer/backups directory by default with the current date as the filename in the format yyyy-MMM-dd.bak 
+`npm run create-backup "" masternodes`：默认仅备份 `masternodes` 集合到 explorer/backups 目录，文件名为当前日期，格式为 yyyy-MMM-dd.bak 
 
-#### Restore Database Script
+#### 恢复数据库脚本
 
-Restore a previously saved eIquidus mongo database backup. :warning: **WARNING:** Unless a single collection name is specified, this will completely overwrite your existing eIquidus mongo database, so be sure to make a full backup before proceeding. A built-in locking mechanism prevents data from being updated or changed while a backup is being restored. Backups can be safely restored while the explorer is actively running and/or while the explorer is turned off.
+恢复以前保存的 eIquidus mongo 数据库备份。:warning: **警告：** 除非指定了单个集合名称，否则这将完全覆盖您现有的 eIquidus mongo 数据库，因此请务必在继续之前进行完整备份。内置锁定机制可防止在恢复备份时更新或更改数据。可以在浏览器处于活动运行状态和/或关闭时安全地恢复备份。
 
-**NOTE:** Older v1.x eIquidus database backups were compressed into tar.gz files. These older tar.gz backups can still be restored, but you must specifically add the .tar.gz suffix. Example: `npm run restore-backup /path/to/old_backup.tar.gz`
+**注意：** 较旧的 v1.x eIquidus 数据库备份被压缩为 tar.gz 文件。这些较旧的 tar.gz 备份仍然可以恢复，但您必须专门添加 .tar.gz 后缀。示例：`npm run restore-backup /path/to/old_backup.tar.gz`
 
-Parameters:
-1. Backup path or filename (optional)
-2. Collection name (optional) **NOTE:** This parameter is useful for restoring a single database collection such as the `claimaddresses` or plugin-related collections without affecting any other database collections. This option can be used with a single collection backup or full database backup and will restore only the specified collection.
+参数：
+1. 备份路径或文件名（可选）
+2. 集合名称（可选） **注意：** 此参数对于恢复单个数据库集合（如 `claimaddresses` 或插件相关集合）很有用，而不会影响任何其他数据库集合。此选项可用于单个集合备份或完整数据库备份，并且仅恢复指定的集合。
 
-The following restore scenarios are supported:
+支持以下恢复方案：
 
-**Restore Database (Partial filename specified)**
+**恢复数据库（指定部分文件名）**
 
-`npm run restore-backup old`: Restores the explorer/scripts/backups/old.bak file
+`npm run restore-backup old`：恢复 explorer/scripts/backups/old.bak 文件
 
-**Restore Database (Full filename specified)**
+**恢复数据库（指定完整文件名）**
 
-`npm run restore-backup working.bak`: Restores the explorer/scripts/backups/working.bak file
+`npm run restore-backup working.bak`：恢复 explorer/scripts/backups/working.bak 文件
 
-**Restore Database (Full path with partial filename specified)**
+**恢复数据库（指定带部分文件名的完整路径）**
 
-`npm run restore-backup /home/explorer/backup`: Restores the /home/explorer/backup.bak file
+`npm run restore-backup /home/explorer/backup`：恢复 /home/explorer/backup.bak 文件
 
-**Restore Database (Full path and filename specified)**
+**恢复数据库（指定完整路径和文件名）**
 
-`npm run restore-backup ~/archive.bak`: Restores the ~/archive.bak file
+`npm run restore-backup ~/archive.bak`：恢复 ~/archive.bak 文件
 
-**Restore Database (Filename and collection both specified)**
+**恢复数据库（同时指定文件名和集合）**
 
-`npm run restore-backup test claimaddresses`: Restores only the `claimaddresses` collection from the explorer/scripts/backups/test.bak file
+`npm run restore-backup test claimaddresses`：仅从 explorer/scripts/backups/test.bak 文件恢复 `claimaddresses` 集合
 
-#### Delete Database Script
+#### 删除数据库脚本
 
-Wipe the eIquidus mongo database clean to start again from scratch. :warning: **WARNING:** This will completely destroy all data in your existing eIquidus mongo database, so be sure to make a full backup before proceeding. A built-in locking mechanism prevents data from being updated or changed while the database is being deleted. The process to delete the database can be executed while the explorer is actively running and/or while the explorer is turned off.
+擦除 eIquidus mongo 数据库以重新开始。:warning: **警告：** 这将完全销毁您现有 eIquidus mongo 数据库中的所有数据，因此请务必在继续之前进行完整备份。内置锁定机制可防止在删除数据库时更新或更改数据。删除数据库的过程可以在浏览器处于活动运行状态和/或关闭时执行。
 
-Delete the mongo database with the following command:
+使用以下命令删除 mongo 数据库：
 
 `npm run delete-database`
 
-#### Benchmark Script
+#### 基准测试脚本
 
-This script is more of a debugging tool for developers which allows you to sync a certain amount of blocks (5000 blocks by default) to a separate mongodb database and output the total tx and address records synced along with the total time it took to complete. There is a `benchmark` section in the settings.json file that can be used to configure various benchmarking options.
+此脚本更多是供开发人员使用的调试工具，允许您将一定数量的区块（默认为 5000 个区块）同步到单独的 mongodb 数据库，并输出同步的总 tx 和地址记录以及完成所需的总时间。settings.json 文件中有一个 `benchmark` 部分，可用于配置各种基准测试选项。
 
-The benchmark script can be started with the following command:
+可以使用以下命令启动基准测试脚本：
 
 `npm run benchmark`
 
-### Known Issues
+### 已知问题
 
-**Error: bind EACCES ...**
+**错误：bind EACCES ...**
 
-This error can appear when you try to run the explorer on a port number lower than 1024. There are a couple solutions to this problem which are explained in more detail in the [Run Express Webserver on Port 80](#run-express-webserver-on-port-80) section.
+当您尝试在低于 1024 的端口号上运行浏览器时，可能会出现此错误。此问题有几种解决方案，在 [在 80 端口运行 Express Web 服务器](#run-express-webserver-on-port-80) 部分中有更详细的解释。
 
-**Error: Callback was already called**
+**错误：Callback was already called**
 
-This error typically means there is some kind of connection issue between the explorer and the wallet daemon. The most common mistake that can cause this error is by configuring the wallet's P2P port # instead of the RPC port # in the settings.json. This can also happen if your wallet is not set up to accept RPC connections.
+此错误通常意味着浏览器与钱包守护进程之间存在某种连接问题。导致此错误的最常见错误是在 settings.json 中配置了钱包的 P2P 端口号而不是 RPC 端口号。如果您的钱包未设置为接受 RPC 连接，也可能会发生这种情况。
 
-**Warning: Accessing non-existent property 'padLevels' of module exports inside circular dependency**
+**警告：Accessing non-existent property 'padLevels' of module exports inside circular dependency**
 
-This warning is currently displayed when starting or stopping the explorer using the `forever` module. The good news is that this warning can safely be ignored although it can be confusing as to why it is displayed at all. This is a deep rooted issue with `forever` that is actively being discussed [here](https://github.com/foreversd/forever/issues/1077). Long story short is that `forever` depends on a number of outdated dependencies that require certain parts of the code to be rewritten and so far it has not been officially resolved yet. `Forever` is still included as an option for those who are used to using it although we recommend using `pm2` to run your production explorer since it is more modern and can do everything `forever` does and more.
+当前使用 `forever` 模块启动或停止浏览器时会显示此警告。好消息是，尽管显示此警告可能会令人困惑，但可以安全地忽略它。这是 `forever` 的一个根深蒂固的问题，目前正在 [此处](https://github.com/foreversd/forever/issues/1077) 积极讨论。长话短说，`forever` 依赖于许多过时的依赖项，这些依赖项需要重写代码的某些部分，到目前为止尚未正式解决。`Forever` 仍然作为选项包含在内，供习惯使用它的人使用，尽管我们建议使用 `pm2` 来运行您的生产浏览器，因为它更现代，可以做 `forever` 能做的一切，甚至更多。
 
-### Donations / Support Us
+### 捐赠 / 支持我们
 
-The eIquidus block explorer is brought to you by the tireless efforts of the [Exor development team](https://exor.io/#section-team) for the benefit of the greater crypto community. If you enjoy our work, please consider supporting our continued development of this and many other cool crypto projects which you can find on our [github page](https://github.com/team-exor).
+eIquidus 区块浏览器由 [Exor 开发团队](https://exor.io/#section-team) 为广大加密社区的利益不懈努力为您带来。如果您喜欢我们的工作，请考虑支持我们继续开发此项目以及许多其他很酷的加密项目，您可以在我们的 [github 页面](https://github.com/team-exor) 上找到这些项目。
 
-You can support us via one of the following options:
+您可以通过以下选项之一支持我们：
 
-1. Buy and hodl EXOR. Buying and trading our EXOR coin helps stimulate the market price which allows us to hire more developers and continue to release high quality products in the future. We are listed on the following exchanges:
+1. 购买并持有 EXOR。购买和交易我们的 EXOR 币有助于刺激市场价格，这使我们能够聘请更多开发人员并在未来继续发布高质量的产品。我们在以下交易所上市：
     - [FreiXLite](https://freixlite.com/market/EXOR/LTC)
     - [Dexomy](https://dexomy.com/exchange/dashboard?coin_pair=EXOR_USDT)
-2. Participate in our [crowdfunding program](https://exor.io/tasklist/hide-completed/hide-funded/show-unfunded/) by either sending some cryptocurrency to help fund the tasks you are most eager to see brought to life or [submit a new custom task request](https://exor.io/add-new-task/) detailing a feature or improvement you would like to see developed for any Exor-related project.
-3. Consider a small donation by sending us some cryptocurrency:
+2. 参与我们的 [众筹计划](https://exor.io/tasklist/hide-completed/hide-funded/show-unfunded/)，方法是发送一些加密货币来帮助资助您最希望看到的任务，或者 [提交新的自定义任务请求](https://exor.io/add-new-task/)，详细说明您希望为任何 Exor 相关项目开发的功能或改进。
+3. 考虑通过向我们发送一些加密货币来进行小额捐赠：
     - **BTC:** [15zQAQFB9KR35nPWEJEKvmytUF6fg2zvdP](https://www.blockchain.com/btc/address/15zQAQFB9KR35nPWEJEKvmytUF6fg2zvdP)
-    - **ETH:** [0x1E4163EE9721bCA934D9e40C792360A901a59E02](https://etherscan.io/address/0x1E4163EE9721bCA934D9e40C792360A901a59E02) **NOTE:** Can be used for USDT or any other token on the ETH network
-    - **BNB:** [0x1E4163EE9721bCA934D9e40C792360A901a59E02](https://bscscan.com/address/0x1E4163EE9721bCA934D9e40C792360A901a59E02) **NOTE:** Can be used for USDT or any other token on the BNB network
+    - **ETH:** [0x1E4163EE9721bCA934D9e40C792360A901a59E02](https://etherscan.io/address/0x1E4163EE9721bCA934D9e40C792360A901a59E02) **注意：** 可用于 USDT 或 ETH 网络上的任何其他代币
+    - **BNB:** [0x1E4163EE9721bCA934D9e40C792360A901a59E02](https://bscscan.com/address/0x1E4163EE9721bCA934D9e40C792360A901a59E02) **注意：** 可用于 USDT 或 BNB 网络上的任何其他代币
     - **EXOR:** [EYYW8Nvz5aJz33M3JNHXG2FEHWUsntozrd](https://explorer.exor.io/address/EYYW8Nvz5aJz33M3JNHXG2FEHWUsntozrd)
-4. Are you a software developer? Consider taking advantage of our [crowdfunding program](https://exor.io/tasklist/hide-completed/) and get paid in EXOR to help make the block explorer and other Exor-related projects even better by submitting code improvements for open bounty tasks.
+4. 您是软件开发人员吗？考虑利用我们的 [众筹计划](https://exor.io/tasklist/hide-completed/)，通过提交开放赏金任务的代码改进来获得 EXOR 报酬，帮助使区块浏览器和其他 Exor 相关项目变得更好。
 
-### Special Thanks
+### 特别感谢
 
-- **[Luke Williams (aka iquidus)](https://github.com/iquidus):** for creating the original [Iquidus explorer](https://github.com/iquidus/explorer)
-- **[Alan Rudolf (aka suprnurd)](https://github.com/suprnurd):** for the custom changes found in the [Ciquidus explorer](https://github.com/suprnurd/ciquidus)
-- **[Tim Garrity (aka uaktags)](https://github.com/uaktags):** for his many contributions to the Iquidus explorer and custom features from the [uaktags explorer](https://github.com/uaktags/explorer)
-- **[TheHolyRoger](https://github.com/TheHolyRoger):** for his continued work and contributions to the Iquidus explorer
-- **[Karzo](https://github.com/KarzoGitHub):** for helping with the bulkwrite block sync code changes
-- All the rest of the Iquidus contributors who helped shape the Iquidus explorer in some way
+- **[Luke Williams (aka iquidus)](https://github.com/iquidus):** 创建了原始的 [Iquidus 浏览器](https://github.com/iquidus/explorer)
+- **[Alan Rudolf (aka suprnurd)](https://github.com/suprnurd):** 提供了在 [Ciquidus 浏览器](https://github.com/suprnurd/ciquidus) 中发现的自定义更改
+- **[Tim Garrity (aka uaktags)](https://github.com/uaktags):** 为 Iquidus 浏览器做出了许多贡献，以及来自 [uaktags 浏览器](https://github.com/uaktags/explorer) 的自定义功能
+- **[TheHolyRoger](https://github.com/TheHolyRoger):** 为 Iquidus 浏览器继续工作并做出贡献
+- **[Karzo](https://github.com/KarzoGitHub):** 帮助进行批量写入区块同步代码更改
+- 所有其他以某种方式帮助塑造 Iquidus 浏览器的 Iquidus 贡献者
 
-### License
+### 许可证
 
 Copyright (c) 2019-2025, The Exor Community<br />
 Copyright (c) 2017, The Chaincoin Community<br />

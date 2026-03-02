@@ -4,6 +4,7 @@ const settings = require('../lib/settings');
 const db = require('../lib/database');
 const lib = require('../lib/explorer');
 const async = require('async');
+const ScashDAP = require('scash-dap');
 
 function send_block_data(res, block, txs, title_text, orphan) {
   let extracted_by_addresses = [];
@@ -73,6 +74,36 @@ function send_tx_data(res, tx, blockcount, orphan) {
 }
 
 function finalize_send_tx_data(res, tx, blockcount, orphan, extracted_by_addresses) {
+  // ScashDAP Integration
+  if (settings.scash_dap && settings.scash_dap.enabled) {
+    try {
+      const dap = new ScashDAP({
+        bech32: settings.scash_dap.bech32,
+        bip32: settings.scash_dap.bip32,
+        pubKeyHash: settings.scash_dap.pubKeyHash,
+        scriptHash: settings.scash_dap.scriptHash,
+        wif: settings.scash_dap.wif
+      });
+
+      // Prepare outputs for ScashDAP
+      // tx.vout is array of { addresses: '...', amount: ... }
+      const outputs = tx.vout.map(v => ({
+        scriptPubKey: {
+          address: v.addresses
+        },
+        value: v.amount
+      }));
+      
+      const dapMessage = dap.parseDapTransaction(outputs);
+      
+      if (dapMessage) {
+        tx.dapData = dapMessage;
+      }
+    } catch (err) {
+      console.error('Error parsing DAP data:', err);
+    }
+  }
+
   res.render(
     'tx',
     {

@@ -80,6 +80,12 @@ block content
               td.text-center.table-warning #{confirms}
             td.text-center
               span#timestampCol
+    if tx.dapData
+      .card.card-default.border-0.cardSpacer
+        .card-header
+          strong='DAP Data'
+        .card-body
+          .dap-data-content(style='white-space: pre-wrap; word-break: break-all;') #{tx.dapData}
     if tx.vout.length < 1
       .alert.alert-info.text-center(role='alert', style='margin-bottom:0;')
         strong #{settings.localization.tx_nonstandard}

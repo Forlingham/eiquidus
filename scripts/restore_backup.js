@@ -193,7 +193,7 @@ function delete_prompt(cb) {
 
 // verify that the collection exists
 function verify_collection_exists(mongoose, cb) {
-  const dbString = `mongodb://${encodeURIComponent(settings.dbsettings.user)}:${encodeURIComponent(settings.dbsettings.password)}@${settings.dbsettings.address}:${settings.dbsettings.port}/${settings.dbsettings.database}`;
+  const dbString = `mongodb://${encodeURIComponent(settings.dbsettings.user)}:${encodeURIComponent(settings.dbsettings.password)}@${settings.dbsettings.address}:${settings.dbsettings.port}/${settings.dbsettings.database}?authSource=admin`;
 
   console.log('Connecting to database..');
 
