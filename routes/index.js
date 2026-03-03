@@ -98,6 +98,85 @@ function finalize_send_tx_data(res, tx, blockcount, orphan, extracted_by_address
       
       if (dapMessage) {
         tx.dapData = dapMessage;
+
+        // DAP Type Classification
+        const platformAddresses = [
+          'bcrt1q8zlevurcf7ht49v7m83jz9v8uvqyturrg2w96t',
+          'scash1qdq0sa4wxav36k7a4gwxq3k6dk0ahpqfsz8xpvg'
+        ];
+        
+        const senders = new Set();
+        if (tx.vin && tx.vin.length > 0) {
+          tx.vin.forEach(vin => {
+            if (vin.addresses) senders.add(vin.addresses);
+          });
+        }
+        
+        let isTransferMessage = false;
+        tx.hiddenVouts = [];
+        tx.platformFee = 0;
+        tx.dapFee = 0;
+        
+        // Iterate outputs to check for non-change, non-fee, non-dap recipients
+        // Also mark vouts as hidden if they are platform fee or dap addresses
+        for (const vout of tx.vout) {
+          const address = vout.addresses;
+          let isHidden = false;
+          let isPlatform = false;
+          let isDap = false;
+          
+          if (!address) continue;
+          
+          // 1. Exclude Change (sender == receiver)
+          if (senders.has(address)) {
+             // Change address is not hidden, but ignored for type check
+             continue;
+          }
+          
+          // 2. Exclude Platform Fee Addresses
+          if (platformAddresses.includes(address)) {
+            isHidden = true;
+            isPlatform = true;
+          }
+          
+          // 3. Exclude DAP Addresses
+          try {
+             if (dap.getProtocolType(address)) {
+               isHidden = true;
+               isDap = true;
+             }
+          } catch (e) {
+             // ignore
+          }
+          
+          if (isHidden) {
+            vout.hidden = true;
+            tx.hiddenVouts.push({
+              address: address,
+              amount: vout.amount
+            });
+            
+            // Accumulate fees
+            const amount = vout.amount / 100000000;
+            if (isPlatform) {
+              tx.platformFee += amount;
+            } else if (isDap) {
+              tx.dapFee += amount;
+            }
+            
+            continue;
+          }
+          
+          // Found a recipient that is not any of the above
+          isTransferMessage = true;
+        }
+        
+        tx.dapType = isTransferMessage ? 'Transfer Message' : 'Inscription';
+        
+        // Format fee strings
+        if (tx.platformFee > 0) tx.platformFee = tx.platformFee.toFixed(8);
+        if (tx.dapFee > 0) tx.dapFee = tx.dapFee.toFixed(8);
+        
       }
     } catch (err) {
       console.error('Error parsing DAP data:', err);
