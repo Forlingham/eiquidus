@@ -165,6 +165,9 @@ block content
           strong #{settings.localization.ex_error}
         div #{error}
   .col-md-12.cardSpacer
+    .alert.alert-info.text-center
+      strong 新区块链入口：
+      a.alert-link(href='https://explorer.scash.network/' target='_blank') https://explorer.scash.network/
     if settings.index_page.page_header.show_img == true || settings.index_page.page_header.show_title == true || settings.index_page.page_header.show_last_updated == true || settings.index_page.page_header.show_description == true
       #page-header-container(style='align-items:' + (settings.index_page.page_header.show_img == true && settings.index_page.page_header.show_title == true && settings.index_page.page_header.show_last_updated == true && settings.index_page.page_header.show_description == true ? 'flex-start' : 'center'))
         if settings.index_page.page_header.show_img == true

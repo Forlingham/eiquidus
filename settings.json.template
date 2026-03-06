@@ -1,5 +1,5 @@
 /*
-  此文件必须是有效的 JSON 格式。但允许使用注释
+  此文件必须是有效的 JSON。但也允许注释
 
   请编辑 settings.json，而不是 settings.json.template
 */
@@ -7,771 +7,1559 @@
   // locale: 更改语言定义。目前仅支持英语
   "locale": "locale/en.json",
 
-  // dbsettings: 允许浏览器连接到 MongoDB 的设置集合
   "dbsettings": {
-    // user: MongoDB 用户名
-    "user": "mongo_GPSWYB",
-    // password: MongoDB 密码
-    "password": "mongo_kAW6iz",
-    // database: MongoDB 数据库名称 (默认: explorerdb)
-    "database": "explorerdb",
-    // address: MongoDB 主机名。如果连接到本地实例，应始终为 'localhost'，否则指定远程实例的 ip 地址
+    "user": "eiquidus",
+    "password": "eiquiduspassword",
+    "database": "scash-explorer",
     "address": "localhost",
-    // port: MongoDB 配置为监听请求的端口号 (默认: 27017)
     "port": 27017
   },
-
-  // wallet: 允许浏览器连接到币种钱包的设置集合
   "wallet": {
-    // host: 要连接的钱包的主机名或 ip 地址 (默认: localhost)
-    "host": "127.0.0.1",
-    // port: 钱包配置为监听 RPC 请求的端口号 (默认: 51573，此处为 Scash 节点端口)
-    "port": 18443,
-    // username: 钱包 RPC 用户名
-    "username": "scash",
-    // password: 钱包 RPC 密码
-    "password": "scash",
-    // ssl: 启用 SSL/HTTPS 连接
-    "ssl": false,
-    // path: RPC 端点的自定义路径 (如果不是根路径)
-    "path": "/"
+    "host": "localhost",
+    "port": 9645,
+    "username": "scash123",
+    "password": "YourStrongPassword"
   },
-
-  // webserver: 与 node.js express web 框架相关的设置集合 (阅读更多: https://www.npmjs.com/package/express)
   "webserver": {
-    // port: 配置 express web 服务器监听 http 请求的端口号
-    //       注意: 务必配置防火墙以允许流量通过此端口，否则浏览器网站可能无法远程访问
-    "port": 3001,
-    // tls: 与 TLS (传输层安全) 协议功能 (即: ssl 或 https) 相关的设置集合
+    "port": 3009,
     "tls": {
-      // enabled: 启用/禁用 TLS
-      //          如果设置为 true，express web 服务器将配置为使用 https 连接
-      //          如果设置为 false，所有 TLS 功能将被完全禁用
       "enabled": false,
-      // port: 配置 express web 服务器监听 https 请求的端口号
-      //       注意: 务必配置防火墙以允许流量通过此端口，否则浏览器网站可能无法远程访问
       "port": 443,
-      // always_redirect: 强制所有浏览器流量使用 https
-      //                  如果设置为 true，所有 http web 请求将自动转发到 https
-      //                  如果设置为 false，web 服务器将允许 http 和 https 流量
       "always_redirect": true,
-      // cert_file: tls 证书文件的绝对或相对路径。通常此文件将由 certbot 生成 (阅读更多: https://certbot.eff.org)
-      "cert_file": "/etc/letsencrypt/live/domain-name-here/cert.pem",
-      // chain_file: tls 链文件的绝对或相对路径。通常此文件将由 certbot 生成 (阅读更多: https://certbot.eff.org)
-      "chain_file": "/etc/letsencrypt/live/domain-name-here/chain.pem",
-      // key_file: tls 私钥文件的绝对或相对路径。通常此文件将由 certbot 生成 (阅读更多: https://certbot.eff.org)
-      "key_file": "/etc/letsencrypt/live/domain-name-here/privkey.pem"
+      "cert_file": "/etc/letsencrypt/live/scash.tv/cert.pem",
+      "chain_file": "/etc/letsencrypt/live/scash.tv/chain.pem",
+      "key_file": "/etc/letsencrypt/live/scash.tv/privkey.pem"
     },
-    // cors: 与 cors 功能相关的设置集合
-    //       跨源资源共享 (CORS) 支持 (阅读更多: https://www.maxcdn.com/one/visual-glossary/cors/)
-    //       启用此设置以允许另一个网站访问浏览器的数据，而不违反同源策略
     "cors": {
-      // enabled: 启用/禁用 CORS
-      //          如果设置为 true，一个新的输出头将添加到所有 http 请求中，如下所示: Access-Control-Allow-Origin: <corsorigin>
-      //          如果设置为 false，cors 功能将被完全禁用
-      "enabled": false,
-      // corsorigin: 用于将 http 域名列入白名单以访问此浏览器的资源
-      //             列入白名单的域名必须采用以下格式: https://example.com
-      //             将 corsorigin 指定为 "*" 将允许任何域名访问此站点的资源
+      "enabled": true,
       "corsorigin": "*"
     }
   },
 
   // coin: 与正在浏览的加密货币相关的设置集合
   "coin": {
-    // name: 正在浏览的加密货币名称。当 "shared_pages.page_header.home_link" 设置为 "coin" 时，此值显示在页面标题中。
-    //       注意: 此值充当存储在 mongo 中的数据的唯一标识符，因此在不重新同步所有现有数据的情况下无法更改。
+    // name: 正在浏览的加密货币硬币名称。当 "shared_pages.page_header.home_link" 设置为 "coin" 时，此值显示在页面标题中。
+    //       注意：此值作为 mongo 中存储的数据的唯一标识符，因此如果不重新同步所有现有数据，则无法更改。
     "name": "Scash",
-    // symbol: 加密货币的代币代码/符号值。此值显示在显示币种数据的任何位置，包括索引、地址、区块、变动、奖励、富豪榜/前100名和交易页面
+    // symbol: 加密货币硬币代码/符号值。此值显示在显示硬币数据的任何位置，包括索引、地址、块、移动、奖励、富豪榜/前 100 名和 tx 页面
     "symbol": "SCASH"
   },
 
   // scash_dap: scash-dap 数据协议的配置
   "scash_dap": {
-    // enabled: 是否启用 DAP 数据解析
     "enabled": true,
-    // bech32: Bech32 地址前缀 (例如: scash, bcrt)
-    "bech32": "bcrt",
-    // bip32: BIP32版本号配置
-    "bip32": {
-      "public": "0x0488b21e",
-      "private": "0x0488ade4"
-    },
-    // pubKeyHash: 公钥哈希版本号
-    "pubKeyHash": "0x3c",
-    // scriptHash: 脚本哈希版本号
-    "scriptHash": "0x7d",
-    // wif: 钱包导入格式版本号
-    "wif": "0x80"
+    "bech32": "scash",
+  "bip32": {
+    "public": "0x0488b21e",
+    "private": "0x0488ade4"
+  },
+  "pubKeyHash": "0x3c",
+  "scriptHash": "0x7d",
+  "wif": "0x80"
   },
 
-  // network_history: 控制在区块同步期间保存额外历史网络数据的设置集合
+  // network_history: 一组设置，用于控制在块同步期间保存额外的历史网络数据
   "network_history": {
-    // enabled: 启用/禁用保存额外的网络历史数据 (true/false)
-    //          如果设置为 false，历史数据（如网络哈希率和难度值）将不会被保存，也不可用于网络图表
+    // enabled: 启用/禁用保存额外的网络历史数据（true/false）
+    //          如果设置为 false，则不会保存网络哈希率和难度值等历史数据，也不会用于网络图表
     "enabled": true,
-    // max_saved_records: 保存历史数据的最大区块数。如果使用 max_hours 选项，请将此值设置为 0
+    // max_saved_records: 保存历史数据的最大块数。如果使用 max_hours 选项，请将此值设置为 0
     "max_saved_records": 120,
-    // max_hours: 保存历史数据的最大小时数。max_saved_records 值将取代此值，因此如果想显示特定小时数的数据，请务必将 max_saved_records 设置为 0
+    // max_hours: 保存历史数据的最大小时数。max_saved_records 值将取代此值，因此如果想显示一定小时数的数据，请务必将 max_saved_records 设置为 0
     "max_hours": 24
   },
 
   /* 共享页面设置 */
  
-  // shared_pages: 与浏览器所有网页相关的设置集合
+  // shared_pages: 与浏览器的所有网页相关的设置集合
   "shared_pages": {
-    // theme: 使用独特的主题更改浏览器的外观和感觉。使用 bootswatch 主题 (https://bootswatch.com)
-    //        有效选项: Cerulean, Cosmo, Cyborg, Darkly, Exor, Flatly, Journal, Litera, Lumen, Lux, Materia, Minty, Morph, Pulse, Quartz, Sandstone, Simplex, Sketchy, Slate, Solar, Spacelab, Superhero, United, Vapor, Yeti, Zephyr
-    //        (查看 /public/css/themes 获取可用主题)
-    "theme": "Exor",
-    // page_title: 显示在 HTML title 标签末尾的文本，当 "shared_pages.page_header.home_link" 设置为 "title" 时也显示在页面标题中
+    // theme: 使用唯一的主题更改浏览器的外观和感觉。使用 bootswatch 主题 (https://bootswatch.com)
+    //        有效选项：Cerulean, Cosmo, Cyborg, Darkly, Exor, Flatly, Journal, Litera, Lumen, Lux, Materia, Minty, Morph, Pulse, Quartz, Sandstone, Simplex, Sketchy, Slate, Solar, Spacelab, Superhero, United, Vapor, Yeti, Zephyr
+    //        (查看 /public/css/themes 以获取可用主题)
+    "theme": "scash",
+    // page_title: 显示在 HTML 标题标签末尾的文本，当 "shared_pages.page_header.home_link" 设置为 "title" 时，也会显示在页面标题中
     "page_title": "eIquidus",
-    // favicons: 显示在浏览器窗口/标签页中并作为网站品牌形象的图像或图标文件集合。它们的主要目的是帮助访问者在打开多个标签页时更容易找到您的页面
-    //          现代 favicon 尺寸灵感来自这篇网络文章: https://www.emergeinteractive.com/insights/detail/The-Essentials-of-FavIcons/
-    //          注意: 如果任何 favicon 留空或未设置为有效文件，它们将被禁用且不被使用
+    // favicons: 一组图像或图标文件，显示在浏览器窗口/选项卡中，用作网站的品牌标识。其主要目的是帮助访问者在打开多个选项卡时更容易找到您的页面
+    //          现代 favicon 尺寸受到这篇网络文章的启发：https://www.emergeinteractive.com/insights/detail/The-Essentials-of-FavIcons/
+    //          注意：如果任何 favicon 留空或未设置为有效文件，则它们将被禁用且不被使用
     "favicons": {
       // favicon32: 32x32 图像或图标文件的路径
-      //            注意: 路径根目录是 /public
+      //            注意：路径根目录为 /public
       "favicon32": "favicon-32.png",
       // favicon128: 128x128 图像或图标文件的路径
-      //            注意: 路径根目录是 /public
+      //            注意：路径根目录为 /public
       "favicon128": "favicon-128.png",
       // favicon180: 180x180 图像或图标文件的路径
-      //            注意: 路径根目录是 /public
+      //            注意：路径根目录为 /public
       "favicon180": "favicon-180.png",
       // favicon192: 192x192 图像或图标文件的路径
-      //            注意: 路径根目录是 /public
+      //            注意：路径根目录为 /public
       "favicon192": "favicon-192.png"
     },
-    // logo: 显示在 api 页面以及启用时的顶部面板之一中的图像文件路径
-    //       当 "shared_pages.page_header.home_link" 设置为 "logo" 且 "shared_pages.page_header.home_link_logo" 设置为空或无效文件时，此 logo 也可以显示在标题中
-    //       注意: 路径根目录是 /public
-    //             最佳 logo 尺寸为 128x128，因为显示时图像将被强制为 128px 高
+    // logo: 图像文件的路径，该图像显示在 api 页面上，以及启用时的顶部面板之一中
+    //       当 "shared_pages.page_header.home_link" 设置为 "logo" 且 "shared_pages.page_header.home_link_logo" 设置为空或无效文件时，此徽标也可以显示在标题中
+    //       注意：路径根目录为 /public
+    //             最佳徽标大小为 128x128，因为图像在显示时将被强制为 128px 高
     "logo": "/img/logo.png",
     // date_time: 与浏览器中显示的日期和时间值相关的设置集合
     "date_time": {
       // display_format: 显示日期/时间值时使用的格式
-      //                 日期/时间值使用 Luxon 库格式化，必须遵循正确的语法 (阅读更多: https://moment.github.io/luxon/#/formatting?id=table-of-tokens)
-      //                 例如: LLL dd, yyyy HH:mm:ss ZZZZ = May 27, 2019 22:04:11 UTC
+      //                 日期/时间值使用 Luxon 库格式化，必须遵循正确的语法（阅读更多：https://moment.github.io/luxon/#/formatting?id=table-of-tokens）
+      //                 例如：LLL dd, yyyy HH:mm:ss ZZZZ = May 27, 2019 22:04:11 UTC
       "display_format": "LLL dd, yyyy HH:mm:ss ZZZZ",
-      // timezone: 所有日期和时间都存储为 UTC 日期，既可以以 UTC 格式显示，也可以根据用户的 Web 浏览器设置在本地时区显示
-      //           有效选项: utc 或 local
+      // timezone: 所有日期和时间都存储为 UTC 日期，既可以以 UTC 格式显示，也可以根据用户的 Web 浏览器设置以本地时区显示
+      //           有效选项：utc 或 local
       "timezone": "utc",
-      // enable_alt_timezone_tooltips: 确定日期和时间是否应具有鼠标悬停提示，显示备用时区值
-      //                               如果设置为 true 且 "shared_pages.date_time.timezone" 设置为 "utc"，则启用此选项将以本地浏览器的时区显示日期/时间提示
-      //                               如果设置为 true 且 "shared_pages.date_time.timezone" 设置为 "local"，则启用此选项将以 UTC 时区显示日期/时间提示
-      //                               如果设置为 false，则不会显示任何日期/时间值的提示
+      // enable_alt_timezone_tooltips: 确定日期和时间是否应具有鼠标悬停工具提示，该提示显示备用时区值
+      //                               如果设置为 true 且 "shared_pages.date_time.timezone" 设置为 "utc"，则启用此选项将显示本地浏览器时区的日期/时间工具提示
+      //                               如果设置为 true 且 "shared_pages.date_time.timezone" 设置为 "local"，则启用此选项将显示 UTC 时区的日期/时间工具提示
+      //                               如果设置为 false，则不会显示任何日期/时间值的工具提示
       "enable_alt_timezone_tooltips": false
     },
     // table_header_bgcolor: 更改所有表格标题的背景颜色
-    //                       有效选项: light, dark 或留空 ( "" ) 使用默认颜色
+    //                       有效选项：light, dark 或留空 ( "" ) 以使用默认颜色
     "table_header_bgcolor": "",
-    // confirmations: 区块或交易被视为有效之前的确认数
-    //                如果确认数 >= 此值，则区块或交易被视为有效并显示为绿色
-    //                如果确认数 < 此值超过 50%，则区块或交易被视为未确认并显示为红色
-    //                如果确认数 < 此值少于 50%，则区块或交易被视为未确认并显示为橙色
+    // confirmations: 在块或交易被视为有效之前的确认数
+    //                如果确认数 >= 此值，则块或 tx 被视为有效并显示为绿色
+    //                如果确认数 < 此值超过 50%，则块或 tx 被视为未确认并显示为红色
+    //                如果确认数 < 此值少于 50%，则块或 tx 被视为未确认并显示为橙色
     "confirmations": 40,
-    // difficulty: 确定要显示的网络难度值 (有效选项为: POW, POS 或 Hybrid)
-    //             某些区块链根据可用的 POW/POS 选项显示不同的难度值:
+    // difficulty: 确定要显示的网络难度值（有效选项为：POW, POS 或 Hybrid）
+    //             某些区块链根据可用的 POW/POS 选项显示不同的难度值：
     //             POW: 显示工作量证明难度值
     //             POS: 显示权益证明难度值
     //             Hybrid: 同时显示工作量证明和权益证明难度值
     "difficulty": "POS",
-    // show_hashrate: 确定是否在适用的情况下显示网络哈希率 (true/false)
-    //                如果设置为 false，/api/getnetworkhashps 和 /ext/getsummary api 将不再显示哈希率信息，网络哈希率图表将自动禁用
+    // show_hashrate: 确定是否在适用的地方显示网络哈希率（true/false）
+    //                如果设置为 false，/api/getnetworkhashps 和 /ext/getsummary api 将不再显示哈希率信息，并且网络哈希率图表将自动禁用
     "show_hashrate": true,
-    // page_header: 与所有页面顶部显示的页面标题相关的设置集合
+    // page_header: 一组设置，与显示在所有页面顶部的页面标题相关
     "page_header": {
-      // menu: 有效选项:
+      // menu: 有效选项：
       //       top: 在页面顶部水平显示菜单项
       //       side: 在页面左侧垂直显示菜单项
       "menu": "side",
-      // sticky_header: 确定页面标题是否“粘”在页面顶部 (true/false)
+      // sticky_header: 确定页面标题是否“粘贴”到页面顶部（true/false）
       "sticky_header": true,
       // bgcolor: 更改页面标题的背景颜色
-      //          有效选项: light, dark, primary, secondary, success, info, warning, danger 或留空 ( "" ) 使用默认颜色
+      //          有效选项：light, dark, primary, secondary, success, info, warning, danger 或留空 ( "" ) 以使用默认颜色
       "bgcolor": "",
-      // home_link: 主页链接设置确定标题菜单左上角显示的内容。有效选项:
+      // home_link: 主页链接设置确定在标题菜单左上角显示的内容。有效选项：
       //            title: 显示 "shared_pages.page_title" 文本设置
       //            coin: 显示 "coin.name" 文本设置
-      //            logo: 如果设置为有效图像，则显示 "shared_pages.page_header.home_link_logo" 图像，否则显示 "shared_pages.logo" 图像
+      //            logo: 如果 "shared_pages.page_header.home_link_logo" 设置为有效图像，则显示该图像，否则显示 "shared_pages.logo" 图像
       "home_link": "logo",
       // home_link_logo: 当 "shared_pages.page_header.home_link" 设置为 "logo" 时，显示在页面标题上的徽标图像的路径
-      //                 如果 home_link_logo 留空或未设置为有效文件，"shared_pages.page_header.home_link" = "logo" 设置将自动默认显示原始 "shared_pages.logo" 而不是 "shared_pages.page_header.home_link_logo"
-      //                 注意: 路径根目录是 /public
+      //                 如果 home_link_logo 留空或未设置为有效文件，则 "shared_pages.page_header.home_link" = "logo" 设置将自动默认显示原始 "shared_pages.logo" 而不是 "shared_pages.page_header.home_link_logo"
+      //                 注意：路径根目录为 /public
       "home_link_logo": "/img/header-logo.png",
-      // home_link_logo_height: "shared_pages.page_header.home_link" 徽标图像的最大高度值 (单位 px，仅当 "shared_pages.page_header.home_link" = 'logo' 时有效)
+      // home_link_logo_height: "shared_pages.page_header.home_link" 徽标图像的最大高度值（以像素为单位，仅当 "shared_pages.page_header.home_link" = 'logo' 时有效）
       "home_link_logo_height": 50,
-      // panels: 与所有页面标题上显示的面板相关的设置集合 (注意: 您可以通过更改每个页面的 show_panels 值来独立显示/隐藏每个页面上的整个面板组)
-      //         任何时候最多可以在页面顶部显示 5 个面板，因此如果启用了超过 5 个，则只显示前 5 个
+      // panels: 一组设置，与显示在所有页面标题上的面板相关（注意：您可以通过更改每个页面设置中的 show_panels 值来独立显示/隐藏每个页面上的整个面板组）
+      //         页面顶部最多可以同时显示 5 个面板，因此如果启用了超过 5 个面板，则仅显示前 5 个
       "panels": {
-        // network_panel: 与网络面板相关的设置集合，显示当前网络哈希率 (仅适用于 POW 币)
+        // network_panel: 一组设置，与显示当前网络哈希率的网络面板相关（仅适用于 POW 硬币）
         "network_panel": {
-          // enabled: 启用/禁用网络面板 (true/false)
-          //          如果设置为 false，网络面板将完全不可访问
+          // enabled: 启用/禁用网络面板（true/false）
+          //          如果设置为 false，则网络面板将完全不可访问
           "enabled": false,
-          // display_order: 确定此面板显示的顺序，从 1-5
+          // display_order: 确定此面板的显示顺序，从 1-5
           //                1 = 最左侧面板，5 = 最右侧面板
-          //                值为 0 将禁用面板
+          //                值为 0 将禁用该面板
           "display_order": 0,
-          // nethash: 确定如何获取网络哈希率。有效选项:
-          //          getnetworkhashps: 从 getnetworkhashps rpc 命令检索
-          //          netmhashps: 从 getmininginfo rpc 命令检索
+          // nethash: 确定如何获取网络哈希率。有效选项：
+          //          getnetworkhashps: 从 getnetworkhashps rpc cmd 获取
+          //          netmhashps: 从 getmininginfo rpc cmd 获取
           "nethash": "getnetworkhashps",
-          // nethash_units: 确定应用于显示网络哈希率的单位。有效选项:
+          // nethash_units: 确定应用于显示网络哈希率的单位。有效选项：
           //                P: 以 petahashes (PH/s) 显示值
           //                T: 以 terahashes (TH/s) 显示值
           //                G: 以 gigahashes (GH/s) 显示值
           //                M: 以 megahashes (MH/s) 显示值
           //                K: 以 kilohashes (KH/s) 显示值
+          //                H: 以 hashes (H/s) 显示值
           "nethash_units": "G"
         },
-        // difficulty_panel: 与难度面板相关的设置集合，显示当前网络难度
+        // difficulty_panel: 一组设置，与显示当前工作量证明难度的难度面板相关（仅适用于 POW 硬币）
         "difficulty_panel": {
-          // enabled: 启用/禁用难度面板 (true/false)
-          //          如果设置为 false，难度面板将完全不可访问
-          "enabled": true,
-          // display_order: 确定此面板显示的顺序，从 1-5
-          //                1 = 最左侧面板，5 = 最右侧面板
-          //                值为 0 将禁用面板
-          "display_order": 1
-        },
-        // masternodes_panel: 与主节点面板相关的设置集合，显示当前网络主节点计数 (仅适用于主节点币)
-        "masternodes_panel": {
-          // enabled: 启用/禁用主节点面板 (true/false)
-          //          如果设置为 false，主节点面板将完全不可访问
+          // enabled: 启用/禁用难度面板（true/false）
+          //          如果设置为 false，则难度面板将完全不可访问
           "enabled": false,
-          // display_order: 确定此面板显示的顺序，从 1-5
+          // display_order: 确定此面板的显示顺序，从 1-5
           //                1 = 最左侧面板，5 = 最右侧面板
-          //                值为 0 将禁用面板
+          //                值为 0 将禁用该面板
           "display_order": 0
         },
-        // coin_supply_panel: 与币供应量面板相关的设置集合，显示当前币供应量
-        "coin_supply_panel": {
-          // enabled: 启用/禁用币供应量面板 (true/false)
-          //          如果设置为 false，币供应量面板将完全不可访问
+        // masternodes_panel: 一组设置，与显示在线和不可访问主节点计数的主节点面板相关（仅适用于主节点硬币）
+        "masternodes_panel": {
+          // enabled: 启用/禁用主节点面板（true/false）
+          //          如果设置为 false，则主节点面板将完全不可访问
           "enabled": true,
-          // display_order: 确定此面板显示的顺序，从 1-5
+          // display_order: 确定此面板的显示顺序，从 1-5
           //                1 = 最左侧面板，5 = 最右侧面板
-          //                值为 0 将禁用面板
+          //                值为 0 将禁用该面板
+
           "display_order": 2
         },
-        // price_panel: 与价格面板相关的设置集合，显示当前币价
-        "price_panel": {
-          // enabled: 启用/禁用价格面板 (true/false)
-          //          如果设置为 false，价格面板将完全不可访问
+        // coin_supply_panel: 一组设置，与显示当前流通硬币供应值的硬币供应面板相关
+        "coin_supply_panel": {
+          // enabled: 启用/禁用硬币供应面板（true/false）
+          //          如果设置为 false，则硬币供应面板将完全不可访问
           "enabled": true,
-          // display_order: 确定此面板显示的顺序，从 1-5
+          // display_order: 确定此面板的显示顺序，从 1-5
           //                1 = 最左侧面板，5 = 最右侧面板
-          //                值为 0 将禁用面板
-          "display_order": 3
+          //                值为 0 将禁用该面板
+          "display_order": 1
         },
-        // price_usd_panel: 与美元价格面板相关的设置集合，以美元显示当前币价
-        "price_usd_panel": {
-          // enabled: 启用/禁用美元价格面板 (true/false)
-          //          如果设置为 false，美元价格面板将完全不可访问
-          "enabled": false,
-          // display_order: 确定此面板显示的顺序，从 1-5
+        // price_panel: 一组设置，与显示当前市场价格（由 markets_page.market_price 值确定）的价格面板相关
+        "price_panel": {
+          // enabled: 启用/禁用价格面板（true/false）
+          //          如果设置为 false，则价格面板将完全不可访问
+          "enabled": true,
+          // display_order: 确定此面板的显示顺序，从 1-5
           //                1 = 最左侧面板，5 = 最右侧面板
-          //                值为 0 将禁用面板
+          //                值为 0 将禁用该面板
           "display_order": 0
         },
-        // market_cap_panel: 与市值面板相关的设置集合，显示当前市值
-        "market_cap_panel": {
-          // enabled: 启用/禁用市值面板 (true/false)
-          //          如果设置为 false，市值面板将完全不可访问
+        // usd_price_panel: 一组设置，与显示以美元衡量的当前市场价格的美元价格面板相关
+        "usd_price_panel": {
+          // enabled: 启用/禁用美元价格面板（true/false）
+          //          如果设置为 false，则美元价格面板将完全不可访问
           "enabled": true,
-          // display_order: 确定此面板显示的顺序，从 1-5
+          // display_order: 确定此面板的显示顺序，从 1-5
           //                1 = 最左侧面板，5 = 最右侧面板
-          //                值为 0 将禁用面板
+          //                值为 0 将禁用该面板
           "display_order": 4
         },
-        // market_cap_usd_panel: 与美元市值面板相关的设置集合，以美元显示当前市值
-        "market_cap_usd_panel": {
-          // enabled: 启用/禁用美元市值面板 (true/false)
-          //          如果设置为 false，美元市值面板将完全不可访问
+        // market_cap_panel: 一组设置，与显示当前市值（由 markets_page.market_price 值确定）的市值面板相关
+        "market_cap_panel": {
+          // enabled: 启用/禁用市值面板（true/false）
+          //          如果设置为 false，则市值面板将完全不可访问
           "enabled": false,
-          // display_order: 确定此面板显示的顺序，从 1-5
+          // display_order: 确定此面板的显示顺序，从 1-5
           //                1 = 最左侧面板，5 = 最右侧面板
-          //                值为 0 将禁用面板
+          //                值为 0 将禁用该面板
           "display_order": 0
         },
-        // logo_panel: 与徽标面板相关的设置集合，显示 "shared_pages.logo" 图像
-        "logo_panel": {
-          // enabled: 启用/禁用徽标面板 (true/false)
-          //          如果设置为 false，徽标面板将完全不可访问
+        // usd_market_cap_panel: 一组设置，与显示以美元衡量的当前市值的市值面板相关
+        "usd_market_cap_panel": {
+          // enabled: 启用/禁用美元市值面板（true/false）
+          //          如果设置为 false，则美元市值面板将完全不可访问
           "enabled": true,
-          // display_order: 确定此面板显示的顺序，从 1-5
+          // display_order: 确定此面板的显示顺序，从 1-5
           //                1 = 最左侧面板，5 = 最右侧面板
-          //                值为 0 将禁用面板
-          "display_order": 5,
-          // logo_height: "shared_pages.logo" 图像的最大高度值 (单位 px)
-          "logo_height": 50
+          //                值为 0 将禁用该面板
+          "display_order": 5
+        },
+        // logo_panel: 一组设置，与显示 "shared_pages.logo" 图像的徽标面板相关
+        "logo_panel": {
+          // enabled: 启用/禁用徽标面板（true/false）
+          //          如果设置为 false，则徽标面板将完全不可访问
+          "enabled": true,
+          // display_order: 确定此面板的显示顺序，从 1-5
+          //                1 = 最左侧面板，5 = 最右侧面板
+          //                值为 0 将禁用该面板
+          "display_order": 3
+        },
+        // spacer_panel_1: 一组设置，与允许在顶部面板中插入空白空间的第 1 个间隔面板相关
+        //                 注意：间隔面板仅在桌面和平板电脑屏幕尺寸上可见，在移动屏幕上隐藏
+        "spacer_panel_1": {
+          // enabled: 启用/禁用间隔面板（true/false）
+          //          如果设置为 false，则间隔面板将完全不可访问
+          "enabled": false,
+          // display_order: 确定此面板的显示顺序，从 1-5
+          //                1 = 最左侧面板，5 = 最右侧面板
+          //                值为 0 将禁用该面板
+          "display_order": 0
+        },
+        // spacer_panel_2: 一组设置，与允许在顶部面板中插入空白空间的第 2 个间隔面板相关
+        //                 注意：间隔面板仅在桌面和平板电脑屏幕尺寸上可见，在移动屏幕上隐藏
+        "spacer_panel_2": {
+          // enabled: 启用/禁用间隔面板（true/false）
+          //          如果设置为 false，则间隔面板将完全不可访问
+          "enabled": false,
+          // display_order: 确定此面板的显示顺序，从 1-5
+          //                1 = 最左侧面板，5 = 最右侧面板
+          //                值为 0 将禁用该面板
+          "display_order": 0
+        },
+        // spacer_panel_3: 一组设置，与允许在顶部面板中插入空白空间的第 3 个间隔面板相关
+        //                 注意：间隔面板仅在桌面和平板电脑屏幕尺寸上可见，在移动屏幕上隐藏
+        "spacer_panel_3": {
+          // enabled: 启用/禁用间隔面板（true/false）
+          //          如果设置为 false，则间隔面板将完全不可访问
+          "enabled": false,
+          // display_order: 确定此面板的显示顺序，从 1-5
+          //                1 = 最左侧面板，5 = 最右侧面板
+          //                值为 0 将禁用该面板
+          "display_order": 0
+        }
+      },
+      // search: 一组设置，与搜索功能相关
+      "search": {
+        // enabled: 启用/禁用搜索浏览器网站的功能（true/false）
+        //          如果设置为 false，浏览器将不显示搜索框或响应搜索查询
+        "enabled": true,
+        // position: 确定搜索框应在网站上显示的位置
+        //           有效选项：inside-header, below-header
+        "position": "inside-header"
+      },
+      // page_title_image: 一组设置，与每个页面的页面标题图像相关
+      "page_title_image": {
+        // image_path: 图像文件的路径，该图像显示在所有页面的标题部分，紧挨着页面标题（注意：可以基于每个页面启用/禁用此图像）
+        //             注意：路径根目录为 /public
+        //             最佳徽标大小为 48x48，因为图像在显示时将被强制为该大小
+        "image_path": "/img/page-title-img.png",
+        // enable_animation: 启用/禁用页面标题图像上的翻转/旋转动画（true/false）
+        "enable_animation": true
+      },
+      // network_charts: 一组设置，与显示在所有页面标题上的网络哈希率和难度折线图相关
+      //                 注意：您可以通过更改每个页面设置中的 show_nethash_chart 和 show_difficulty_chart 值来独立显示/隐藏各个图表
+      //                       "network_history.enabled" 设置必须设置为 true，以便网络图表正常工作
+      //                       如果 "network_history.enabled" 设置为 false，则无论其独立设置如何，所有网络图表都将被完全禁用
+      "network_charts": {
+        // nethash_chart: 一组设置，与网络哈希率图表相关
+        "nethash_chart": {
+          // enabled: 启用/禁用网络哈希率图表（true/false）
+          //          如果设置为 false，则网络哈希率图表将完全不可访问
+          //          注意：`shared_pages.show_hashrate` 选项必须设置为 true，否则网络哈希率图表将完全不可访问
+          "enabled": true,
+          // chart_title: 一组设置，与图表标题相关
+          "chart_title": {
+            // enabled: 启用/禁用图表标题（true/false）
+            //          如果设置为 false，则图表标题将完全从图表中消失
+            "enabled": false,
+            // title_text: 要在图表标题中显示的文本
+            //             注意：您可以添加 "/n" 字符进行回车
+            //             以下关键字可用于图表标题：
+            //             {coin_name}: 显示 `coin.name` 设置中的硬币名称
+            //             {max_saved_records}: 显示图表显示数据的记录数，来自 `network_history.max_saved_records` 设置
+            //             {max_hours}: 显示图表显示数据的小时数，来自 `network_history.max_hours` 设置
+            //             {current_nethash}: 显示网络图表数据中最近的 nethash 值
+            //             {highest_nethash}: 显示网络图表数据中的最高 nethash 值
+            //             {lowest_nethash}: 显示网络图表数据中的最低 nethash 值
+            //             {highest_block}: 显示网络图表数据中的最高块高度值
+            //             {lowest_block}: 显示网络图表数据中的最低块高度值
+            "title_text": "{coin_name} Network Hashrate History for the last {max_hours} hours\nHigh: {highest_nethash}\nCurrent: {current_nethash}\nLow: {lowest_nethash}\nBlock: {highest_block}",
+            // alignment: 确定如何水平对齐图表标题文本
+            //            有效选项为 left, center 和 right
+            "alignment": "center",
+            // color: 更改图表标题文本颜色
+            //        将其设置为任何有效的 html 颜色
+            //        例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+            "color": "#666666",
+            // font: 一组设置，与图表标题字体相关
+            "font": {
+              // family: 用于图表标题的字体
+              //         有效选项为：Arial, Verdana, Times New Roman, Georgia, Courier New, Tahoma
+              "family": "Arial",
+              // size: 确定字体文本的大小（以像素为单位）
+              "size": 20,
+              // weight: 确定字体文本的粗细
+              //         有效选项为：normal, bold, bolder, lighter, 100, 200, 300, 400, 500, 600, 700, 800, 900
+              "weight": "bold"
+            }
+          },
+          // legend: 一组设置，与图表图例相关
+          "legend": {
+            // enabled: 启用/禁用图表图例（true/false）
+            //          如果设置为 false，则图例将完全从图表中消失
+            "enabled": true,
+            // position: 确定图表图例的位置
+            //           有效选项为 top, left, bottom 和 right
+            "position": "bottom"
+          },
+          // bgcolor: 更改网络哈希率图表的背景颜色
+          //          将其设置为任何有效的 html 颜色
+          //          例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "bgcolor": "#ffffff",
+          // line_color: 更改网络哈希率图表的线条颜色
+          //             将其设置为任何有效的 html 颜色
+          //             例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "line_color": "rgba(54, 162, 235, 1)",
+          // fill_color: 更改网络哈希率图表的填充颜色
+          //             将其设置为任何有效的 html 颜色
+          //             例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "fill_color": "rgba(54, 162, 235, 0.2)",
+          // crosshair_color: 更改网络哈希率图表的垂直十字准线颜色
+          //             将其设置为任何有效的 html 颜色
+          //             例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "crosshair_color": "#000000",
+          // block_line: 一组设置，与网络哈希率图表上的垂直块线相关
+          "block_line": {
+            // enabled: 启用/禁用垂直块线（true/false）
+            //          如果设置为 false，则垂直块线将完全从图表中隐藏
+            //          注意：`network_history.max_saved_records` 选项也必须设置为 0，否则垂直块线将完全从图表中隐藏
+            "enabled": true,
+            // block_line_color: 更改网络哈希率图表的块数据的线条颜色
+            //                   将其设置为任何有效的 html 颜色
+            //                   例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+            "block_line_color": "rgba(0, 128, 0, 0.2)"
+          },
+          // round_decimals: 设置哈希率四舍五入到多少位小数（最大 20）
+          //                 注意：设置为 -1 以输出原始值而不进行四舍五入
+          "round_decimals": 3,
+          // chart_height: 图表高度（以 px 为单位）
+          "chart_height": 300,
+          // full_row: 确定图表是出现在单独的行中，还是可以与同一行中的另一个图表并排显示
+          //           如果设置为 true，则图表将占据页面的全部宽度
+          //           如果设置为 false，并且配置了另一个图表显示，则第 2 个图表将出现在此图表旁边，两者都占据屏幕宽度的 50%
+          //           注意：在移动电话和某些平板电脑等较小的屏幕上，无论 full_row 设置如何，每个图表都将占据自己的行，因为屏幕空间有限
+          "full_row": false,
+          // stretch_to_fit: 确定图表是否应适应周围的图表框（带或不带填充）
+          //                 如果设置为 true，则图表将占据图表框内的所有可用空间
+          //                 如果设置为 false，则图表框的 4 个侧面都会有一些填充
+          "stretch_to_fit": false
+        },
+        // difficulty_chart: 一组设置，与网络难度图表相关
+        "difficulty_chart": {
+          // enabled: 启用/禁用网络难度图表（true/false）
+          //          如果设置为 false，则网络难度图表将完全不可访问
+          "enabled": true,
+          // chart_title: 一组设置，与图表标题相关
+          "chart_title": {
+            // enabled: 启用/禁用图表标题（true/false）
+            //          如果设置为 false，则图表标题将完全从图表中消失
+            "enabled": false,
+            // title_text: 要在图表标题中显示的文本
+            //             注意：您可以添加 "/n" 字符进行回车
+            //             以下关键字可用于图表标题：
+            //             {coin_name}: 显示 `coin.name` 设置中的硬币名称
+            //             {max_saved_records}: 显示图表显示数据的记录数，来自 `network_history.max_saved_records` 设置
+            //             {max_hours}: 显示图表显示数据的小时数，来自 `network_history.max_hours` 设置
+            //             {current_pow_difficulty}: 显示网络图表数据中最近的 POW 难度值
+            //             {highest_pow_difficulty}: 显示网络图表数据中的最高 POW 难度值
+            //             {lowest_pow_difficulty}: 显示网络图表数据中的最低 POW 难度值
+            //             {current_pos_difficulty}: 显示网络图表数据中最近的 POS 难度值
+            //             {highest_pos_difficulty}: 显示网络图表数据中的最高 POS 难度值
+            //             {lowest_pos_difficulty}: 显示网络图表数据中的最低 POS 难度值
+            //             {highest_block}: 显示网络图表数据中的最高块高度值
+            //             {lowest_block}: 显示网络图表数据中的最低块高度值
+            "title_text": "{coin_name} Difficulty Rate History for the last {max_hours} hours\nHigh: {highest_pos_difficulty}\nCurrent: {current_pos_difficulty}\nLow: {lowest_pos_difficulty}\nBlock: {highest_block}",
+            // alignment: 确定如何水平对齐图表标题文本
+            //            有效选项为 left, center 和 right
+            "alignment": "center",
+            // color: 更改图表标题文本颜色
+            //        将其设置为任何有效的 html 颜色
+            //        例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+            "color": "#666666",
+            // font: 一组设置，与图表标题字体相关
+            "font": {
+              // family: 用于图表标题的字体
+              //         有效选项为：Arial, Verdana, Times New Roman, Georgia, Courier New, Tahoma
+              "family": "Arial",
+              // size: 确定字体文本的大小（以像素为单位）
+              "size": 20,
+              // weight: 确定字体文本的粗细
+              //         有效选项为：normal, bold, bolder, lighter, 100, 200, 300, 400, 500, 600, 700, 800, 900
+              "weight": "bold"
+            }
+          },
+          // legend: 一组设置，与图表图例相关
+          "legend": {
+            // enabled: 启用/禁用图表图例（true/false）
+            //          如果设置为 false，则图例将完全从图表中消失
+            "enabled": true,
+            // position: 确定图表图例的位置
+            //           有效选项为 top, left, bottom 和 right
+            "position": "bottom"
+          },
+          // bgcolor: 更改网络难度图表的背景颜色
+          //          将其设置为任何有效的 html 颜色
+          //          例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "bgcolor": "#ffffff",
+          // pow_line_color: 更改 POW 硬币的网络难度图表的线条颜色
+          //                 将其设置为任何有效的 html 颜色
+          //                 例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "pow_line_color": "rgba(255, 99, 132, 1)",
+          // pow_fill_color: 更改 POW 硬币的网络难度图表的填充颜色
+          //                 将其设置为任何有效的 html 颜色
+          //                 例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "pow_fill_color": "rgba(255, 99, 132, 0.2)",
+          // pos_line_color: 更改 POS 硬币的网络难度图表的线条颜色
+          //                 将其设置为任何有效的 html 颜色
+          //                 例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "pos_line_color": "rgba(255, 161, 0, 1)",
+          // pos_fill_color: 更改 POS 硬币的网络难度图表的填充颜色
+          //                 将其设置为任何有效的 html 颜色
+          //                 例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "pos_fill_color": "rgba(255, 161, 0, 0.2)",
+          // crosshair_color: 更改网络难度图表的垂直十字准线颜色
+          //             将其设置为任何有效的 html 颜色
+          //             例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+          "crosshair_color": "#000000",
+          // block_line: 一组设置，与网络难度图表上的垂直块线相关
+          "block_line": {
+            // enabled: 启用/禁用垂直块线（true/false）
+            //          如果设置为 false，则垂直块线将完全从图表中隐藏
+            //          注意：`network_history.max_saved_records` 选项也必须设置为 0，否则垂直块线将完全从图表中隐藏
+            "enabled": true,
+            // block_line_color: 更改网络难度图表的块数据的线条颜色
+            //                   将其设置为任何有效的 html 颜色
+            //                   例如："#ffffff" 或 "rgba(255, 255, 255, 1)" 或 "white"
+            "block_line_color": "rgba(0, 128, 0, 0.2)"
+          },
+          // round_decimals: 设置难度值四舍五入到多少位小数（最大 20）
+          //                 注意：设置为 -1 以输出原始值而不进行四舍五入
+          "round_decimals": 3,
+          // chart_height: 图表高度（以 px 为单位）
+          "chart_height": 300,
+          // full_row: 确定图表是出现在单独的行中，还是可以与同一行中的另一个图表并排显示
+          //           如果设置为 true，则图表将占据页面的全部宽度
+          //           如果设置为 false，并且配置了另一个图表显示，则第 2 个图表将出现在此图表旁边，两者都占据屏幕宽度的 50%
+          //           注意：在移动电话和某些平板电脑等较小的屏幕上，无论 full_row 设置如何，每个图表都将占据自己的行，因为屏幕空间有限
+          "full_row": false,
+          // stretch_to_fit: 确定图表是否应适应周围的图表框（带或不带填充）
+          //                 如果设置为 true，则图表将占据图表框内的所有可用空间
+          //                 如果设置为 false，则图表框的 4 个侧面都会有一些填充
+          "stretch_to_fit": false
+        },
+        // reload_chart_seconds: 自动从服务器重新加载网络图表数据的时间（以秒为单位）
+        //                       设置为 0 以禁用自动重新加载图表数据
+        "reload_chart_seconds": 60,
+        // sync_charts: 确定在循环浏览不同数据点时是否应同步多个网络图表
+        //              如果设置为 true，所有网络图表将同步，以便当单击或将鼠标光标移动到特定图表上时，所有其他网络图表也将把十字准线设置为相同的数据点，以便于比较
+        //              如果设置为 false，则只有当前正在操作的图表才会显示正在查看的数据点的十字准线
+        "sync_charts": true
+      }
+    },
+   "page_footer": {
+      "sticky_footer": false,
+      "bgcolor": "",
+      "footer_height_desktop": "50px",
+      "footer_height_tablet": "70px",
+      "footer_height_mobile": "70px",
+      "social_links": [
+        {
+          "enabled": true,
+          "tooltip_text": "Github",
+          "url": "https://github.com/scashnetwork/",
+          "fontawesome_class": "fa-brands fa-github",
+          "image_path": ""
+        },
+        {
+          "enabled": true,
+          "tooltip_text": "Twitter",
+          "url": "https://x.com/scashnetwork",
+          "fontawesome_class": "fa-brands fa-twitter",
+          "image_path": ""
+        },
+        {
+          "enabled": true,
+          "tooltip_text": "Discord",
+          "url": "https://discord.com/invite/wvhM6mBVtT",
+          "fontawesome_class": "fa-brands fa-discord",
+          "image_path": ""
+        },
+        {
+          "enabled": true,
+          "tooltip_text": "Telegram",
+          "url": "https://t.me/SatoshiCashNetwork",
+          "fontawesome_class": "fa-brands fa-telegram",
+          "image_path": ""
+        },
+        {
+          "enabled": true,
+          "tooltip_text": "Website",
+          "url": "https://scashnetwork.org/",
+          "fontawesome_class": "fa-solid fa-globe",
+          "image_path": ""
+        },
+        {
+          "enabled": true,
+          "tooltip_text": "Coingecko",
+          "url": "https://www.coingecko.com/en/coins/satoshi-cash-network",
+          "fontawesome_class": "",
+          "image_path": "/img/coingecko.png"
+        }
+      ],
+      "social_link_percent_height_desktop": 70,
+      "social_link_percent_height_tablet": 42,
+      "social_link_percent_height_mobile": 40,
+      "powered_by_text": "<a class='nav-link poweredby' href='https://github.com/Forlingham/eiquidus' target='_blank'>scash export v{explorer_version}</a>"
+    }
+  
+  },
+
+  /* 内置页面（无法禁用） */
+
+  // index_page: 一组设置，与索引页面相关
+  "index_page": {
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": true,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": true,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": true,
+    // page_header: 一组设置，与索引页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.ex_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_last_updated: 确定是否在页面标题下方显示带有最后更新日期的标签（true/false）
+      "show_last_updated": true,
+      // show_description: 确定是否显示 "localization.ex_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // transaction_table: 一组设置，与索引页面上的交易表相关
+    //                    表数据通过 /ext/getlasttxs api 填充
+    "transaction_table": {
+      // page_length_options: 页面长度选项数组，确定表中任何给定时间显示的条目/记录数
+      //                      注意：页面长度选项将受到 /ext/getlasttxs api 的 max_items_per_query 的限制
+      "page_length_options": [ 10, 25, 50, 75, 100, 250, 500, 1000 ],
+      // items_per_page: 表中任何给定时间显示的默认条目/记录数
+      "items_per_page": 10,
+      // reload_table_seconds: 自动从服务器重新加载表格数据的时间（以秒为单位）
+      //                       设置为 0 以禁用自动重新加载表格数据
+      "reload_table_seconds": 60
+    },
+    // show_extracted_by: 确定是否显示一个新列，其中包含挖掘该块的地址
+    //                    如果启用，将在索引页面上显示一个新列，该列仅显示挖掘 coinbase 交易的块的地址
+    "show_extracted_by": false
+  },
+
+  // block_page: 一组设置，与块页面相关
+  "block_page": {
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与块页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.block_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_description: 确定是否显示 "localization.block_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // genesis_block: 您的硬币创世块哈希用于确定区块链的开始
+    //                对于许多比特币克隆，您可以使用以下 cmd 获取创世块的块哈希：coin-cli getblockhash 0
+    //                注意：如果此值输入不正确，则浏览器将无法通过块或交易哈希找到或导航到创世块
+    "genesis_block": "00014f36c648cdbc750f7dd28487a23cd9e0b0f95f5fccc5b5d01367e3f57469",
+    // multi_algorithm: 一组设置，可用于显示一个新列，其中包含用于挖掘特定块的哈希算法（适用于多算法硬币）
+    //                  如果启用，将在块页面和主交易主页上显示一个新列，该列显示用于挖掘特定块或 tx 的哈希算法
+    //                  注意：更改此部分中的任何选项将需要重新索引区块链数据，以便之前同步的块可以显示算法
+    "multi_algorithm": {
+      // show_algo: 确定是否读取并显示用于挖掘特定块的哈希算法（适用于多算法硬币）
+      //            注意：启用此选项将需要重新索引区块链数据，以便之前同步的块可以显示算法
+      "show_algo": false,
+      // key_name: 原始块数据中确定用于挖掘特定块的哈希算法的键或标识符的名称
+      //           注意：更改此选项将需要重新索引区块链数据，以便之前同步的块可以显示算法
+      "key_name": "pow_algo"
+    },
+    // show_extracted_by: 确定是否显示一个新列，其中包含挖掘该块的地址
+    //                    如果启用，将在块页面上显示一个新列，该列显示挖掘该块的地址
+    "show_extracted_by": false
+  },
+
+  // transaction_page: 一组设置，与交易/tx 页面相关
+  "transaction_page": {
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与交易/tx 页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.tx_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_description: 确定是否显示 "localization.tx_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // genesis_tx: 您的硬币创世交易哈希用于确定区块链的开始
+    //             对于许多比特币克隆，您可以使用以下 cmd 从创世块中查找交易哈希列表：coin-cli getblock 00014f36c648cdbc750f7dd28487a23cd9e0b0f95f5fccc5b5d01367e3f57469
+    //             注意：如果此值输入不正确，则浏览器将无法通过搜索创世交易哈希找到或导航到创世块
+    "genesis_tx": "dd1d332ad2d8d8f49195056d482ae3c96fd2d16e9d166413b27ca7f19775644c",
+    // show_op_return: 确定是否解码并显示可能嵌入在交易中的 OP_RETURN 值
+    //                 注意：启用此选项将需要重新索引区块链数据，以便之前同步的交易可以显示 OP_RETURN 值
+    "show_op_return": false,
+    // show_extracted_by: 确定是否显示一个新列，其中包含挖掘该块的地址
+    //                    如果启用，将在交易页面上显示一个新列，该列仅显示挖掘 coinbase 交易的块的地址
+    "show_extracted_by": false
+  },
+
+  // address_page: 一组设置，与地址页面相关
+  "address_page": {
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与地址页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.a_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_description: 确定是否显示 "localization.a_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // show_sent_received: 确定是否在地址页面顶部显示“发送总额”和“接收总额”列
+    "show_sent_received": false,
+    // enable_hidden_address_view: 确定是否允许查看特殊的 'hidden_address' 钱包地址，只要交易中涉及私人/隐藏钱包地址，就会填充该地址
+    //                              注意：启用此选项将为所有隐藏地址添加超链接，并允许查看 /address/hidden_address 页面
+    //                                    禁用此选项将以纯文本形式显示所有隐藏地址，不带超链接，访问 /address/hidden_address 页面将导致 404 错误
+    "enable_hidden_address_view": false,
+    // enable_unknown_address_view: 确定是否允许查看特殊的 'unknown_address' 钱包地址，只要无法破译钱包地址，就会填充该地址
+    //                              注意：启用此选项将为所有未知地址添加超链接，并允许查看 /address/unknown_address 页面
+    //                                    禁用此选项将以纯文本形式显示所有未知地址，不带超链接，访问 /address/unknown_address 页面将导致 404 错误
+    "enable_unknown_address_view": false,
+    // history_table: 一组设置，与地址页面上的历史记录表相关
+    //                表数据通过 /ext/getaddresstxs api 填充
+    "history_table": {
+      // page_length_options: 页面长度选项数组，确定表中任何给定时间显示的条目/记录数
+      //                      注意：页面长度选项将受到 /ext/getaddresstxs api 的 max_items_per_query 的限制
+      "page_length_options": [ 10, 25, 50, 75, 100, 250, 500, 1000 ],
+      // items_per_page: 表中任何给定时间显示的默认条目/记录数
+      "items_per_page": 50
+    }
+  },
+
+  // error_page: 一组设置，与错误页面相关
+  "error_page": {
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与错误页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.error_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_description: 确定是否显示 "localization.error_description" 中定义的页面描述（true/false）
+      "show_description": true
+    }
+  },
+
+  /* 附加页面（可以通过设置启用/禁用） */
+
+  // masternodes_page: 一组设置，与主节点页面相关
+  "masternodes_page": {
+    // enabled: 启用/禁用主节点页面（true/false）
+    //          如果设置为 false，则主节点页面将完全不可访问
+    "enabled": true,
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与主节点页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.mn_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_last_updated: 确定是否在页面标题下方显示带有最后更新日期的标签（true/false）
+      "show_last_updated": true,
+      // show_description: 确定是否显示 "localization.mn_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // masternode_table: 一组设置，与主节点页面上的主节点表相关
+    //                   表数据通过 /ext/getmasternodelist api 填充
+    "masternode_table": {
+      // page_length_options: 页面长度选项数组，确定表中任何给定时间显示的条目/记录数
+      "page_length_options": [ 10, 25, 50, 75, 100, 250, 500, 1000 ],
+      // items_per_page: 表中任何给定时间显示的默认条目/记录数
+      "items_per_page": 10
+    }
+  },
+
+  // movement_page: 一组设置，与移动页面相关
+  "movement_page": {
+    // enabled: 启用/禁用移动页面（true/false）
+    //          如果设置为 false，则移动页面将完全不可访问
+    "enabled": true,
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与移动页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.move_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_last_updated: 确定是否在页面标题下方显示带有最后更新日期的标签（true/false）
+      "show_last_updated": true,
+      // show_description: 确定是否显示 "localization.move_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // movement_table: 一组设置，与移动页面上的移动表相关
+    //                 表数据通过 /ext/getlasttxs api 填充
+    "movement_table": {
+      // page_length_options: 页面长度选项数组，确定表中任何给定时间显示的条目/记录数
+      //                      注意：页面长度选项将受到 /ext/getlasttxs api 的 max_items_per_query 的限制
+      "page_length_options": [ 10, 25, 50, 75, 100, 250, 500, 1000 ],
+      // items_per_page: 表中任何给定时间显示的默认条目/记录数
+      "items_per_page": 10,
+      // reload_table_seconds: 自动从服务器重新加载表格数据的时间（以秒为单位）
+      //                       设置为 0 以禁用自动重新加载表格数据
+      "reload_table_seconds": 45,
+      // min_amount: 需要在单次交易中接收的最小硬币数才能显示在移动页面上
+      "min_amount": 5000,
+      // low_warning_flag: 将发送金额高于此值的交易标记为黄色/橙色
+      "low_warning_flag": 50000,
+      // high_warning_flag: 将发送金额高于此值的交易标记为红色
+      "high_warning_flag": 100000
+    }
+  },
+
+  // network_page: 一组设置，与网络页面相关
+  "network_page": {
+    // enabled: 启用/禁用网络页面（true/false）
+    //          如果设置为 false，则网络页面将完全不可访问
+    "enabled": true,
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与网络页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.net_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_last_updated: 确定是否在页面标题下方显示带有最后更新日期的标签（true/false）
+      "show_last_updated": true,
+      // show_description: 确定是否显示 "localization.net_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // connections_table: 一组设置，与网络页面上的连接表相关
+    //                    表数据通过 /ext/getnetworkpeers api 填充
+    "connections_table": {
+      // enabled: 启用/禁用连接表（true/false）
+      //          如果设置为 false，则连接表将完全不可访问
+      "enabled": true,
+      // page_length_options: 页面长度选项数组，确定表中任何给定时间显示的条目/记录数
+      "page_length_options": [ 10, 25, 50, 75, 100 ],
+      // items_per_page: 表中任何给定时间显示的默认条目/记录数
+      "items_per_page": 10,
+      // port_filter: 指定端口号以仅允许显示所选端口上的对等点。
+      //              将此值设置为 0 以显示任何端口上的所有对等点。
+      //              将此值设置为 -1 以隐藏端口列。注意：如果设置了 -1 值，则不会为在不同端口上连接的 ip 地址显示多个重复行，而是每个唯一 ip 地址仅显示一行
+      "port_filter": -1,
+      // hide_protocols: 将从表结果中过滤掉的协议号数组
+      //                 如果对等点使用这些协议号之一连接到浏览器钱包，则该记录将不会显示在此表中
+      //                 按以下格式添加任意数量的协议值：[ 0, 70803, 70819 ]
+      "hide_protocols": [ ]
+    },
+    // addnodes_table: 一组设置，与网络页面上的添加节点表相关
+    //                 表数据通过 /ext/getnetworkpeers api 填充
+    "addnodes_table": {
+      // enabled: 启用/禁用添加节点表（true/false）
+      //          如果设置为 false，则添加节点表将完全不可访问
+      "enabled": true,
+      // page_length_options: 页面长度选项数组，确定表中任何给定时间显示的条目/记录数
+      "page_length_options": [ 10, 25, 50, 75, 100 ],
+      // items_per_page: 表中任何给定时间显示的默认条目/记录数
+      "items_per_page": 10,
+      // port_filter: 指定端口号以仅允许显示所选端口上的对等点。
+      //              将此值设置为 0 以显示任何端口上的所有对等点。
+      //              将此值设置为 -1 以防止显示 addnode 字符串的端口部分。注意：如果设置了 -1 值，则不会为在不同端口上连接的 ip 地址显示多个重复行，而是每个唯一 ip 地址仅显示一行
+      "port_filter": -1,
+      // hide_protocols: 将从表结果中过滤掉的协议号数组
+      //                 如果对等点使用这些协议号之一连接到浏览器钱包，则该记录将不会显示在此表中
+      //                 按以下格式添加任意数量的协议值：[ 0, 70803, 70819 ]
+      "hide_protocols": [ ]
+    },
+    // onetry_table: 一组设置，与网络页面上的尝试一次表相关
+    //               表数据通过 /ext/getnetworkpeers api 填充
+    "onetry_table": {
+      // enabled: 启用/禁用尝试一次表（true/false）
+      //          如果设置为 false，则尝试一次表将完全不可访问
+      "enabled": true,
+      // page_length_options: 页面长度选项数组，确定表中任何给定时间显示的条目/记录数
+      "page_length_options": [ 10, 25, 50, 75, 100 ],
+      // items_per_page: 表中任何给定时间显示的默认条目/记录数
+      "items_per_page": 10,
+      // port_filter: 指定端口号以仅允许显示所选端口上的对等点。
+      //              将此值设置为 0 以显示任何端口上的所有对等点。
+      //              将此值设置为 -1 以防止显示 onetry 字符串的端口部分。注意：如果设置了 -1 值，则不会为在不同端口上连接的 ip 地址显示多个重复行，而是每个唯一 ip 地址仅显示一行
+      "port_filter": -1,
+      // hide_protocols: 将从表结果中过滤掉的协议号数组
+      //                 如果对等点使用这些协议号之一连接到浏览器钱包，则该记录将不会显示在此表中
+      //                 按以下格式添加任意数量的协议值：[ 0, 70803, 70819 ]
+      "hide_protocols": [ ]
+    }
+  },
+
+  // richlist_page: 一组设置，与富豪榜/前 100 名页面相关
+  "richlist_page": {
+    // enabled: 启用/禁用富豪榜/前 100 名页面（true/false）
+    //          如果设置为 false，则富豪榜/前 100 名页面将完全不可访问
+    "enabled": true,
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与富豪榜/前 100 名页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.rl_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_last_updated: 确定是否在页面标题下方显示带有最后更新日期的标签（true/false）
+      "show_last_updated": true,
+      // show_description: 确定是否显示 "localization.rl_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // show_current_balance: 确定是否显示当前单个钱包中拥有最多硬币的前 100 个钱包地址列表（true/false）
+    "show_current_balance": true,
+    // show_received_coins: 确定是否显示根据所有已接收交易相加得出的接收硬币总数最高的前 100 个钱包地址列表（true/false）
+    "show_received_coins": true,
+    // wealth_distribution: 一组设置，与富豪榜/前 100 名页面的财富分配部分相关
+    //                      此部分包含一个摘要表，其中包含前 1-25、26-50、51-75、76-100、101+ 钱包和所有销毁硬币所拥有的硬币细分，以及相关的饼图
+    "wealth_distribution": {
+      // show_distribution_table: 显示/隐藏财富分配摘要表，其中包含前 1-25、26-50、51-75、76-100、101+ 钱包和所有销毁硬币所拥有的硬币细分（true/false）
+      //                          如果设置为 false，则财富分配表将完全隐藏
+      "show_distribution_table": true,
+      // show_distribution_chart: 显示/隐藏财富分配饼图，其中包含前 1-25、26-50、51-75、76-100、101+ 钱包和所有销毁硬币所拥有的硬币细分（true/false）
+      //                          如果设置为 false，则财富分配饼图将完全隐藏
+      "show_distribution_chart": true,
+      // colors: 一个 html 颜色代码数组，用于表示财富分配表和饼图中的前 100 个分组
+      //         从左到右，这 6 种颜色分别表示："前 1-25"、"前 26-50"、"前 51-75"、"前 76-100"、"101+" 和 "销毁硬币" - 如果启用了 include_burned_coins_in_distribution 设置，则使用该颜色
+      "colors": [ "#e73cbd", "#00bc8c", "#3498db", "#e3ce3e", "#adb5bd", "#e74c3c" ],
+      // show_address_count: 在财富分配表底部显示/隐藏至少在 1 笔交易中使用的所有唯一地址的总数
+      //                     如果设置为 true，则地址计数将在富豪榜同步结束时确定并显示在财富分配表中
+      //                     如果设置为 false，则富豪榜同步将更快完成，因为不会查找地址计数，也不会在财富分配表中显示
+      "show_address_count": true
+    },
+    // burned_coins: 一组设置，与不应出现在富豪榜/前 100 名页面中的钱包地址相关
+    //               注意：这些设置直到运行（并完成）正常的索引同步或重新索引富豪榜后才会生效
+    "burned_coins": {
+      // addresses: 要从富豪榜/前 100 名页面中排除的钱包地址数组
+      //            使用此设置可防止特定钱包地址显示在富豪榜和财富分配图表部分
+      //            这些钱包地址将从富豪榜中完全删除，但仍可通过其余浏览器页面正常查看和访问
+      //            按以下格式添加任意数量的钱包地址：[ "EPUzEEHa45Rsn87WBos6SqkZZ8GrsfgvtZ", "EUzgat1r5AFyoTXK5WgTyM8kABPJY1SX7E" ]
+      "addresses": [ "EXorBurnAddressXXXXXXXXXXXXXW7cDZQ" ],
+      // include_burned_coins_in_distribution: 确定是否将销毁硬币包含在财富分配部分中
+      //                                       此设置需要根据您的主要硬币供应值是否已从总数中删除了销毁硬币而进行更改
+      //                                       如果您的区块链已有从总供应量中删除销毁硬币的机制，并且销毁硬币不包含在分配总数中，请将此值设置为 false
+      //                                       如果您的区块链在其总供应量中仍包含销毁硬币，并且将在分配表和图表中添加“销毁硬币”部分，请将此值设置为 true
+      "include_burned_coins_in_distribution": false
+    }
+  },
+
+  // markets_page: 一组设置，与市场页面相关
+  "markets_page": {
+    // enabled: 启用/禁用市场页面（true/false）
+    //          如果设置为 false，则所有市场页面将完全不可访问
+    "enabled": true,
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与市场页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.mkt_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_last_updated: 确定是否在页面标题下方显示带有最后更新日期的标签（true/false）
+      "show_last_updated": true,
+      // show_exchange_url: 确定是否显示所选货币对的交易所交易页面的外部链接（true/false）
+      "show_exchange_url": true,
+      // show_description: 确定是否显示 "localization.mkt_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // show_market_dropdown_menu: 确定页面标题中的市场菜单是用作下拉菜单还是单击菜单项以打开默认市场（true/false）
+    //                            如果设置为 true，则市场标题菜单将用作下拉菜单，允许从所有可用市场中进行选择
+    //                            如果设置为 false，则市场标题菜单将用作单击菜单项，仅打开默认市场
+    //                            注意：下拉菜单仅在启用了 2 个或更多市场时才起作用，否则它将自动默认为单击菜单项
+    "show_market_dropdown_menu": true,
+    // show_market_select: 确定所有市场页面是否会在页面顶部附近显示可单击的已启用市场列表以进行快速选择（true/false）
+    //                     如果设置为 true，则所有市场页面将在页面顶部附近显示可单击的已启用市场列表以进行快速选择
+    //                     如果设置为 false，则市场页面上不会显示市场选择框
+    //                     注意：市场选择框仅在启用了 2 个或更多市场时才可见，否则它将自动隐藏
+    "show_market_select": true,
+    // exchanges: 启用/禁用与任何可用内置交易所的 api 集成
+    //            启用的交易所显示许多与交易所相关的指标，包括市场摘要、24 小时图表、最近的买入/卖出订单和最新的交易历史记录
+    //            支持的交易所：altmarkets, dex-trade, dexomy, freiexchange/freixlite, nonkyc, poloniex, xeggex, yobit
+    "exchanges": {
+      // altmarkets: 一组设置，与 altmarkets 交易所相关
+      "altmarkets": {
+        // enabled: 启用/禁用 altmarkets 交易所（true/false）
+        //          如果设置为 false，则 altmarkets 页面将完全不可访问，并且不会为此交易所下载任何市场数据
+        "enabled": false,
+        // trading_pairs: 市场交易对符号数组
+        //                您可以根据需要添加任意数量的交易对
+        //                所有条目必须指定在交易所显示的硬币符号，后跟斜杠 (/) 并以交易的市场或资产符号结尾
+        //                例如："LTC/BTC", "LTC/USDT", "LTC/ETH"
+        "trading_pairs": [ "LTC/BTC", "LTC/ETH" ]
+      },
+      // dextrade: 一组设置，与 dex-trade 交易所相关
+      "dextrade": {
+        // enabled: 启用/禁用 dex-trade 交易所（true/false）
+        //          如果设置为 false，则 dex-trade 页面将完全不可访问，并且不会为此交易所下载任何市场数据
+        "enabled": false,
+        // trading_pairs: 市场交易对符号数组
+        //                您可以根据需要添加任意数量的交易对
+        //                所有条目必须指定在交易所显示的硬币符号，后跟斜杠 (/) 并以交易的市场或资产符号结尾
+        //                例如："LTC/BTC", "LTC/USDT", "LTC/ETH"
+        "trading_pairs": [ "LTC/BTC" ]
+      },
+      // dexomy: 一组设置，与 dexomy 交易所相关
+      "dexomy": {
+        // enabled: 启用/禁用 dexomy 交易所（true/false）
+        //          如果设置为 false，则 dexomy 页面将完全不可访问，并且不会为此交易所下载任何市场数据
+        "enabled": false,
+        // trading_pairs: 市场交易对符号数组
+        //                您可以根据需要添加任意数量的交易对
+        //                所有条目必须指定在交易所显示的硬币符号，后跟斜杠 (/) 并以交易的市场或资产符号结尾
+        //                例如："LTC/BTC", "LTC/USDT", "LTC/ETH"
+        "trading_pairs": [ "BTC/USDT" ]
+      },
+      // freiexchange: 一组设置，与 freiexchange/freixlite 交易所相关
+      //               注意：由于缺乏 OHLCV api 数据，freiexchange 不显示 24 小时图表
+      "freiexchange": {
+        // enabled: 启用/禁用 freiexchange/freixlite 交易所（true/false）
+        //          如果设置为 false，则 freiexchange/freixlite 页面将完全不可访问，并且不会为此交易所下载任何市场数据
+        "enabled": false,
+        // trading_pairs: 市场交易对符号数组
+        //                您可以根据需要添加任意数量的交易对
+        //                所有条目必须指定在交易所显示的硬币符号，后跟斜杠 (/) 并以交易的市场或资产符号结尾
+        //                例如："LTC/BTC", "LTC/USDT", "LTC/ETH"
+        "trading_pairs": [ "LTC/BTC" ]
+      },
+      // nonkyc: 一组设置，与 nonkyc 交易所相关
+      "nonkyc": {
+        // enabled: 启用/禁用 nonkyc 交易所（true/false）
+        //          如果设置为 false，则 nonkyc 页面将完全不可访问，并且不会为此交易所下载任何市场数据
+        "enabled": false,
+        // trading_pairs: 市场交易对符号数组
+        //                您可以根据需要添加任意数量的交易对
+        //                所有条目必须指定在交易所显示的硬币符号，后跟斜杠 (/) 并以交易的市场或资产符号结尾
+        //                例如："LTC/BTC", "LTC/USDT", "LTC/ETH"
+        "trading_pairs": [ "LTC/USDT" ]
+      },
+      // poloniex: 一组设置，与 poloniex 交易所相关
+      "poloniex": {
+        // enabled: 启用/禁用 poloniex 交易所（true/false）
+        //          如果设置为 false，则 poloniex 页面将完全不可访问，并且不会为此交易所下载任何市场数据
+        "enabled": false,
+        // trading_pairs: 市场交易对符号数组
+        //                您可以根据需要添加任意数量的交易对
+        //                所有条目必须指定在交易所显示的硬币符号，后跟斜杠 (/) 并以交易的市场或资产符号结尾
+        //                例如："LTC/BTC", "LTC/USDT", "LTC/ETH"
+        "trading_pairs": [ "LTC/BTC" ]
+      },
+      // xeggex: 一组设置，与 xeggex 交易所相关
+      "xeggex": {
+        // enabled: 启用/禁用 xeggex 交易所（true/false）
+        //          如果设置为 false，则 xeggex 页面将完全不可访问，并且不会为此交易所下载任何市场数据
+        "enabled": false,
+        // trading_pairs: 市场交易对符号数组
+        //                您可以根据需要添加任意数量的交易对
+        //                所有条目必须指定在交易所显示的硬币符号，后跟斜杠 (/) 并以交易的市场或资产符号结尾
+        //                例如："LTC/BTC", "LTC/USDT", "LTC/ETH"
+        "trading_pairs": [ "LTC/USDT" ]
+      },
+      // yobit: 一组设置，与 yobit 交易所相关
+      //        注意：由于缺乏 OHLCV api 数据，yobit 不显示 24 小时图表
+      "yobit": {
+        // enabled: 启用/禁用 yobit 交易所（true/false）
+        //          如果设置为 false，则 yobit 页面将完全不可访问，并且不会为此交易所下载任何市场数据
+        "enabled": false,
+        // trading_pairs: 市场交易对符号数组
+        //                您可以根据需要添加任意数量的交易对
+        //                所有条目必须指定在交易所显示的硬币符号，后跟斜杠 (/) 并以交易的市场或资产符号结尾
+        //                例如："LTC/BTC", "LTC/USDT", "LTC/ETH"
+        "trading_pairs": [ "LTC/BTC" ]
+      }
+    },
+    // market_price: 确定如何计算市场价格
+    //               注意：市场价格总是在市场同步过程结束时检索
+    //               有效选项：
+    //               AVERAGE : 市场价格是根据浏览器中启用的所有支持的交易所交易对的平均值计算的，并以 default_exchange.trading_pair 值衡量
+    //               COINGECKO : 市场价格直接从 coingecko api 检索。此选项有些特殊，因为它不需要 markets_page 选项或设置或启用任何支持的市场即可正常运行
+    "market_price": "COINGECKO",
+    // coingecko_currency: 确定在使用 COINGECKO market_price 选项时用于衡量您的硬币的默认加密货币值
+    //                     注意：仅当您设置 market_price = "COINGECKO" 时才需要填写此值。
+    //                           这可以是 coingecko api 支持的任何加密货币符号值，例如 BTC 或 ETH。
+    //                           虽然 coingecko api 支持多种不同的货币，但浏览器仅支持 1 种加密货币市场价格，因此在此处指定用逗号分隔的多种货币将不起作用。
+    //                           美元法定货币也是内置的，并自动从 coingecko api 返回，因此无需在此处指定 USD。
+    //                           有关支持哪些货币值的更多信息，您可以从此处查看 /simple/price api 的 vs_currencies 参数：https://www.coingecko.com/api/documentation
+    "coingecko_currency": "USD",
+    // "coingecko_api_key": 提供免费或付费的 coingecko api 密钥，用于通过 market_price = "COINGECKO" 选项获取 USD 价格和/或市场价格
+    //                      注意：截至 2024 年 2 月，免费的“无密钥” coingecko api 将被弃用，需要 api 密钥才能继续使用
+    "coingecko_api_key": "",
+    // default_exchange: 一组设置，与默认交易所相关
+    //                   当禁用 "show_market_dropdown_menu" 设置时，市场标题菜单将直接导航到默认交易所页面
+    //                   default_exchange.trading_pair 用于在 market_price 值设置为 AVERAGE 时确定最新的市场价格
+    //                   如果留空或填写不正确，则第一个启用的交易所和交易对将用作默认交易所
+    "default_exchange": {
+      // exchange_name: 默认交易所的名称必须与上述 "exchanges" 设置中的交易所名称完全匹配
+      //                有关支持的交易所名称列表，请参阅上面的支持交易所列表
+      "exchange_name": "freiexchange",
+      // trading_pair: 默认交易所的交易对名称必须与上述 "exchanges" 设置中的交易对名称完全匹配
+      "trading_pair": "LTC/BTC"
+    }
+  },
+
+  // api_page: 一组设置，与 api 页面相关
+  "api_page": {
+    // enabled: 启用/禁用公共 api 系统（true/false）
+    //          如果设置为 false，则整个 api 页面将被禁用，并且所有公共 api 端点在调用时都将显示“此方法已禁用”消息，无论其各自的启用状态如何
+    "enabled": true,
+    // show_panels: 确定是否在页面顶部显示 shared_pages.page_header 部分中配置的面板（true/false）
+    "show_panels": false,
+    // show_nethash_chart: 确定是否在页面顶部显示 shared_pages.network_charts.nethash_chart 部分中配置的网络哈希率图表（true/false）
+    "show_nethash_chart": false,
+    // show_difficulty_chart: 确定是否在页面顶部显示 shared_pages.network_charts.difficulty_chart 部分中配置的网络难度图表（true/false）
+    "show_difficulty_chart": false,
+    // page_header: 一组设置，与 api 页面标题相关
+    "page_header": {
+      // show_img: 确定是否显示 "shared_pages.page_header.page_title_image" 设置中定义的页面标题图像（true/false）
+      "show_img": true,
+      // show_title: 确定是否显示 "localization.api_title" 中定义的页面标题（true/false）
+      "show_title": true,
+      // show_description: 确定是否显示 "localization.api_description" 中定义的页面描述（true/false）
+      "show_description": true
+    },
+    // show_logo: 确定是否在 API 文档面板顶部显示 `shared_pages.logo` 图像
+    "show_logo": true,
+    // sample_data: 一组设置，与用于显示真实数据示例 api 链接的示例数据相关
+    "sample_data": {
+      // blockindex: 此值可以是您硬币区块链中的任何有效块高度数字
+      //             注意：此值仅用于在 api 页面上构建示例 api 链接，例如 /api/getblockhash api
+      "blockindex": 64152,
+      // blockhash: 此值可以是您硬币区块链中的任何有效块哈希
+      //            对于许多比特币克隆，您可以使用以下 cmd 获取给定块高度的块哈希：coin-cli getblockhash 64152
+      //            注意：此值仅用于在 api 页面上构建示例 api 链接，例如 /api/getblock api
+      "blockhash": "775d67da29dd6553268061f86368d06654944dd5d5c61db4c97e4c7960c11a74",
+      // txhash: 此值可以是您硬币区块链中的任何有效交易哈希
+      //         对于许多比特币克隆，您可以使用以下 cmd 查找给定块哈希的 tx 哈希列表：coin-cli getblock 000000001ba119a0f6d49ebabd83343b125d7ee3d3184b1b41d6a7f2051153eb
+      //         注意：此值仅用于在 api 页面上构建示例 api 链接，例如 /api/getrawtransaction api
+      "txhash": "6cb3babd256de253f926f10bc8574dadf0a3e2fc8380107b81eb07c67d1e73ed",
+      // address: 此值可以是您硬币区块链中已接收至少 1 个或更多硬币交易的任何有效钱包地址
+      //          注意：此值仅用于在 api 页面上构建示例 api 链接，例如 /ext/getaddress api
+      "address": "ELvb8AZRgHmdsDnD1HYFwbSY4UkPhoECCW"
+    },
+    // public_apis: 一组设置，与公共 api 命令系统相关
+    //              注意：禁用这些 api 中的任何一个都将从 api 页面中删除 api 定义，并且如果在调用 api 端点时将返回“此方法已禁用”消息。
+    //                    浏览器内部使用某些公共 api，例如 /ext/getlasttxs api，即使在此处禁用，内部 api 仍将继续运行。
+    "public_apis": {
+      // rpc: 一组设置，与从硬币钱包 rpc api 检索的 rpc cmd api 相关
+      "rpc": {
+        // getdifficulty: 一组设置，与 /api/getdifficulty api 端点相关
+        //                以最小难度的倍数返回工作量证明难度
+        //                注意：此 api 未在内部使用，因此仅公开可用
+        "getdifficulty": {
+          // enabled: 启用/禁用 /api/getdifficulty api 端点（true/false）
+          //          如果设置为 false，则 /api/getdifficulty api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getconnectioncount: 一组设置，与 /api/getconnectioncount api 端点相关
+        //                     返回与其他节点的连接数
+        //                     注意：此 api 未在内部使用，因此仅公开可用
+        "getconnectioncount": {
+          // enabled: 启用/禁用 /api/getconnectioncount api 端点（true/false）
+          //          如果设置为 false，则 /api/getconnectioncount api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getblockcount: 一组设置，与 /api/getblockcount api 端点相关
+        //                返回最长区块链中的块数
+        //                注意：此 api 未在内部使用，因此仅公开可用
+        "getblockcount": {
+          // enabled: 启用/禁用 /api/getblockcount api 端点（true/false）
+          //          如果设置为 false，则 /api/getblockcount api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getblockhash: 一组设置，与 /api/getblockhash api 端点相关
+        //               返回提供的最佳区块链中块的哈希值
+        //               注意：此 api 未在内部使用，因此仅公开可用
+        "getblockhash": {
+          // enabled: 启用/禁用 /api/getblockhash api 端点（true/false）
+          //          如果设置为 false，则 /api/getblockhash api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getblock: 一组设置，与 /api/getblock api 端点相关
+        //           返回有关块的信息对象
+        //           注意：此 api 未在内部使用，除了在块页面上查看原始块数据的链接外，当禁用此 api 时，该链接将自动删除/隐藏
+        "getblock": {
+          // enabled: 启用/禁用 /api/getblock api 端点（true/false）
+          //          如果设置为 false，则 /api/getblock api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getrawtransaction: a collection of settings that pertain to the /api/getrawtransaction api endpoint
+        //                    Returns raw transaction data
+        //                    NOTE: This api is not used internally except for a link on the transaction/tx page to view the raw transaction data, which will be automatically removed/hidden when this api is disabled
+        "getrawtransaction": {
+          // enabled: Enable/disable the /api/getrawtransaction api endpoint (true/false)
+          //          If set to false, the /api/getrawtransaction api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getnetworkhashps: a collection of settings that pertain to the /api/getnetworkhashps api endpoint
+        //                   Returns the estimated network hashes per second
+        //                   NOTE: This api is not used internally and is therefore only publicly available
+        "getnetworkhashps": {
+          // enabled: Enable/disable the /api/getnetworkhashps api endpoint (true/false)
+          //          If set to false, the /api/getnetworkhashps api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getvotelist: 一组设置，与 /api/getvotelist api 端点相关
+        //              返回有关当前投票列表的详细信息的对象
+        //              注意：此 api 未在内部使用，因此仅公开可用
+        "getvotelist": {
+          // enabled: 启用/禁用 /api/getvotelist api 端点（true/false）
+          //          如果设置为 false，则 /api/getvotelist api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getmasternodecount: 一组设置，与 /api/getmasternodecount api 端点相关
+        //                     返回包含网络上主节点总数的 json 对象（仅适用于主节点硬币）
+        //                     注意：此 api 未在内部使用，因此仅公开可用
+        "getmasternodecount": {
+          // enabled: 启用/禁用 /api/getmasternodecount api 端点（true/false）
+          //          如果设置为 false，则 /api/getmasternodecount api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        }
+      },
+      // ext: 一组设置，与从本地 mongo 数据库集合检索的扩展 api 相关
+      "ext": {
+        // getmoneysupply: 一组设置，与 /ext/getmoneysupply api 端点相关
+        //                 返回当前货币供应量
+        //                 注意：此 api 未在内部使用，因此仅公开可用
+        "getmoneysupply": {
+          // enabled: 启用/禁用 /ext/getmoneysupply api 端点（true/false）
+          //          如果设置为 false，则 /ext/getmoneysupply api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getdistribution: 一组设置，与 /ext/getdistribution api 端点相关
+        //                  返回财富分配统计信息
+        //                  注意：此 api 未在内部使用，因此仅公开可用
+        "getdistribution": {
+          // enabled: 启用/禁用 /ext/getdistribution api 端点（true/false）
+          //          如果设置为 false，则 /ext/getdistribution api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getaddress: 一组设置，与 /ext/getaddress api 端点相关
+        //             返回给定地址的信息
+        //             注意：此 api 未在内部使用，因此仅公开可用
+        "getaddress": {
+          // enabled: 启用/禁用 /ext/getaddress api 端点（true/false）
+          //          如果设置为 false，则 /ext/getaddress api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getaddresstxs: 一组设置，与 /ext/getaddresstxs api 端点相关
+        //                返回从特定偏移量开始的钱包地址的交易
+        //                注意：此 api 通过 ajax 调用在内部使用，以填充地址页面上的地址历史记录表。在此处禁用 api 不会阻止地址历史记录表显示数据
+        "getaddresstxs": {
+          // enabled: 启用/禁用 /ext/getaddresstxs api 端点（true/false）
+          //          如果设置为 false，则 /ext/getaddresstxs api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息），但该 api 仍可在浏览器内部使用
+          "enabled": true,
+          // max_items_per_query: 在单次调用中可以从 /ext/getaddresstxs api 端点返回的最大交易数
+          "max_items_per_query": 100
+        },
+        // gettx: 一组设置，与 /ext/gettx api 端点相关
+        //        返回给定 tx 哈希的信息
+        //        注意：此 api 未在内部使用，因此仅公开可用
+        "gettx": {
+          // enabled: 启用/禁用 /ext/gettx api 端点（true/false）
+          //          如果设置为 false，则 /ext/gettx api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getbalance: 一组设置，与 /ext/getbalance api 端点相关
+        //             返回给定地址的当前余额
+        //             注意：此 api 未在内部使用，因此仅公开可用
+        "getbalance": {
+          // enabled: 启用/禁用 /ext/getbalance api 端点（true/false）
+          //          如果设置为 false，则 /ext/getbalance api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getlasttxs: 一组设置，与 /ext/getlasttxs api 端点相关
+        //             返回大于特定数量硬币的交易，从特定偏移量开始
+        //             注意：此 api 通过 ajax 调用在内部使用，以填充索引和移动页面上的交易表。在此处禁用 api 不会阻止交易表显示数据
+        "getlasttxs": {
+          // enabled: 启用/禁用 /ext/getlasttxs api 端点（true/false）
+          //          如果设置为 false，则 /ext/getlasttxs api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息），但该 api 仍可在浏览器内部使用
+          "enabled": true,
+          // max_items_per_query: 在单次调用中可以从 /ext/getlasttxs api 端点返回的最大交易数
+          "max_items_per_query": 100,
+          // show_extracted_by: 确定是否返回一个包含挖掘该块的地址的新字段
+          //                    如果启用，将在 /ext/getlasttxs api 端点添加一个新字段，该字段仅显示挖掘 coinbase 交易的块的地址
+          "show_extracted_by": false
+        },
+        // getcurrentprice: 一组设置，与 /ext/getcurrentprice api 端点相关
+        //                  返回最后已知的交易所价格
+        //                  注意：此 api 未在内部使用，因此仅公开可用
+        "getcurrentprice": {
+          // enabled: 启用/禁用 /ext/getcurrentprice api 端点（true/false）
+          //          如果设置为 false，则 /ext/getcurrentprice api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息）
+          "enabled": true
+        },
+        // getnetworkpeers: 一组设置，与 /ext/getnetworkpeers api 端点相关
+        //                  返回在过去 24 小时内连接到浏览器节点的网络对等点列表
+        //                  注意：此 api 通过 ajax 调用在内部使用，以填充网络页面上的连接、添加节点和尝试一次表。在此处禁用 api 不会阻止网络页面表显示数据
+        "getnetworkpeers": {
+          // enabled: 启用/禁用 /ext/getnetworkpeers api 端点（true/false）
+          //          如果设置为 false，则 /ext/getnetworkpeers api 将完全禁用公共使用（api 页面上没有定义，如果尝试直接调用端点，则会显示禁用错误消息），但该 api 仍可在浏览器内部使用
+          "enabled": true
+        },
+        // getbasicstats: a collection of settings that pertain to the /ext/getbasicstats api endpoint
+        //                Returns basic statistics about the coin including: block count, circulating supply, USD price, default market price and # of masternodes (# of masternodes is only applicable to masternode coins)
+        //                NOTE: This api is not used internally and is therefore only publicly available
+        "getbasicstats": {
+          // enabled: Enable/disable the /ext/getbasicstats api endpoint (true/false)
+          //          If set to false, the /ext/getbasicstats api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getsummary: a collection of settings that pertain to the /ext/getsummary api endpoint
+        //             Returns a summary of coin data including: difficulty, hybrid difficulty, circulating supply, hash rate, default market price, network connection count, block count, count of online masternodes and count of offline masternodes (masternode counts are only applicable to masternode coins)
+        //             NOTE: This api is used internally via ajax call to populate many of the panel boxes that are found at the top of all pages. Disabling the api from here will not stop the panel boxes from displaying data
+        "getsummary": {
+          // enabled: Enable/disable the /ext/getsummary api endpoint (true/false)
+          //          If set to false, the /ext/getsummary api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly) but the api will still be available internally to the explorer
+          "enabled": true
+        },
+        // getmasternodelist: a collection of settings that pertain to the /ext/getmasternodelist api endpoint
+        //                    Returns the complete list of masternodes on the network (only applicable to masternode coins)
+        //                    NOTE: This api is used internally via ajax call to populate the Masternodes table on the masternodes page. Disabling the api from here will not stop the Masternodes table from displaying data
+        "getmasternodelist": {
+          // enabled: Enable/disable the /ext/getmasternodelist api endpoint (true/false)
+          //          If set to false, the /ext/getmasternodelist api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly) but the api will still be available internally to the explorer
+          "enabled": true
+        },
+        // getmasternoderewards: a collection of settings that pertain to the /ext/getmasternoderewards api endpoint
+        //                       Returns a list of masternode reward transactions for a specific address that arrived after a specific block height (only applicable to masternode coins)
+        //                       NOTE: This api is not used internally and is therefore only publicly available
+        "getmasternoderewards": {
+          // enabled: Enable/disable the /ext/getmasternoderewards api endpoint (true/false)
+          //          If set to false, the /ext/getmasternoderewards api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getmasternoderewardstotal: a collection of settings that pertain to the /ext/getmasternoderewardstotal api endpoint
+        //                            Returns the total number of coins earned in masternode rewards for a specific address that arrived after a specific block height (only applicable to masternode coins)
+        //                            NOTE: This api is not used internally and is therefore only publicly available
+        "getmasternoderewardstotal": {
+          // enabled: Enable/disable the /ext/getmasternoderewardstotal api endpoint (true/false)
+          //          If set to false, the /ext/getmasternoderewardstotal api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
         }
       }
-    },
-    // page_footer: 与显示在所有页面底部的页面页脚相关的设置集合
-    "page_footer": {
-      // social_links: 显示在页脚中的社交链接集合 (如果不需要链接，请留空)
-      "social_links": {
-        "twitter": "https://twitter.com/",
-        "facebook": "https://www.facebook.com/",
-        "googleplus": "https://plus.google.com/",
-        "youtube": "https://www.youtube.com/",
-        "instagram": "https://www.instagram.com/",
-        "vine": "https://vine.co/",
-        "pinterest": "https://www.pinterest.com/",
-        "linkedin": "https://www.linkedin.com/",
-        "flickr": "https://www.flickr.com/",
-        "tumblr": "https://www.tumblr.com/",
-        "vimeo": "https://vimeo.com/",
-        "foursquare": "https://foursquare.com/",
-        "github": "https://github.com/team-exor/eiquidus",
-        "reddit": "https://www.reddit.com/",
-        "bitcointalk": "https://bitcointalk.org/",
-        "discord": "https://discord.com/",
-        "telegram": "https://telegram.org/",
-        "website": "https://exor.io"
-      }
     }
   },
 
-  /* 独立页面设置 */
-
-  // index_page: 与主页/索引页相关的设置集合
-  "index_page": {
-    // enabled: 启用/禁用索引页 (true/false)
-    //          如果设置为 false，索引页将完全不可访问
-    "enabled": true,
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": false,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    },
-    // transaction_table: 与主页上显示的交易表相关的设置集合
-    "transaction_table": {
-      // enabled: 启用/禁用交易表 (true/false)
-      //          如果设置为 false，交易表将完全不可访问
-      "enabled": true,
-      // min: 只有总发送量 > min 的交易才会显示在交易表中
-      "min": 0.00000001
-    }
-  },
-
-  // masternodes_page: 与主节点列表页相关的设置集合
-  "masternodes_page": {
-    // enabled: 启用/禁用主节点列表页 (true/false)
-    //          如果设置为 false，主节点列表页将完全不可访问
-    "enabled": false,
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    }
-  },
-
-  // movement_page: 与大额变动页相关的设置集合
-  "movement_page": {
-    // enabled: 启用/禁用大额变动页 (true/false)
-    //          如果设置为 false，大额变动页将完全不可访问
-    "enabled": true,
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    },
-    // min_amount: 只有总金额 > min_amount 的交易才会显示在大额变动页上
-    "min_amount": 1000
-  },
-
-  // network_page: 与网络对等节点页相关的设置集合
-  "network_page": {
-    // enabled: 启用/禁用网络对等节点页 (true/false)
-    //          如果设置为 false，网络对等节点页将完全不可访问
-    "enabled": true,
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    }
-  },
-
-  // richlist_page: 与富豪榜/前100名页相关的设置集合
-  "richlist_page": {
-    // enabled: 启用/禁用富豪榜页 (true/false)
-    //          如果设置为 false，富豪榜页将完全不可访问
-    "enabled": true,
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    },
-    // distribution: 确定是否在富豪榜页上显示财富分布图 (true/false)
-    "distribution": true,
-    // burned_coins: 与富豪榜页上销毁硬币相关的设置集合
-    "burned_coins": {
-      // enabled: 启用/禁用从富豪榜中过滤销毁地址 (true/false)
-      //          如果设置为 false，销毁地址将包含在富豪榜中
-      "enabled": false,
-      // addresses: 销毁地址数组。这些地址将从富豪榜中省略
-      "addresses": [
-        "1111111111111111111111111111111114oLvT2",
-        "0000000000000000000000000000000000dummy"
-      ]
-    }
-  },
-
-  // market_page: 与市场页相关的设置集合
-  "market_page": {
-    // enabled: 启用/禁用市场页 (true/false)
-    //          如果设置为 false，市场页将完全不可访问
-    "enabled": true,
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    },
-    // exchanges: 市场页上支持的交易所集合
-    //            注意: 要使交易所正常工作，必须在市场页面上启用它并在 markets 部分（如下）配置其设置
-    "exchanges": {
-      // altmarkets: 启用/禁用 AltMarkets 交易所 (true/false)
-      "altmarkets": false,
-      // dextrade: 启用/禁用 Dex-Trade 交易所 (true/false)
-      "dextrade": false,
-      // dexomy: 启用/禁用 Dexomy 交易所 (true/false)
-      "dexomy": false,
-      // freiexchange: 启用/禁用 FreiExchange 交易所 (true/false)
-      "freiexchange": false,
-      // freixlite: 启用/禁用 FreiXLite 交易所 (true/false)
-      "freixlite": false,
-      // nonkyc: 启用/禁用 NonKYC 交易所 (true/false)
-      "nonkyc": false,
-      // poloniex: 启用/禁用 Poloniex 交易所 (true/false)
-      "poloniex": false,
-      // xeggex: 启用/禁用 Xeggex 交易所 (true/false)
-      "xeggex": false,
-      // yobit: 启用/禁用 Yobit 交易所 (true/false)
-      "yobit": false
-    }
-  },
-
-  // api_page: 与 api 文档页相关的设置集合
-  "api_page": {
-    // enabled: 启用/禁用 api 文档页 (true/false)
-    //          如果设置为 false，api 文档页将完全不可访问
-    "enabled": true,
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    },
-    // public_apis: 支持的公共 api 集合
-    "public_apis": {
-      // rpc: 与 rpc api 命令相关的设置集合
-      "rpc": {
-        // getdifficulty: 启用/禁用 getdifficulty api 命令 (true/false)
-        "getdifficulty": { "enabled": true },
-        // getconnectioncount: 启用/禁用 getconnectioncount api 命令 (true/false)
-        "getconnectioncount": { "enabled": true },
-        // getblockcount: 启用/禁用 getblockcount api 命令 (true/false)
-        "getblockcount": { "enabled": true },
-        // getblockhash: 启用/禁用 getblockhash api 命令 (true/false)
-        "getblockhash": { "enabled": true },
-        // getblock: 启用/禁用 getblock api 命令 (true/false)
-        "getblock": { "enabled": true },
-        // getrawtransaction: 启用/禁用 getrawtransaction api 命令 (true/false)
-        "getrawtransaction": { "enabled": true },
-        // getnetworkhashps: 启用/禁用 getnetworkhashps api 命令 (true/false)
-        "getnetworkhashps": { "enabled": true },
-        // getvotelist: 启用/禁用 getvotelist api 命令 (true/false)
-        "getvotelist": { "enabled": true },
-        // getmasternodecount: 启用/禁用 getmasternodecount api 命令 (true/false)
-        "getmasternodecount": { "enabled": true }
-      },
-      // ext: 与扩展 api 命令相关的设置集合
-      "ext": {
-        // getmoneysupply: 启用/禁用 getmoneysupply api 命令 (true/false)
-        "getmoneysupply": { "enabled": true },
-        // getdistribution: 启用/禁用 getdistribution api 命令 (true/false)
-        "getdistribution": { "enabled": true },
-        // getaddress: 启用/禁用 getaddress api 命令 (true/false)
-        "getaddress": { "enabled": true },
-        // getaddresstxs: 启用/禁用 getaddresstxs api 命令 (true/false)
-        "getaddresstxs": { "enabled": true },
-        // gettx: 启用/禁用 gettx api 命令 (true/false)
-        "gettx": { "enabled": true },
-        // getbalance: 启用/禁用 getbalance api 命令 (true/false)
-        "getbalance": { "enabled": true },
-        // getlasttxs: 启用/禁用 getlasttxs api 命令 (true/false)
-        "getlasttxs": { "enabled": true },
-        // getcurrentprice: 启用/禁用 getcurrentprice api 命令 (true/false)
-        "getcurrentprice": { "enabled": true },
-        // getbasicstats: 启用/禁用 getbasicstats api 命令 (true/false)
-        "getbasicstats": { "enabled": true },
-        // getsummary: 启用/禁用 getsummary api 命令 (true/false)
-        "getsummary": { "enabled": true },
-        // getnetworkpeers: 启用/禁用 getnetworkpeers api 命令 (true/false)
-        "getnetworkpeers": { "enabled": true },
-        // getmasternodelist: 启用/禁用 getmasternodelist api 命令 (true/false)
-        "getmasternodelist": { "enabled": true },
-        // getmasternoderewards: 启用/禁用 getmasternoderewards api 命令 (true/false)
-        "getmasternoderewards": { "enabled": true },
-        // getmasternoderewardstotal: 启用/禁用 getmasternoderewardstotal api 命令 (true/false)
-        "getmasternoderewardstotal": { "enabled": true }
-      }
-    }
-  },
-
-  // reward_page: 与奖励页相关的设置集合 (仅适用于 heavycoin)
-  "reward_page": {
-    // enabled: 启用/禁用奖励页 (true/false)
-    //          如果设置为 false，奖励页将完全不可访问
-    "enabled": false,
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    }
-  },
-
-  // address_page: 与地址详情页相关的设置集合
-  "address_page": {
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    },
-    // show_qrcodes: 确定是否显示地址的二维码 (true/false)
-    "show_qrcodes": true,
-    // enable_hidden_address_view: 确定是否允许用户导航到 "/address/hidden_address" 页面 (true/false)
-    "enable_hidden_address_view": true,
-    // enable_unknown_address_view: 确定是否允许用户导航到 "/address/unknown_address" 页面 (true/false)
-    "enable_unknown_address_view": true
-  },
-
-  // block_page: 与区块详情页相关的设置集合
-  "block_page": {
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    },
-    // show_extracted_by: 确定是否显示 "extracted by"（矿工）字段 (true/false)
-    "show_extracted_by": true
-  },
-
-  // transaction_page: 与交易详情页相关的设置集合
-  "transaction_page": {
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
-    "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
-      "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
-    },
-    // show_op_return: 确定是否在交易页面上显示 OP_RETURN 数据 (true/false)
-    "show_op_return": true,
-    // show_extracted_by: 确定是否显示 "extracted by"（矿工）字段 (true/false)
-    "show_extracted_by": true
-  },
-
-  // claim_address_page: 与认领地址页相关的设置集合
+  // claim_address_page: a collection of settings that pertain to the claim address page
   "claim_address_page": {
-    // enabled: 启用/禁用认领地址页 (true/false)
-    //          如果设置为 false，认领地址页将完全不可访问
-    "enabled": false,
-    // show_panels: 确定是否在页面顶部显示面板 (true/false)
-    "show_panels": true,
-    // page_header: 与特定于此页面的页面标题相关的设置集合
+    // enabled: Enable/disable the ability for users to claim a wallet address (true/false)
+    //          If set to false, the claim page will be completely inaccessible
+    //          NOTE: Disabling this feature after addresses have already been claimed will effectively hide the claimed values and restore the original wallet addresses again
+    "enabled": true,
+    // show_panels: Determine whether to show the panels configured in the shared_pages.page_header section across the top of this page (true/false)
+    "show_panels": false,
+    // show_nethash_chart: Determine whether to show the network hashrate chart configured in the shared_pages.network_charts.nethash_chart section across the top of this page (true/false)
+    "show_nethash_chart": false,
+    // show_difficulty_chart: Determine whether to show the network difficulty chart configured in the shared_pages.network_charts.difficulty_chart section across the top of this page (true/false)
+    "show_difficulty_chart": false,
+    // page_header: a collection of settings that pertain to the claim address page header
     "page_header": {
-      // show_img: 确定是否在页面标题中显示 "shared_pages.page_header.page_title_image" (true/false)
-      "show_img": false,
-      // show_title: 确定是否在页面标题中显示 "shared_pages.page_title" (true/false)
+      // show_img: Determine whether to show the page title image defined in the "shared_pages.page_header.page_title_image" setting (true/false)
+      "show_img": true,
+      // show_title: Determine whether to show the page title as defined in "localization.claim_title" (true/false)
       "show_title": true,
-      // show_description: 确定是否在页面标题中显示 "shared_pages.page_description" (true/false)
-      "show_description": true,
-      // show_last_updated: 确定是否在页面标题中显示上次更新日期/时间 (true/false)
-      "show_last_updated": true
+      // show_description: Determine whether to show the page description as defined in "localization.claim_description" (true/false)
+      "show_description": true
+    },
+    // show_header_menu: Show/hide the "Claim Address" header menu item (true/false)
+    //                   If set to false, the claim address page can still be accessed via the claim link on each address page
+    //                   NOTE: The "claim_address_page.enabled" setting must also be set to true or else the header item will automatically be hidden as well
+    "show_header_menu": true,
+    // enable_bad_word_filter: Enable/disable the "bad word" filter for claimed addresses, so that trying to claim an address with a bad word like "ash0le" will fail
+    //                         This feature uses the default blacklist from the "bad-words" plugin from here: https://www.npmjs.com/package/bad-words
+    "enable_bad_word_filter": true,
+    // enable_captcha: Enable/disable using captcha security when filling out and submitting the claim address form
+    //                 NOTE: you must also configure and enable one of the options in the main "captcha" settings for this option to function correctly
+    "enable_captcha": true
+  },
+
+  // orphans_page: a collection of settings that pertain to the orphans page
+  "orphans_page": {
+    // enabled: Enable/disable the orphans page (true/false)
+    //          If set to false, the orphans page will be completely inaccessible
+    "enabled": true,
+    // show_panels: Determine whether to show the panels configured in the shared_pages.page_header section across the top of this page (true/false)
+    "show_panels": false,
+    // show_nethash_chart: Determine whether to show the network hashrate chart configured in the shared_pages.network_charts.nethash_chart section across the top of this page (true/false)
+    "show_nethash_chart": false,
+    // show_difficulty_chart: Determine whether to show the network difficulty chart configured in the shared_pages.network_charts.difficulty_chart section across the top of this page (true/false)
+    "show_difficulty_chart": false,
+    // page_header: a collection of settings that pertain to the orphans page header
+    "page_header": {
+      // show_img: Determine whether to show the page title image defined in the "shared_pages.page_header.page_title_image" setting (true/false)
+      "show_img": true,
+      // show_title: Determine whether to show the page title as defined in "localization.orphan_title" (true/false)
+      "show_title": true,
+      // show_last_updated: Determine whether to show a label below the page title with the last updated date (true/false)
+      "show_last_updated": true,
+      // show_description: Determine whether to show the page description as defined in "localization.orphan_description" (true/false)
+      "show_description": true
+    },
+    // orphans_table: a collection of settings that pertain to the orphans table on the orphans page
+    //                Table data is populated via the /ext/getorphanlist api
+    "orphans_table": {
+      // page_length_options: An array of page length options that determine how many items/records to display in the table at any given time
+      "page_length_options": [ 10, 25, 50, 75, 100, 250, 500, 1000 ],
+      // items_per_page: The default amount of items/records to display in the table at any given time
+      "items_per_page": 10
     }
   },
 
-  // markets: 与单个市场设置相关的设置集合
-  "markets": {
-    // coin_id: coin market cap 网站上硬币的唯一标识符
-    "coin_id": "",
-    // default_exchange: 确定要使用哪个交易所来获取一般市场数据 (价格、美元价格、市值、美元市值等)
-    //                   有效选项: altmarkets, dextrade, dexomy, freiexchange, freixlite, nonkyc, poloniex, xeggex, yobit, coingecko
-    "default_exchange": {
-      // exchange_name: 交易所名称 (必须与上面的有效选项之一完全匹配)
-      "exchange_name": "coingecko",
-      // trading_pair: 交易所上使用的交易对 (例如: BTC/USD, LTC/BTC, DOGE/LTC 等)
-      "trading_pair": "EXOR/USDT"
-    },
-    // altmarkets: 与 AltMarkets 交易所 API 相关的设置集合
-    "altmarkets": {
-      // coin_symbol: 交易所 API 使用的硬币符号 (例如: EXOR)
-      "coin_symbol": "EXOR",
-      // pair_symbol: 交易所 API 使用的交易对符号 (例如: BTC)
-      "pair_symbol": "BTC"
-    },
-    // dextrade: 与 Dex-Trade 交易所 API 相关的设置集合
-    "dextrade": {
-      // coin_symbol: 交易所 API 使用的硬币符号 (例如: EXOR)
-      "coin_symbol": "EXOR",
-      // pair_symbol: 交易所 API 使用的交易对符号 (例如: USDT)
-      "pair_symbol": "USDT"
-    },
-    // dexomy: 与 Dexomy 交易所 API 相关的设置集合
-    "dexomy": {
-      // coin_symbol: 交易所 API 使用的硬币符号 (例如: EXOR)
-      "coin_symbol": "EXOR",
-      // pair_symbol: 交易所 API 使用的交易对符号 (例如: USDT)
-      "pair_symbol": "USDT"
-    },
-    // freiexchange: 与 FreiExchange 交易所 API 相关的设置集合
-    "freiexchange": {
-      // coin_symbol: 交易所 API 使用的硬币符号 (例如: EXOR)
-      "coin_symbol": "EXOR",
-      // pair_symbol: 交易所 API 使用的交易对符号 (例如: LTC)
-      "pair_symbol": "LTC"
-    },
-    // freixlite: 与 FreiXLite 交易所 API 相关的设置集合
-    "freixlite": {
-      // coin_symbol: 交易所 API 使用的硬币符号 (例如: EXOR)
-      "coin_symbol": "EXOR",
-      // pair_symbol: 交易所 API 使用的交易对符号 (例如: LTC)
-      "pair_symbol": "LTC"
-    },
-    // nonkyc: 与 NonKYC 交易所 API 相关的设置集合
-    "nonkyc": {
-      // coin_symbol: 交易所 API 使用的硬币符号 (例如: EXOR)
-      "coin_symbol": "EXOR",
-      // pair_symbol: 交易所 API 使用的交易对符号 (例如: USDT)
-      "pair_symbol": "USDT"
-    },
-    // poloniex: 与 Poloniex 交易所 API 相关的设置集合
-    "poloniex": {
-      // coin_symbol: 交易所 API 使用的硬币符号 (例如: EXOR)
-      "coin_symbol": "EXOR",
-      // pair_symbol: 交易所 API 使用的交易对符号 (例如: BTC)
-      "pair_symbol": "BTC"
-    },
-    // xeggex: 与 Xeggex 交易所 API 相关的设置集合
-    "xeggex": {
-      // coin_symbol: 交易所 API 使用的硬币符号 (例如: EXOR)
-      "coin_symbol": "EXOR",
-      // pair_symbol: 交易所 API 使用的交易对符号 (例如: USDT)
-      "pair_symbol": "USDT"
-    },
-    // yobit: 与 Yobit 交易所 API 相关的设置集合
-    "yobit": {
-      // coin_symbol: 交易所 API 使用的硬币符号 (例如: EXOR)
-      "coin_symbol": "EXOR",
-      // pair_symbol: 交易所 API 使用的交易对符号 (例如: BTC)
-      "pair_symbol": "BTC"
-    }
-  },
-
-  // sync: 与同步脚本 (scripts/sync.js) 相关的设置集合
+  // sync: a collection of settings that pertain to the data synchronization process
   "sync": {
-    // update_timeout: 更新同步脚本等待新块同步的时间 (毫秒)
-    //                 如果同步脚本在这段时间内没有完成，它将超时并停止
-    //                 如果您的区块链同步非常慢，您可能需要增加此值
-    "update_timeout": 10
+    // block_parallel_tasks: Use multiple threads to do blockchain syncing which greatly improves the initial sync speed
+    "block_parallel_tasks": 8,
+    // update_timeout: The amount of time to wait (in milliseconds) before moving to the next block or transaction during blockchain sync or reindex (/path/to/node scripts/sync.js update or /path/to/node scripts/sync.js reindex)
+    "update_timeout": 10,
+    // check_timeout: The amount of time to wait (in milliseconds) before moving to the next block or transaction during a check sync (/path/to/node scripts/sync.js check)
+    "check_timeout": 250,
+    // save_stats_after_sync_blocks: During index syncronization, stats are saved after processing this many blocks to save time by not having to save after each block
+    "save_stats_after_sync_blocks": 100,
+    // show_sync_msg_when_syncing_more_than_blocks: Show the sync msg at the top of all pages during index syncronization if there are more than this many blocks to process
+    "show_sync_msg_when_syncing_more_than_blocks": 1000,
+    // supply: Determine how to calculate current coin supply
+    //         NOTE: The supply is always retrieved right before doing a normal index sync, reindex or check
+    //         Valid options:
+    //         COINBASE : retrieve the total coins sent from the coinbase (Often used for PoW coins)
+    //         GETINFO : retrieved from getinfo rpc cmd (Often used for PoS coins)
+    //         GETBLOCKCHAININFO : retrieved from getblockchaininfo rpc cmd
+    //         HEAVY: retrieved from getsupply rpc cmd (The "blockchain_specific.heavycoin.enabled" setting must be set to true and the "blockchain_specific.heavycoin.api_cmds.getsupply" setting must be set up correctly for this option to work properly)
+    //         BALANCES : get the supply by running a query on the addresses collection and summing up all positive balances (potentially a long running query for blockchains with tons of addresses)
+    //         TXOUTSET : retrieved from gettxoutsetinfo rpc cmd
+    "supply": "GETINFO",
+    // batch_size: The maximum number of records before saving data to the database.
+    //             This value is used for syncing transactions, addresses and address transactions.
+    //             Each record type is processed within a single block so batching only happens if there are more than `batch_size` txes in a single block for example.
+    //             If the number of txes is lower than `batch_size` then all txes are saved in one batch.
+    //             A higher batch_size can save data faster than having to do smaller batches but only up to a certain point since it also requires more memory and resources for larger batches and the optimal number depends entirely on your server's resources.
+    //             A lower batch size generally ensures there will be no memory limitations although it can also slow down the sync process.
+    //             It is recommended to leave this value alone unless you know what you are doing although some experimentation with different batch sizes using the benchmark script can often help determine the optimal setting for your server.
+    "batch_size": 5000,
+    // elastic_stack_size: If a "RangeError: Maximum call stack size exceeded" error occurs during a block sync (which can happen when dealing with large transactions with many addresses), the sync script will automatically be reloaded using a larger stack size value which increases memory usage based on this value.
+    //                     NOTE: If the first reload of the sync script still doesn't have enough memory to handle processing of a large transaction, the sync is smart enough to continue increasing the stack size by this value again and again until it finishes processing all blocks and then returns back to the default amount of memory for future blocks.
+    //                           It is recommended to leave this value alone unless you know what you are doing.
+    "elastic_stack_size": 4096,
+    // wait_for_bulk_database_save: Determine whether to wait for all records to be saved or just send the records without waiting for save confirmation when saving bulk data
+    //                              This setting only controls how to treat records that are bulk saved to the database which include txes, addresstxes and addresses
+    //                              If set to true, bulk transactions to the database will wait for save confirmation which results in a slower save time but also returns information about which records failed to save
+    //                              If set to false, bulk transactions to the database will not wait for save confirmation which results in a faster save time but will not return any error message for records that failed to save
+    //                              NOTE: If you want to sync data as fast as possible and are sure that your blockchain doesn't contain any problematic or unsupported data types then you can set this value to "false" to maximize the speed of the block sync
+    "wait_for_bulk_database_save": true,
+    // rate_limit: a collection of settings that pertain to the amount of time to wait between requests
+    "rate_limit": {
+      // peer_sync_rate_limit: The amount of time to wait (in milliseconds) between geolocation api requests when syncing peer data
+      "peer_sync_rate_limit": 2000
+    }
   },
 
-  // default_coingecko_ids: 与 coingecko api 符号和 id 列表相关的设置集合
-  //                        向此部分添加条目将强制将特定硬币符号关联到 coingecko id，当使用 coingecko api 进行美元查找以及使用 markets_page.market_price = "COINGECKO" 选项时
-  //                        当 coingecko api 中有多个具有相同符号的硬币时，这很有用，因为默认情况下，浏览器将匹配列表中的第一个，这可能并不总是正确的硬币
-  //                        访问 coingecko 硬币列表 api 手动查找要在浏览器中使用的符号的正确 id: https://api.coingecko.com/api/v3/coins/list?include_platform=false
-  //                        您可以按以下格式添加任意数量的 coingecko id 默认值: [ { "symbol": "btc", "id": "bitcoin" }, { "symbol": "eth", "id": "ethereum" } ]
-  //                        注意: 如果浏览器需要通过 coingecko 硬币列表 api 查找的所有符号都在此处默认设置，则市场同步将保存一个 api 调用，并跳过调用 coingecko 硬币列表 api
+  // captcha: a collection of settings that pertain to the captcha security used by different elements of the explorer
+  // NOTE: only 1 captcha option can be enabled and used at any given time. If you enable 2 or more options the explorer will use the first available enabled option it finds
+  "captcha": {
+    // google_recaptcha3: a collection of settings that pertain to using Google reCAPTCHA v3. Signup to get your site and secret keys here: https://www.google.com/recaptcha/admin
+    "google_recaptcha3": {
+      // enabled: Enable/disable the use of Google reCAPTCHA v3 (true/false)
+      //          If set to false, Google reCAPTCHA v3 will be completely disabled as a security feature
+      "enabled": false,
+      // pass_score: A numeric score between 0.0 and 1.0 used to deteremine if a particular captcha request passed or failed
+      //             Google reCAPTCHA v3 returns a score value for every captcha request. 1.0 is very likely a good interaction whereas 0.0 is very likely a bot
+      //             Google recommends using 0.5 by default but you may increase the passing score if you are receiving too many automated bot submissions or lower the score if legitimate users are having troubles passing the captcha challenge
+      "pass_score": 0.5,
+      // site_key: Enter the SITE KEY value from your Google reCAPTCHA v3 settings here
+      "site_key": "",
+      // secret_key: Enter the SECRET KEY value from your Google reCAPTCHA v3 settings here
+      "secret_key": ""
+    },
+    // google_recaptcha2: a collection of settings that pertain to using Google reCAPTCHA v2. Signup to get your site and secret keys here: https://www.google.com/recaptcha/admin
+    "google_recaptcha2": {
+      // enabled: Enable/disable the use of Google reCAPTCHA v2 (true/false)
+      //          If set to false, Google reCAPTCHA v2 will be completely disabled as a security feature
+      "enabled": false,
+      // captcha_type: Determine the type of captcha to use for security validation
+      //               Valid options:
+      //               checkbox: The "I'm not a robot" Checkbox requires the user to click a checkbox indicating the user is not a robot. This will either pass the user immediately (with No CAPTCHA) or challenge them to validate whether or not they are human
+      //               invisible: The invisible reCAPTCHA badge does not require the user to click on a checkbox. By default only the most suspicious traffic will be prompted to solve a captcha
+      "captcha_type": "checkbox",
+      // site_key: Enter the SITE KEY value from your Google reCAPTCHA v2 settings here
+      "site_key": "",
+      // secret_key: Enter the SECRET KEY value from your Google reCAPTCHA v2 settings here
+      "secret_key": ""
+    },
+    // hcaptcha: a collection of settings that pertain to using hCaptcha. Signup to get your site and secret keys here: https://dashboard.hcaptcha.com/signup
+    //           NOTE: Only the free "Always Challenge" mode is currently supported
+    "hcaptcha": {
+      // enabled: Enable/disable the use of hCaptcha (true/false)
+      //          If set to false, hCaptcha will be completely disabled as a security feature
+      "enabled": false,
+      // site_key: Enter the SITE KEY value from your hCaptcha settings here
+      "site_key": "",
+      // secret_key: Enter the SECRET KEY value from your hCaptcha settings here
+      "secret_key": ""
+    }
+  },
+
+  // labels: a collection of settings that pertain to the list of customized wallet address labels
+  //         Adding entries to this section will display a custom label beside each affected wallet address when displayed in the explorer
+  //         NOTE: You can add as many address labels as desired
+  "labels": {
+    // A collection of settings that pertain to the EJ6yc47cAZMGWHFccc9gfGbDLYuyNhP6wL wallet address
+    // NOTE: Change this value to the wallet address that you would like to set a custom label on
+    "EJ6yc47cAZMGWHFccc9gfGbDLYuyNhP6wL": {
+      // enabled: Enable/disable this particular wallet address label (true/false)
+      //          If set to false, the label will be completely hidden
+      "enabled": false,
+      // label: The text to display in the custom label
+      "label": "Development Budget",
+      // type: The bootstrap CSS class suffix for the label. This will change the background color of the label.
+      //       Valid options: primary, secondary, success, danger, warning, info, light, dark
+      //       NOTE: Leave the value blank ( "" ) to use default colors
+      "type": "success",
+      // url: The url the label should navigate to when clicked. Ex: http://example.com
+      //      NOTE: Leave the value blank ( "" ) to prevent hyperlinking the label
+      "url": ""
+    },
+    // A collection of settings that pertain to the EXorBurnAddressXXXXXXXXXXXXXW7cDZQ wallet address
+    // NOTE: Change this value to the wallet address that you would like to set a custom label on
+    "EXorBurnAddressXXXXXXXXXXXXXW7cDZQ": {
+      // enabled: Enable/disable this particular wallet address label (true/false)
+      //          If set to false, the label will be completely hidden
+      "enabled": false,
+      // label: The text to display in the custom label
+      "label": "Burn Address",
+      // type: The bootstrap CSS class suffix for the label. This will change the background color of the label.
+      //       Valid options: primary, secondary, success, danger, warning, info, light, dark
+      //       NOTE: Leave the value blank ( "" ) to use default colors
+      "type": "danger",
+      // url: The url the label should navigate to when clicked. Ex: http://example.com
+      //      NOTE: Leave the value blank ( "" ) to prevent hyperlinking the label
+      "url": ""
+    }
+  },
+
+  // default_coingecko_ids: a collection of settings that pertain to the list of coingecko api symbols and ids
+  //                        Adding entries to this section will force a particular coin symbol to the associated coingecko id when the coingecko api is used for USD lookups and when using the markets_page.market_price = "COINGECKO" option
+  //                        This is useful when there are multiple coins available in the coingecko api that have the same symbol, since by default, the explorer will match to the first one in the list which may not always be the correct coin
+  //                        Visit the coingecko coin list api to manually find the correct ids to plug in here for the symbols you use with the explorer: https://api.coingecko.com/api/v3/coins/list?include_platform=false
+  //                        You can add as many coingecko id defaults as necessary in the following format: [ { "symbol": "btc", "id": "bitcoin" }, { "symbol": "eth", "id": "ethereum" } ]
+  //                        NOTE: If all symbols that the explorer needs to look up via the coingecko coin list api are defaulted here, then the market sync will save an api call and skip making the call to the coingecko coin list api whenever it would usually be called
   "default_coingecko_ids": [
     { "symbol": "btc", "id": "bitcoin" },
     { "symbol": "eth", "id": "ethereum" },
@@ -781,50 +1569,240 @@
     { "symbol": "scash", "id": "satoshi-cash-network" }
   ],
 
-  //api_cmds: 与可自定义 rpc api 命令列表相关的设置集合
-  //          并非所有区块链都使用相同的 rpc 命令来访问内部守护进程 api。使用这些设置可为类似的 api 命令设置替代名称。
-  //          将命令值留空 ( "" ) 将完全禁用该命令的使用。
-  //          注意: 某些 api（例如 getblockhash）对于浏览器的功能是不可或缺的，如果禁用将导致相当不可用的体验。
+  //api_cmds: A collection of settings that pertain to the list of customizable rpc api commands
+  //          Not all blockchains utilize the same rpc cmds for accessing the internal daemon api. Use these settings to set alternate names for similar api cmds.
+  //          Leaving a cmd value blank ( "" ) will completely disable use of that cmd.
+  //          NOTICE: Some apis such as getblockhash for example, are integral to the functionality of the explorer and will result in a fairly unusable experience if disabled.
   "api_cmds": {
-    // use_rpc: 确定是否直接使用更快的 rpc 方法调用 rpc api 命令，或通过内部 http api 使用旧方法 (true/false)
-    //          注意: 除非有特定需要测试或记录某些 api，否则应始终将其设置为 true
+    // use_rpc: Determine whether to call rpc api cmds directly using the faster rpc method or using the older method via internal http api (true/false)
+    //          NOTE: This should always be set to true unless there is a specific need to test or log certain apis
     "use_rpc": true,
-    // rpc_concurrent_tasks: 可以同时运行的最大 rpc 命令数。额外的 rpc 命令将进入队列并按先入先出的基础运行
+    // rpc_concurrent_tasks: The maximum number of rpc cmds that can be run simultaneously. Additional rpc cmds will go into a queue and be run on a first-in-first-out basis
     "rpc_concurrent_tasks": 1,
-    // getnetworkhashps: 返回估计的网络每秒哈希数。这应该是一个正整数
+    // getnetworkhashps: Returns the estimated network hashes per second. This should be a positive whole number
     "getnetworkhashps": "getnetworkhashps",
-    // getmininginfo: 返回包含挖矿相关信息的 json 对象
+    // getmininginfo: Returns a json object containing mining-related information
     "getmininginfo": "getmininginfo",
-    // getdifficulty: 返回工作量证明难度作为最小难度的倍数。这应该是一个正整数或小数
+    // getdifficulty: Returns the proof-of-work difficulty as a multiple of the minimum difficulty. This should be a positive whole or decimal number
     "getdifficulty": "getdifficulty",
-    // getconnectioncount: 返回与其他节点的连接数。这应该是一个正整数
+    // getconnectioncount: Returns the number of connections to other nodes. This should be a positive whole number
     "getconnectioncount": "getconnectioncount",
-    // getblockcount: 返回最长区块链中的区块数。这应该是一个正整数
+    // getblockcount: Returns the number of blocks in the longest blockchain. This should be a positive whole number
     "getblockcount": "getblockcount",
-    // getblockhash: 返回提供的最佳区块链高度处的区块哈希。这应该是一个字符串值
+    // getblockhash: Returns hash of block in best-block-chain at height provided. This should be a string value
     "getblockhash": "getblockhash",
-    // getblock: 返回包含有关特定区块信息的对象
+    // getblock: Returns an object with information about a particular block
     "getblock": "getblock",
-    // getrawtransaction: 返回原始交易数据。可以根据 decrypt 值（0 = false 或 1 = true）返回序列化的十六进制编码字符串或带有 txid 信息的对象
+    // getrawtransaction: Returns raw transaction data. Can return a hex-encoded string that is serialized or an object with txid information depending on the decrypt value (0 = false or 1 = true)
     "getrawtransaction": "getrawtransaction",
-    // getinfo: 返回包含各种状态信息的对象
+    // getinfo: Returns an object containing various state info
     "getinfo": "getinfo",
-    // getblockchaininfo: 返回包含有关区块链处理的各种状态信息的对象
+    // getblockchaininfo: Returns an object containing various state info regarding blockchain processing
     "getblockchaininfo": "getblockchaininfo",
-    // getpeerinfo: 返回有关每个连接的网络节点的数据，作为对象的 json 数组
+    // getpeerinfo: Returns data about each connected network node as a json array of objects
     "getpeerinfo": "getpeerinfo",
-    // gettxoutsetinfo: 返回有关未花费交易输出集的统计信息的对象
+    // gettxoutsetinfo: Returns an object with statistics about the unspent transaction output set
     "gettxoutsetinfo": "gettxoutsetinfo",
-    // getvotelist: 返回有关当前投票列表详细信息的对象
+    // getvotelist: Returns an object with details regarding the current vote list
     "getvotelist": "masternodelist votes",
-    // getmasternodecount: 返回包含网络上主节点总数的 json 对象
+    // getmasternodecount: Returns a json object containing the total number of masternodes on the network
     "getmasternodecount": "getmasternodecount",
-    // getmasternodelist: 返回包含网络上所有主节点状态信息的 json 数组
+    // getmasternodelist: Returns a json array containing status information for all masternodes on the network
     "getmasternodelist": "listmasternodes",
-    // verifymessage: 验证签名消息。必须接受以下参数:
-    //                address: 用于签名的钱包地址
-    //                signature: 签名者提供的 base 64 编码签名
-    //                message: 被签名的消息
+    // verifymessage: Verify a signed message. Must accept the following arguments:
+    //                address: The wallet address to use for the signature
+    //                signature: The signature provided by the signer in base 64 encoding
+    //                message: The message that was signed
     "verifymessage": "verifymessage"
+  },
+
+  // blockchain_specific: A collection of settings that pertain to non-standard blockchain features that can extend the functionality of the default explorer
+  "blockchain_specific": {
+    // bitcoin: A collection of settings that pertain to Bitcoin-specific scripts (P2PK support)
+    "bitcoin": {
+      // enabled: Enable/disable the use of bitcoin scripts in the explorer (true/false)
+      //          If set to false, all P2PK transactions will be saved without addresses as they require special encoding to reveal the more familiar P2PKH address
+      //          NOTE: Enabling this feature will require a full reindex of the blockchain data to fix any P2PK transactions that were previously not displaying addresses
+      "enabled": false,
+      //api_cmds: A collection of settings that pertain to the list of customizable bitcoin rpc api commands
+      //          Not all blockchains utilize the same rpc cmds for accessing the internal daemon api. Use these settings to set alternate names for similar api cmds.
+      //          Leaving a cmd value blank ( "" ) will completely disable use of that cmd.
+      "api_cmds": {
+        // getdescriptorinfo: Accepts a descriptor as input and returns an object with more detailed information, including its computed checksum
+        "getdescriptorinfo": "getdescriptorinfo",
+        // deriveaddresses: Accepts an output descriptor as input and returns an array containing one or more P2PKH addresses
+        "deriveaddresses": "deriveaddresses"
+      }
+    },
+    // heavycoin: A collection of settings that pertain to the democratic voting and reward capabilities of the heavycoin blockchain
+    "heavycoin": {
+      // enabled: Enable/disable the use of heavycoin features in the explorer (true/false)
+      //          If set to false, all heavycoin features will be completely inaccessible
+      //          If set to true, an additional heavycoin sync will be performed immidiately before any index sync or reindex
+      "enabled": false,
+      // reward_page: a collection of settings that pertain to the reward page
+      "reward_page": {
+        // enabled: Enable/disable the reward page (true/false)
+        //          If set to false, the reward page will be completely inaccessible
+        "enabled": true,
+        // show_panels: Determine whether to show the panels configured in the shared_pages.page_header section across the top of this page (true/false)
+        "show_panels": false,
+        // show_nethash_chart: Determine whether to show the network hashrate chart configured in the shared_pages.network_charts.nethash_chart section across the top of this page (true/false)
+        "show_nethash_chart": false,
+        // show_difficulty_chart: Determine whether to show the network difficulty chart configured in the shared_pages.network_charts.difficulty_chart section across the top of this page (true/false)
+        "show_difficulty_chart": false,
+        // page_header: a collection of settings that pertain to the reward page header
+        "page_header": {
+          // show_img: Determine whether to show the page title image defined in the "shared_pages.page_header.page_title_image" setting (true/false)
+          "show_img": true,
+          // show_title: Determine whether to show the page title as defined in "localization.reward_title" (true/false)
+          "show_title": true,
+          // show_last_updated: Determine whether to show a label below the page title with the last updated date (true/false)
+          "show_last_updated": true,
+          // show_description: Determine whether to show the page description as defined in "localization.reward_description" (true/false)
+          "show_description": true
+        }
+      },
+      //api_cmds: A collection of settings that pertain to the list of customizable heavycoin rpc api commands
+      //          Not all blockchains utilize the same rpc cmds for accessing the internal daemon api. Use these settings to set alternate names for similar api cmds.
+      //          Leaving a cmd value blank ( "" ) will completely disable use of that cmd.
+      "api_cmds": {
+        // getmaxmoney: Returns the number of coins that will be produced in total. This should be a positive whole or decimal number
+        "getmaxmoney": "getmaxmoney",
+        // getmaxvote: Returns the maximum allowed vote for the current phase of voting. This should be a positive whole number
+        "getmaxvote": "getmaxvote",
+        // getvote: Returns the current block reward vote setting. This should be a positive whole number
+        "getvote": "getvote",
+        // getphase: Returns the current voting phase name. This should be a string value
+        "getphase": "getphase",
+        // getreward: Returns the current block reward. This should be a positive whole or decimal number
+        "getreward": "getreward",
+        // getsupply: Returns the current money supply. This should be a positive whole or decimal number
+        "getsupply": "getsupply",
+        // getnextrewardestimate: Returns an estimate for the next block reward based on the current state of decentralized voting. This should be a positive whole or decimal number
+        "getnextrewardestimate": "getnextrewardestimate",
+        // getnextrewardwhenstr: Returns a string describing how long until the votes are tallied and the next block reward is computed
+        "getnextrewardwhenstr": "getnextrewardwhenstr"
+      },
+      // public_apis: a collection of settings that pertain to the heavycoin public api command system
+      //              NOTE: If the "api_page.enabled" setting is set to false, these apis will be completely disabled and will return a "This method is disabled" msg if the api endpoint is called.
+      //                    Disabling any of these apis will remove the api definition from the api page and will return a "This method is disabled" msg if the api endpoint is called.
+      "public_apis": {
+        // getmaxmoney: a collection of settings that pertain to the /api/getmaxmoney api endpoint
+        //              Returns the number of coins that will be produced in total
+        //              NOTE: This api is not used internally and is therefore only publicly available
+        "getmaxmoney": {
+          // enabled: Enable/disable the /api/getmaxmoney api endpoint (true/false)
+          //          If set to false, the /api/getmaxmoney api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getmaxvote: a collection of settings that pertain to the /api/getmaxvote api endpoint
+        //             Returns the maximum allowed vote for the current phase of voting
+        //             NOTE: This api is not used internally and is therefore only publicly available
+        "getmaxvote": {
+          // enabled: Enable/disable the /api/getmaxvote api endpoint (true/false)
+          //          If set to false, the /api/getmaxvote api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getvote: a collection of settings that pertain to the /api/getvote api endpoint
+        //          Returns the current block reward vote setting
+        //          NOTE: This api is not used internally and is therefore only publicly available
+        "getvote": {
+          // enabled: Enable/disable the /api/getvote api endpoint (true/false)
+          //          If set to false, the /api/getvote api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getphase: a collection of settings that pertain to the /api/getphase api endpoint
+        //           Returns the current voting phase name
+        //           NOTE: This api is not used internally and is therefore only publicly available
+        "getphase": {
+          // enabled: Enable/disable the /api/getphase api endpoint (true/false)
+          //          If set to false, the /api/getphase api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getreward: a collection of settings that pertain to the /api/getreward api endpoint
+        //            Returns the current block reward
+        //            NOTE: This api is not used internally and is therefore only publicly available
+        "getreward": {
+          // enabled: Enable/disable the /api/getreward api endpoint (true/false)
+          //          If set to false, the /api/getreward api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getsupply: a collection of settings that pertain to the /api/getsupply api endpoint
+        //            Returns the current money supply
+        //            NOTE: This api is not used internally and is therefore only publicly available
+        "getsupply": {
+          // enabled: Enable/disable the /api/getsupply api endpoint (true/false)
+          //          If set to false, the /api/getsupply api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getnextrewardestimate: a collection of settings that pertain to the /api/getnextrewardestimate api endpoint
+        //                        Returns an estimate for the next block reward based on the current state of decentralized voting
+        //                        NOTE: This api is not used internally and is therefore only publicly available
+        "getnextrewardestimate": {
+          // enabled: Enable/disable the /api/getnextrewardestimate api endpoint (true/false)
+          //          If set to false, the /api/getnextrewardestimate api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        },
+        // getnextrewardwhenstr: a collection of settings that pertain to the /api/getnextrewardwhenstr api endpoint
+        //                       Returns a string describing how long until the votes are tallied and the next block reward is computed
+        //                       NOTE: This api is not used internally and is therefore only publicly available
+        "getnextrewardwhenstr": {
+          // enabled: Enable/disable the /api/getnextrewardwhenstr api endpoint (true/false)
+          //          If set to false, the /api/getnextrewardwhenstr api will be completely disabled for public use (no definition on the api page and a disabled error msg if you try to call the endpoint directly)
+          "enabled": true
+        }
+      }
+    },
+    // zksnarks: A collection of settings that pertain to Zcash zk-SNARKs private transactions
+    "zksnarks": {
+      // enabled: Enable/disable Zcash zk-SNARKs private transaction support (true/false)
+      //          If set to false, zk-SNARKs private txs will not be properly read or saved by the explorer
+      //          NOTE: Enabling this feature will require a full reindex of the blockchain data
+      "enabled": false
+    }
+  },
+
+  // plugins: A collection of settings that pertain to extended functionality from external plugins that support explorer integration
+  "plugins": {
+    // plugin_secret_code: A secret code that will be received from all plugins to validate the plugin data request before modifying local database data
+    //                     NOTE: This is used as an internal password for your own plugins that can be run on different servers to validate that plugin data being received by the explorer is coming from you and not from a malicious user
+    //                           This code should be a random set of numbers, letters and special characters that cannot be easily guessed that must also match the plugin_secret_code in all plugin external.settings.json files
+    //                     WARNING: Be sure to change the default secret code as it is only a sample and will be the first code that malicious users try to use to manipulate your explorer's data
+    "plugin_secret_code": "SJs2=&r^ScLGLgTaNm7#74=s?48zf*4+vm5S",
+    // allowed_plugins: A collection of settings that pertain to the list of plugins allowed to be used with this explorer instance
+    //                  You can add as many plugins as necessary in the following format: [ { "plugin_name": "new_plugin_1", "enabled": "true" }, { "plugin_name": "new_plugin_2", "enabled": "false" } ]
+    //                  NOTE: Plugins enabled here must also have the actual plugin downloaded into the explorer's /plugins directory with the same name as the plugin_name specified here or they will be ignored
+    "allowed_plugins": [
+      {
+        // plugin_name: The name of the plugin which must exactly match the name of the plugin folder name inside the explorer /plugins directory
+        "plugin_name": "generic-snapshots",
+        // enabled: Enable/disable the plugin
+        //          If set to true, the plugin will be used to extend the explorer functionality and accept incoming http requests to modify explorer data
+        //          If set to false, all features and functionality of the plugin will be completely disabled
+        "enabled": false
+      }
+    ]
+  },
+
+  // benchmark: a collection of settings that allow the benchmark to connect to MongoDB
+  "benchmark": {
+    // user: The MongoDB username used only for the benchmark script
+    "user": "eiquidus",
+    // password: The MongoDB password used only for the benchmark script
+    "password": "Nd^p2d77ceBX!L",
+    // database: The MongoDB database name used only for the benchmark script
+    "database": "explorer-benchmark",
+    // address: The MongoDB hostname. This should always be 'localhost' if connecting to a local instance, otherwise specify the ip address of a remote instance
+    "address": "localhost",
+    // port: The port # that MongoDB is configured to listen for requests on (default: 27017)
+    "port": 27017,
+    // block_to_sync: The total # of blocks that should be indexed for benchmarking
+    "block_to_sync": 5000,
+    // auto_add_user: Determine if the benchmark script should check if the MongoDB user already exists and automatically add it to MongoDB
+    //                If set to true, the MongoDB user information above will automatically be added to the correct benchmark database if it doesn't already exist
+    //                If set to false, the benchmark script will assume you have already created the MongoDB user in the correct database as indicated above
+    //                NOTE: If you have MongoDB authentication enabled you must set this value to false and create the user and database manually. Enabling this option while MongoDB authentication is enabled will prevent the benchmark script from running properly.
+    "auto_add_user": true
   }
 }
